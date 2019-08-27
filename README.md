@@ -1,5 +1,7 @@
 # Django proof-of-concept for CodeBuddies V3
+
 Background: https://github.com/codebuddies/codebuddies/issues/1136
+
 Crowdsourced brainstorm of problems we want to solve: https://pad.riseup.net/p/BecKdThFsevRmmG_tqFa-keep
 
 # Proof-of-concept Goals
