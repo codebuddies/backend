@@ -6,7 +6,8 @@ Crowdsourced brainstorm of problems we want to solve: https://pad.riseup.net/p/B
 
 # Setup
 - Make sure you have Postgres 11.1 installed
-- Create a database in Postgres called cbv3_django_prototype
+- Create a Postgres user by typing `- createuser --interactive --pwprompt`
+- Create a database in Postgres called cbv3_django_prototype by typing `createdb cbv3_django_prototype`
 - Type `pip install -r requirements.txt` in your command line
 
 # Proof-of-concept Goals
