@@ -4,6 +4,11 @@ Background: https://github.com/codebuddies/codebuddies/issues/1136
 
 Crowdsourced brainstorm of problems we want to solve: https://pad.riseup.net/p/BecKdThFsevRmmG_tqFa-keep
 
+# Setup
+- Make sure you have Postgres 11.1 installed
+- Create a database in Postgres called cbv3_django_prototype
+- Type `pip install -r requirements.txt` in your command line
+
 # Proof-of-concept Goals
 A resource datastore
 - save resource
@@ -28,3 +33,5 @@ The start of a resource bookmarking/archiving service.
 # Findings
 
 # Technologies Used
+
+
