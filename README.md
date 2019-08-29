@@ -7,6 +7,7 @@ Crowdsourced brainstorm of problems we want to solve: https://pad.riseup.net/p/B
 # Setup
 - Make sure you have Postgres installed
 - Create a database in Postgres called cbv3_django_prototype
+- Type `pip install -r requirements.txt` in your command line
 
 # Proof-of-concept Goals
 A resource datastore
