@@ -1,0 +1,4 @@
+text-unidecode==1.2
+
+[unidecode]
+Unidecode==1.0.23

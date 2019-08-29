@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: pylint-celery
+Version: 0.3
+Summary: pylint-celery is a Pylint plugin to aid Pylint in recognising and understandingerrors caused when using the Celery library
+Home-page: https://github.com/landscapeio/pylint-celery
+Author: landscape.io
+Author-email: code@landscape.io
+License: GPLv2
+Description: UNKNOWN
+Keywords: pylint celery plugin
+Platform: UNKNOWN
