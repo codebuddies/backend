@@ -1,0 +1,5 @@
+[run]
+include = cbv3_django_prototype/*
+omit = *migrations*, *tests*
+plugins =
+    django_coverage_plugin
