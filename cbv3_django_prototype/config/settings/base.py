@@ -77,8 +77,9 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "cbv3_django_prototype.users.apps.UsersConfig",
-    "resources.apps.ResourcesConfig",
+    "resources.app.ResourcesConfig",
 ]
+
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
@@ -287,3 +288,7 @@ LOGGING = {
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+REST_FRAMEWORK = {
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10,
+}
