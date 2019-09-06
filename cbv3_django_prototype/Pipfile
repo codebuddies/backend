@@ -38,6 +38,7 @@ Django = "==2.2.4"
 Werkzeug = "==0.14.1"
 Sphinx = "==2.2.0"
 django_coverage_plugin = "==1.6.0"
+vine = "*"
 
 [requires]
 python_version = "3.7"
