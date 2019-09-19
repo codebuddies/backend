@@ -3,6 +3,7 @@ from .models import Resource
 
 class ResourceSerializer(serializers.ModelSerializer):
     class Meta:
+        model = Resource
         fields = (
             'id',
             'title',
@@ -17,4 +18,3 @@ class ResourceSerializer(serializers.ModelSerializer):
             'paid',
             'tags',
         )
-        model = Resource
