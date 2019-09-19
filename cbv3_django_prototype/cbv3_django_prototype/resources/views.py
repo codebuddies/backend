@@ -10,4 +10,5 @@ class ResourceListView(viewsets.ModelViewSet):
     queryset = Resource.objects.all()
     serializer_class = ResourceSerializer
     filter_backends = [filters.SearchFilter]
-    search_fields = ['id', '']
+    search_fields = ['id', 'tags']
+
