@@ -27,7 +27,16 @@ With Docker installed, try the following steps:
 
 Postgres should then be accessible via localhost, e.g. from Django or with the psql command line tool:
 
-psql -h localhost -U postgres -d postgres
+```psql -h localhost -U postgres -d postgres```
+
+With the new settings file using django-environ, django will expect an env variable (either in the environment or in a .env file) called DATABASE_URL. It should take this form:
+
+```postgres://{user}:{password}@{hostname}:{port}/{database-name}```
+
+As an example:
+```postgres://silly_username:a_password@localhost:5342/your_db_name_here```
+
+env.db() will then parse this into a DATABASE dict automatically for Djangos use in settings.
 
 ### Set up Postgres locally:
 
