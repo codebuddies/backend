@@ -3,7 +3,23 @@ import django.contrib.postgres.fields as pg
 from django.db import models
 from django.utils import timezone
 
+
 class Resource(models.Model):
+    RESOURCE_TYPES = [
+        ('VID', 'Video'),
+        ('POD', 'Podcast'),
+        ('PODEP', 'Podcast Episode'),
+        ('TALK', 'Talk'),
+        ('TUTOR', 'Tutorial'),
+        ('COURSE', 'Course'),
+        ('BOOK', 'Book'),
+        ('BLOG', 'Blog'),
+        ('GAME', 'Game'),
+        ('EVENT', 'Event'),
+        ('TOOL', 'Tool'),
+        ('LIB', 'Library'),
+        ('WEB', 'Website')
+        ]
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid1, editable=False)
 
@@ -30,12 +46,12 @@ class Resource(models.Model):
     # modification date of resource entry
     modified = models.DateTimeField(default=timezone.now)
 
-    # [ video, podcast, talk, tutorial, course, book, blog ]
-    type = models.CharField(max_length=100)
+    # [video, podcast, podcast episode, talk, tutorial, course, book, blog, game, event, tool, library]
+    media_type = models.CharField(max_length=7, choices=RESOURCE_TYPES)
 
     paid = models.BooleanField(null=True)
 
-    # JSON here, so we can parse them easier....
+    # JSONB for a simplified DB Schema and prototype for now.
     tags = pg.JSONField()
 
 
