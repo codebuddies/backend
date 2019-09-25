@@ -25,6 +25,10 @@ With Docker installed, try the following steps:
 2. `mkdir -p $HOME/docker/volumes/postgres`
 3. docker run --rm   --name pg-docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data  postgres
 
+Postgres should then be accessible via localhost, e.g. from Django or with the psql command line tool:
+
+psql -h localhost -U postgres -d postgres
+
 ### Set up Postgres locally:
 
 1. Install Postgress ([using brew](https://gist.github.com/ibraheem4/ce5ccd3e4d7a65589ce84f2a3b7c23a3), if on mac)
