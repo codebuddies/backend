@@ -15,8 +15,10 @@ urlpatterns = [
     # User management
     path("users/", include("cbv3_django_prototype.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
+
     # Your stuff: custom urls includes go here
     path('resources_api/v1/', include('resources.urls')),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
