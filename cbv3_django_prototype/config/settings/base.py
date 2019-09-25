@@ -42,19 +42,8 @@ LOCALE_PATHS = [ROOT_DIR.path("locale")]
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
-#DATABASES = {
-#    "default": env.db("DATABASE_URL", default="postgres:///cbv3_django_prototype")
-#}
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'cbv3_django_prototype',
-        'USER': 'postgres',
-        'PASSWORD': 'docker',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    'default': env.db(),
 }
 
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
@@ -127,7 +116,7 @@ PASSWORD_HASHERS = [
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
+"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
     },
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
@@ -299,9 +288,9 @@ LOGGING = {
 
 
 REST_FRAMEWORK = {
-'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',],
-'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-'PAGE_SIZE': 10,
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.AllowAny',],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
 }
 # ------------------------------------------------------------------------------
