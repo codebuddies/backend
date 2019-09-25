@@ -17,7 +17,13 @@ You can either set up Postgres locally or using Docker.
 
 ### Set up Postgres with Docker:
 
-[https://hackernoon.com/dont-install-postgres-docker-pull-postgres-bee20e200198](https://hackernoon.com/dont-install-postgres-docker-pull-postgres-bee20e200198)
+[Docker](https://www.docker.com/) makes it easy to [install and manage Postgres](https://hackernoon.com/dont-install-postgres-docker-pull-postgres-bee20e200198).
+
+With Docker installed, try the following steps:
+
+1. `docker pull postgres`
+2. `mkdir -p $HOME/docker/volumes/postgres`
+3. docker run --rm   --name pg-docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data  postgres
 
 ### Set up Postgres locally:
 
