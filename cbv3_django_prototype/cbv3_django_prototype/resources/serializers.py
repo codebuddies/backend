@@ -2,8 +2,11 @@ from rest_framework import serializers
 from .models import Resource
 
 class ResourceSerializer(serializers.ModelSerializer):
+    media_type = serializers.SerializerMethodField()
+
     class Meta:
         model = Resource
+
         fields = (
             'id',
             'title',
@@ -14,7 +17,11 @@ class ResourceSerializer(serializers.ModelSerializer):
             'date_published',
             'created',
             'modified',
-            'type',
+            'media_type',
             'paid',
             'tags',
         )
+
+    def get_media_type(self, obj):
+        return obj.get_media_type_display()
+
