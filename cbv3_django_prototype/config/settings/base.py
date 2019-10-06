@@ -43,8 +43,9 @@ LOCALE_PATHS = [ROOT_DIR.path("locale")]
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
-    "default": env.db("DATABASE_URL", default="postgres:///cbv3_django_prototype")
+    'default': env.db(),
 }
+
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
 # URLS
@@ -77,6 +78,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "cbv3_django_prototype.users.apps.UsersConfig",
+    "resources",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -114,7 +116,7 @@ PASSWORD_HASHERS = [
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
+"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
     },
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
@@ -285,5 +287,10 @@ LOGGING = {
 # SOCIALACCOUNT_ADAPTER = "cbv3_django_prototype.users.adapters.SocialAccountAdapter"
 
 
-# Your stuff...
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.AllowAny',],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+}
 # ------------------------------------------------------------------------------
