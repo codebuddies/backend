@@ -20,7 +20,6 @@ urlpatterns = [
 
     # Your stuff: custom urls includes go here
     path('resources_api/v1/', include('resources.urls')),
-    path('token-auth/', obtain_jwt_token),
     path('userauth/', include('userauth.urls'))
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
