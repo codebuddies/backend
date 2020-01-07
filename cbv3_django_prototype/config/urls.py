@@ -19,8 +19,8 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
 
     # Your stuff: custom urls includes go here
-    path('resources_api/v1/', include('resources.urls')),
-    path('userauth/', include('userauth.urls'))
+    path('api/v1/', include('resources.urls')),
+    path('auth/', include('userauth.urls', namespace="userauth")),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
