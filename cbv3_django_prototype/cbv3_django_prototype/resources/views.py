@@ -28,6 +28,13 @@ class ResourceView(viewsets.ModelViewSet, mixins.CreateModelMixin):
             return JsonResponse(code=201, data=serializer_class.data)
         return JsonResponse(code=400, data="wrong parameters")
 
+    def patch(self, request, pk):
+        resource_object = self.get_object(pk)
+        serializer_class = ResourceSerializer(resource_object, data=request.data, partial=True)
+        if serializer_class.is_valid():
+            serializer_class.save()
+            return JsonResponse(code=201, data=serializer_class.data)
+        return JsonResponse(code=400, data="wrong parameters")
 '''
 class DynamicSearchFilter(filters.SearchFilter):
     def get_search_fields(self, view, request):
