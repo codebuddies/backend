@@ -2,6 +2,7 @@ from rest_framework import serializers
 from rest_framework_jwt.settings import api_settings
 from django.contrib.auth import get_user_model
 
+
 class UserSerializer(serializers.ModelSerializer):
     """
     We use get_user_model here because of the custom User model.
@@ -32,6 +33,7 @@ class UserSerializerWithToken(serializers.ModelSerializer):
 
         return token
 
+
     def create(self, validated_data):
         password = validated_data.pop('password', None)
         instance = self.Meta.model(**validated_data)
@@ -41,3 +43,4 @@ class UserSerializerWithToken(serializers.ModelSerializer):
         instance.save()
 
         return instance
+    
