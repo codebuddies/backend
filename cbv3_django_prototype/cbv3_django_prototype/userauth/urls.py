@@ -11,5 +11,5 @@ urlpatterns = [
     path('refresh_token/', refresh_jwt_token),
     path('validate_token/', verify_jwt_token),
     path('current_user/', current_user),
-    path('users/', UserList.as_view())
-    ]
+    path('users/', UserList.as_view()),
+]
