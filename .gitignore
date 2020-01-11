@@ -289,3 +289,6 @@ cbv3_django_prototype/media/
 
 .env
 .envs/*
+
+## IDE ignores
+.vscode
