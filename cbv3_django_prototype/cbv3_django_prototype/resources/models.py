@@ -3,6 +3,8 @@ import django.contrib.postgres.fields as pg
 from django.db import models
 from django.utils import timezone
 
+from taggit.managers import TaggableManager
+
 
 class Resource(models.Model):
     RESOURCE_TYPES = [
@@ -51,8 +53,9 @@ class Resource(models.Model):
 
     paid = models.BooleanField(null=True)
 
-    # JSONB for a simplified DB Schema and prototype for now.
-    tags = pg.JSONField()
+    # Use common storage for tags,
+    # so we can create composite views grouping resources and other items by tag
+    tags = TaggableManager()
 
     def __str__(self):
         """A string representation of the model."""
