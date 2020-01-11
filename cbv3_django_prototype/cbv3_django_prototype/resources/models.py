@@ -53,8 +53,8 @@ class Resource(models.Model):
 
     paid = models.BooleanField(null=True)
 
-    # Use common storage for tags,
-    # so we can create composite views grouping resources and other items by tag
+    # Allow tags to be used across entities
+    # E.g. so we can create composite views showing all entities sharing a common tag
     tags = TaggableManager()
 
     def __str__(self):
