@@ -1,8 +1,7 @@
 from .models import Resource
 from .serializers import ResourceSerializer
 from rest_framework import filters, viewsets
-
-
+from rest_framework import mixins
 
 class ResourceView(viewsets.ModelViewSet):
 
@@ -18,6 +17,8 @@ class ResourceView(viewsets.ModelViewSet):
             serializer_class.save()
             return JsonResponse(code=201, data=serializer_class.data)
         return JsonResponse(code=400, data="wrong parameters")
+
+
 '''
 class DynamicSearchFilter(filters.SearchFilter):
     def get_search_fields(self, view, request):
