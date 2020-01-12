@@ -1,10 +1,10 @@
 import uuid
-import django.contrib.postgres.fields as pg
+from django.conf import settings
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.models import User
+import django.contrib.postgres.fields as pg
 from django.contrib.auth import get_user_model
-from django.conf import settings
+
 
 
 def get_sentinel_user():
@@ -35,7 +35,7 @@ class Resource(models.Model):
     author = models.CharField(max_length=200, blank=True)
 
     # potentially a markdown field.  Will need a markdown converter and renderer
-    description = models.TextField(blank=True, max_length=500)
+    description = models.TextField(blank=True, max_length=300)
 
     # specific URL of resource
     url = models.URLField(max_length=300)
@@ -43,8 +43,8 @@ class Resource(models.Model):
     # the URL of the referring/source site.  e.g. URL of tweet, if it was tweeted.
     referring_url = models.URLField(blank=True, max_length=300)
 
-    # names of persons who suggest this resource to the user
-    referring_user = models.CharField(max_length=100)
+    # place or person the user received the recommendation from if not a URL
+    other_referring_source = models.CharField(max_length=200)
 
     # user who posted the resource
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET(get_sentinel_user))
