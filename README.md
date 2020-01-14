@@ -6,7 +6,7 @@ The API spec all the proof-of-concepts: https://app.swaggerhub.com/apis-docs/bil
 
 Crowdsourced brainstorm of problems we want to solve: https://pad.riseup.net/p/BecKdThFsevRmmG_tqFa-keep
 
-# Setup
+## Setup
 
 Although it is possible to run this locally, we recommend you run CodeBuddies locally using Docker. We assume you have Docker installed, but if not head on over to the Docker [Getting Started](https://www.docker.com/products/docker-desktop) guide and install Docker Desktop for your operating system.
 
