@@ -8,49 +8,40 @@ Crowdsourced brainstorm of problems we want to solve: https://pad.riseup.net/p/B
 
 # Setup
 
-- Fork this repo
-- Make sure you have Python 3 and Postgres 11.1 installed
+Although it is possible to run this locally, we recommend you run CodeBuddies locally using Docker. We assume you have Docker installed, but if not head on over to the Docker [Getting Started](https://www.docker.com/products/docker-desktop) guide and install Docker Desktop for your operating system.
 
----
+1. Fork this repository.
+2. Clone your fork (don't forget to replace the repo URL with that of your fork).
 
-You can either set up Postgres locally or using Docker.
+```
+git clone git@github.com:billglover/django-concept.git cb
+```
 
-### Set up Postgres with Docker:
+3. Navigate into the project directory.
 
-[Docker](https://www.docker.com/) makes it easy to [install and manage Postgres](https://hackernoon.com/dont-install-postgres-docker-pull-postgres-bee20e200198).
+```
+cd cb
+```
 
-With Docker installed, try the following steps:
+4. Start the local development environment.
 
-1. `docker pull postgres`
-2. `mkdir -p $HOME/docker/volumes/postgres`
-3. docker run --rm   --name pg-docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data  postgres
+```
+docker-compose up
+```
 
-Postgres should then be accessible via localhost, e.g. from Django or with the psql command line tool:
+This will run the following components:
 
-```psql -h localhost -U postgres -d postgres```
+* Nginx, a web server providing access to the application: http://localhost:8000
+* Adminer, a front-end for PostgreSQL: http://localhost:8001
+* Mailhog, a web interface for viewing all mail sent by the application: http://localhost:8025
+* A PostgreSQL database: postgres://babyyoda:mysecretpassword@localhost:5432/codebuddies
+* The Django web application accessible via the Nginx web server
 
-With the new settings file using django-environ, django will expect an env variable (either in the environment or in a .env file) called DATABASE_URL. It should take this form:
+Press Ctrl + C when you need to stop the application.
 
-```postgres://{user}:{password}@{hostname}:{port}/{database-name}```
+## Editing
 
-As an example:
-```postgres://silly_username:a_password@localhost:5342/your_db_name_here```
-
-env.db() will then parse this into a DATABASE dict automatically for Djangos use in settings.
-
-### Set up Postgres locally:
-
-1. Install Postgress ([using brew](https://gist.github.com/ibraheem4/ce5ccd3e4d7a65589ce84f2a3b7c23a3), if on mac)
-
-2. Follow the steps at [https://wiki.postgresql.org/wiki/First_steps](https://wiki.postgresql.org/wiki/First_steps)
-
----
-
-In the command line, run some commands to create a user, create a database, and install requirements:
-
-- Create a user: `$ createuser --interactive --pwprompt`
-- Create a database in Postgres called cbv3_django_prototype by typing `$ createdb cbv3_django_prototype`
-- Type `$ pip install -r requirements.txt`
+With the local environment running, you can modify the application code in your editor of choice. As you save changes, the application should reload automatically. If you need to run database migrations, stop the running containers with Ctrl + C and then re-start with `docker-compose up`.
 
 # Proof-of-concept Goals
 
