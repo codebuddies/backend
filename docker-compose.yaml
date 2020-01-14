@@ -1,0 +1,78 @@
+version: "3"
+
+volumes:
+  db_data: {}
+  nginx: {}
+  cbv3_django_prototype: {}
+
+services:
+  # The PostgreSQL container creates the codebuddies database on first launch.
+  # All data is stored in the db_data volume on the host machine. This ensures
+  # data is persisted across container restarts.
+  db:
+    image: postgres:11-alpine
+    container_name: db
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=mysecretpassword
+      - POSTGRES_USER=babyyoda
+      - POSTGRES_DB=codebuddies
+
+  # The app container uses uwsgi to run the Django application. It is configured
+  # to run migrations on first start-up and to use Mailhog as the mail server.
+  # The application is not exposed to the host as all traffic is proxied through
+  # nginx. The local project folder is mounted into the container as a volume to
+  # allow development to be done on the host machine.
+  app:
+    build: ./cbv3_django_prototype
+    container_name: app
+    restart: always
+    command: >
+      sh -c "python /opt/cbv3_django_prototype/manage.py migrate &&
+             uwsgi --ini /opt/cbv3_django_prototype/uwsgi.ini"
+    volumes:
+      - ./cbv3_django_prototype:/opt/cbv3_django_prototype
+    environment:
+      - DATABASE_URL=postgres://babyyoda:mysecretpassword@db:5432/codebuddies
+      - EMAIL_HOST=mailhog
+    depends_on:
+      - db
+
+  # The nginx front-end is configured to proxy all traffic to the Django application.
+  # We may want to use this to host static content. It is configured to reload
+  # configuration every 6 hours.
+  nginx:
+    image: nginx:1.17-alpine
+    container_name: nginx
+    restart: always
+    ports:
+      - "8000:80"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    command: '/bin/sh -c ''while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
+    depends_on:
+      - app
+
+  # Adminer is a front-end for PostgreSQL.
+  # It isn't required to run CodeBuddies but may be useful as a graphical interface
+  # to the database.
+  adminer:
+    image: adminer:latest
+    container_name: adminer
+    restart: always
+    ports:
+      - 8001:8080
+
+  # Mailhog is a mail server that traps all outbound mail and presents it in a web
+  # interface that is easily browsable. This may prove useful when testing functionality
+  # that results in emails to users.
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: mailhog
+    restart: always
+    ports:
+      - 8025:8025
