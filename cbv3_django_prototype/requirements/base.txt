@@ -28,5 +28,5 @@ django-redis==4.10.0          # https://github.com/niwinz/django-redis
 # ______________________________________________________________________________
 djangorestframework==3.10.2   # https://github.com/encode/django-rest-framework
 coreapi==2.3.3                # https://github.com/core-api/python-client
-djangorestframework-jwt==1.11.0 # https://jpadilla.github.io/django-rest-framework-jwt/
-django-cors-headers==3.0.2      # https://github.com/adamchainz/django-cors-headers
+drf-jwt==1.13.4               # https://github.com/Styria-Digital/django-rest-framework-jwt
+django-cors-headers==3.0.2    # https://github.com/adamchainz/django-cors-headers
