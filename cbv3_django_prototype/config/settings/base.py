@@ -3,7 +3,6 @@ Base settings to build other settings files upon.
 """
 
 import environ
-import os
 
 ROOT_DIR = (
     environ.Path(__file__) - 3
@@ -44,18 +43,9 @@ LOCALE_PATHS = [ROOT_DIR.path("locale")]
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 
-USE_SQLITE = env.bool("USE_SQLITE", default=False)
-if USE_SQLITE:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(ROOT_DIR, "db.sqlite3"),
-        }
-    }
-else:
-    DATABASES = {
-        'default': env.db(),
-    }
+DATABASES = {
+    'default': env.db(),
+}
 
 
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
