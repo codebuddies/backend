@@ -73,7 +73,7 @@
          "url":"https://www.functionalgeekery.com/podlove/file/329/s/download/c/select-show/functionalgeekery_127_katie_hughes.mp3",
          "referring_url":"https://www.functionalgeekery.com/",
          "other_referring_source":"Brittni Kinforth (bkinforthg@mozilla.com)",
-         "user":1,
+         "user":14,
          "date_published":"2019-09-19T04:01:24Z",
          "created":"2019-09-19T04:01:24.931Z",
          "modified":"2019-09-19T04:01:24Z",
@@ -936,7 +936,7 @@
       "pk":"f7f8ee30-da8e-11e9-8a1f-d20089b01401",
       "fields":{
          "title":"PyCon Israel, Tel Aviv Keynote:  The Fun of Reinvention - David Beazly",
-         "author":"",
+         "author":"David Beazly",
          "description":"A _diabolically irresponsible_ talk in which I celebrate modern Python coding by **abandoning all backwards compatibility** and look at a variety of new Python 3.6 features. In the talk, I utilize an assortment of advanced language features including _decorators, descriptors, class decorators, and metaclasses_ to build an interesting data-validation system from **type-annotations.**",
          "url":"https://www.youtube.com/watch?v=5nXmq1PsoJ0",
          "referring_url":"https://www.dabeaz.com/talks.html",
