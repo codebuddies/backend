@@ -152,3 +152,8 @@ The start of a resource bookmarking/archiving service.
 # Findings
 
 # Technologies Used
+=======
+Please see [instructions here](https://github.com/codebuddies/django-concept/wiki/Contribution-instructions)
+
+This project is not deployed yet, but will interact as the API supporting [https://github.com/codebuddies/react-concept](https://github.com/codebuddies/react-concept) 
+
