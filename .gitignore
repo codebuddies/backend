@@ -52,6 +52,8 @@ coverage.xml
 
 # Django stuff:
 staticfiles/
+*.log
+local_settings.py
 
 # Sphinx documentation
 docs/_build/
@@ -69,6 +71,7 @@ celerybeat-schedule
 .venv
 venv/
 ENV/
+env/
 
 # Rope project settings
 .ropeproject
@@ -288,3 +291,6 @@ cbv3_django_prototype/media/
 
 .env
 .envs/*
+
+## IDE ignores
+.vscode
