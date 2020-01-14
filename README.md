@@ -21,7 +21,7 @@ You can either set up Postgres locally or using Docker.
 
 With Docker installed, try the following steps:
 
-1. `docker pull postgres`
+1. `docker pull postgres:11.1`
 2. `mkdir -p $HOME/docker/volumes/postgres`
 3. docker run --rm   --name pg-docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data  postgres
 
