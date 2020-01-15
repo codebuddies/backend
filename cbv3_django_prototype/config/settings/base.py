@@ -42,9 +42,11 @@ LOCALE_PATHS = [ROOT_DIR.path("locale")]
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
+
 DATABASES = {
     'default': env.db(),
 }
+
 
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
@@ -74,6 +76,7 @@ THIRD_PARTY_APPS = [
     "allauth.socialaccount",
     "rest_framework",
     "corsheaders",
+    "taggit",
     "django_celery_beat",
 ]
 
@@ -85,6 +88,9 @@ LOCAL_APPS = [
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+
+# Allow case insensitive tags, to prevent arbitrary duplicate
+TAGGIT_CASE_INSENSITIVE = True
 
 # MIGRATIONS
 # ------------------------------------------------------------------------------
@@ -118,7 +124,7 @@ PASSWORD_HASHERS = [
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
     {
-"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
     },
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},

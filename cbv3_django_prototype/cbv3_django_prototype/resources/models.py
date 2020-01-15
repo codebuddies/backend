@@ -10,6 +10,8 @@ from django.contrib.auth import get_user_model
 def get_sentinel_user():
     return get_user_model().objects.get_or_create(username='deleted')[0]
 
+from taggit.managers import TaggableManager
+
 
 class Resource(models.Model):
     RESOURCE_TYPES = [
@@ -31,7 +33,7 @@ class Resource(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid1, editable=False)
 
     title = models.CharField(max_length=200)
-
+    
     author = models.CharField(max_length=200, blank=True)
 
     # potentially a markdown field.  Will need a markdown converter and renderer
@@ -64,7 +66,10 @@ class Resource(models.Model):
     paid = models.BooleanField(null=True)
 
     # JSONB for a simplified DB Schema and prototype for now.
-    tags = pg.JSONField()
+    #tags = pg.JSONField()
+    # Allow tags to be used across entities
+    # E.g. so we can create composite views showing all entities sharing a common tag
+    tags = TaggableManager()
 
     def __str__(self):
         """A string representation of the model."""
