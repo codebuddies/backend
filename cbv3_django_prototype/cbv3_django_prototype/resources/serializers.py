@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Resource
 
+
 class ResourceSerializer(serializers.ModelSerializer):
     media_type = serializers.SerializerMethodField()
 
@@ -9,11 +10,13 @@ class ResourceSerializer(serializers.ModelSerializer):
 
         fields = (
             'id',
+            'author',
             'title',
             'description',
             'url',
-            'referrer',
-            'credit',
+            'referring_url',
+            'other_referring_source',
+            'user',
             'date_published',
             'created',
             'modified',
@@ -24,4 +27,3 @@ class ResourceSerializer(serializers.ModelSerializer):
 
     def get_media_type(self, obj):
         return obj.get_media_type_display()
-
