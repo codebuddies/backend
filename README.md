@@ -31,11 +31,11 @@ docker-compose up
 
 This will run the following components:
 
-* Nginx, a web server providing access to the application: http://localhost:8000
-* Adminer, a front-end for PostgreSQL: http://localhost:8001
-* Mailhog, a web interface for viewing all mail sent by the application: http://localhost:8025
-* A PostgreSQL database: postgres://babyyoda:mysecretpassword@localhost:5432/codebuddies
-* The Django web application accessible via the Nginx web server
+- Nginx, a web server providing access to the application: http://localhost:8000
+- Adminer, a front-end for PostgreSQL: http://localhost:8001
+- Mailhog, a web interface for viewing all mail sent by the application: http://localhost:8025
+- A PostgreSQL database: postgres://babyyoda:mysecretpassword@localhost:5432/codebuddies
+- The Django web application accessible via the Nginx web server
 
 Press Ctrl + C when you need to stop the application.
 
