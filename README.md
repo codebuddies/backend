@@ -43,6 +43,15 @@ Press Ctrl + C when you need to stop the application.
 
 With the local environment running, you can modify the application code in your editor of choice. As you save changes, the application should reload automatically. If you need to run database migrations, stop the running containers with Ctrl + C and then re-start with `docker-compose up`.
 
+## Migrations
+
+If you need to run migrations, these can be run as follows:
+
+```
+docker-compose run --rm manage makemigrations
+```
+
+
 # Proof-of-concept Goals
 
 A resource datastore
