@@ -76,3 +76,17 @@ services:
     restart: always
     ports:
       - 8025:8025
+
+  # Manager allows you to run Django management tasks on the application.
+  manage:
+    build: ./cbv3_django_prototype
+    command: shell
+    entrypoint: /usr/local/bin/python3 /opt/cbv3_django_prototype/manage.py
+    volumes:
+      - ./cbv3_django_prototype:/opt/cbv3_django_prototype
+    environment:
+      - DATABASE_URL=postgres://babyyoda:mysecretpassword@db:5432/codebuddies
+      - EMAIL_HOST=mailhog
+    depends_on:
+      - db
+
