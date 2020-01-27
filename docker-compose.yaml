@@ -2,8 +2,6 @@ version: "3"
 
 volumes:
   db_data: {}
-  nginx: {}
-  cbv3_django_prototype: {}
 
 services:
   # The PostgreSQL container creates the codebuddies database on first launch.
@@ -16,7 +14,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - ./db_data:/var/lib/postgresql/data
+      - db_data:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=mysecretpassword
       - POSTGRES_USER=babyyoda
@@ -79,6 +77,8 @@ services:
 
   # Manager allows you to run Django management tasks on the application.
   manage:
+    container_name: manage
+    restart: always
     build: ./cbv3_django_prototype
     command: shell
     entrypoint: /usr/local/bin/python3 /opt/cbv3_django_prototype/manage.py

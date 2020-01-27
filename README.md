@@ -8,51 +8,118 @@ Crowdsourced brainstorm of problems we want to solve: https://pad.riseup.net/p/B
 
 ## Setup
 
-Although it is possible to run this locally, we recommend you run CodeBuddies locally using Docker. We assume you have Docker installed, but if not head on over to the Docker [Getting Started](https://www.docker.com/products/docker-desktop) guide and install Docker Desktop for your operating system.
+Although it is possible to run this locally, we recommend you run CodeBuddies locally using Docker. We assume you have Docker installed, but if not head on over to the Docker [Getting Started](https://www.docker.com/products/docker-desktop) guide and install Docker for your operating system.
 
-1. Fork this repository.
-2. Clone your fork (don't forget to replace the repo URL with that of your fork).
+These instructions have been used on the following operating systems.
 
-```
-git clone git@github.com:billglover/django-concept.git cb
+* Linux
+* Mac OS
+* Windows 10 Pro
+
+Please note that Windows 10 Home is not supported by Docker Desktop at this time.
+
+1. Fork this repository. This creates a copy of the repository for you to work on. For more help see this GitHub guide: [Fork a repo](https://help.github.com/en/github/getting-started-with-github/fork-a-repo).
+2. Clone your fork. This creates a copy on your local computer. For more help see this GitHub guide: [Cloning a repository](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository).
+
+```plain
+git clone git@github.com:codebuddies/django-concept.git cb
 ```
 
 3. Navigate into the project directory.
 
-```
+```plain
 cd cb
 ```
 
 4. Start the local development environment.
 
-```
-docker-compose up
+```plain
+docker-compose up -d
 ```
 
 This will run the following components:
 
-- Nginx, a web server providing access to the application: http://localhost:8000
-- Adminer, a front-end for PostgreSQL: http://localhost:8001
-- Mailhog, a web interface for viewing all mail sent by the application: http://localhost:8025
-- A PostgreSQL database: postgres://babyyoda:mysecretpassword@localhost:5432/codebuddies
-- The Django web application accessible via the Nginx web server
+- Nginx, a web server: http://localhost:8000
+- Adminer, a DB front-end: http://localhost:8001
+- Mailhog, a dummy mailbox: http://localhost:8025
+- A PostgreSQL database
+- The Django web application
 
-Press Ctrl + C when you need to stop the application.
+You can view the application or make API calls by using the Nginx URL.
 
-## Editing
+You can access the database through the Adminer front-end or using a local PostgreSQL client and the following URL: `postgres://babyyoda:mysecretpassword@localhost:5432/codebuddies`.
 
-With the local environment running, you can modify the application code in your editor of choice. As you save changes, the application should reload automatically. If you need to run database migrations, stop the running containers with Ctrl + C and then re-start with `docker-compose up`.
+To stop the application and remove all containers, run the following.
 
-## Migrations
-
-If you need to run migrations, these can be run as follows:
-
-```
-docker-compose run --rm manage makemigrations
+```plain
+docker-compose down
 ```
 
+## Editing Code
 
-# Proof-of-concept Goals
+With the local environment running, you can modify the application code in your editor of choice. As you save changes, the application should reload automatically. There should be no need to restart containers to see code changes.
+
+## Other Tasks
+
+### Logs
+
+View logs from all containers.
+
+```plain
+docker-compose logs
+```
+
+View logs from a single container (in this case the `app` container).
+
+```plain
+docker-compose logs app
+```
+
+You can use the same structure to view logs for the other containers; `nginx`, `db`, `mailhog`, `adminer`, `app`.
+
+If you would like to tail the logs in the console then you remove the detach flag, `-d`, from the `docker-compose up` command that you use to start the application.
+
+### Django Management
+
+The following are examples of some common Django management commands that you may need to run.
+
+* Make Migrations: `docker-compose run --rm manage makemigrations`
+* Merge Migrations: `docker-compose run --rm manage makemigrations --merge`
+* Run Migrations: `docker-compose run --rm manage`
+* Test: `docker-compose run --rm manage test`
+
+To see the full list of management commands use `help`.
+
+```plain
+docker-compose run --rm manage help
+```
+
+## Removing Everything
+
+To remove all containers run the following:
+
+```plain
+docker-compose rm
+```
+
+This will leave a copy of the data volume (holding the PostgreSQL data) behind. To remove that you will need to identify and remove the data volume.
+
+```plain
+docker volume ls
+
+DRIVER              VOLUME NAME
+local               django-concept_db_data
+```
+
+Note the name of the data volume, in this case `django-concept_db_data` and delete it.
+
+```plain
+docker volume rm django-concept_db_data
+```
+
+Note: it is likely that cached copies of your container images will be retained by Docker on your local machine. This is done to speed things up if you require these images in future. To completely remove unused container images and networks, we recommend you follow Docker [pruning guide](https://docs.docker.com/config/pruning/).
+
+## Proof-of-concept Goals
 
 A resource datastore
 
