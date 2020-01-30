@@ -2,8 +2,6 @@ version: "3"
 
 volumes:
   db_data: {}
-  nginx: {}
-  cbv3_django_prototype: {}
 
 services:
   # The PostgreSQL container creates the codebuddies database on first launch.
