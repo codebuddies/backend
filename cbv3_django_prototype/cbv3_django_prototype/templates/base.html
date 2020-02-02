@@ -83,7 +83,22 @@
       {% endif %}
 
       {% block content %}
-        <p>Use this document as a way to quick start any new project.</p>
+      <h1>Welcome to the codebuddies django-concept project</h1>
+      <p> Please find some useful commands below to help you get started on Django development</p>
+      <h2>Application urls</h2>
+      <ul>
+        <li><a href="/api/v1/resources/">/api/v1/resources/ </a> - browse the API for resources</li>
+        <li><a href="/admin/">/admin/ </a> - login using superuser credentials</li>
+        <li><a href="/auth/obtain_token/">/auth/obtain_token/admin/</a> - get a token</li>
+        <li><a href="/auth/users/">/auth/users/</a> - create a user</li>
+      </ul>
+      <h2>docker-compose commands</h2>
+      <ul>
+        <li><code>docker-compose run --rm manage createsuperuser</code> - How to create a superuser</li>
+        <li><code>docker-compose run --rm manage tests</code>- How to run tests </li>
+        <li><code>docker-compose run --rm makemigrations</code> - How to make migrations </li>
+        <li><code>docker-compose run --rm migrate</code> - How to migrate the migrations </li>
+      </ul>
       {% endblock content %}
 
     </div> <!-- /container -->
