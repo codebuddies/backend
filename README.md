@@ -49,6 +49,8 @@ You can view the application or make API calls by using the Nginx URL.
 
 You can access the database through the Adminer front-end or using a local PostgreSQL client and the following URL: `postgres://babyyoda:mysecretpassword@localhost:5432/codebuddies`.
 
+![screenshot of Adminer](https://i.imgur.com/Dtg5Yel.png)
+
 To stop the application and remove all containers, run the following.
 
 ```plain
