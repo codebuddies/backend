@@ -1,6 +1,6 @@
 # Django proof-of-concept for CodeBuddies V3
 
-![Test](https://github.com/billglover/django-concept/workflows/Test/badge.svg)
+![Test](https://github.com/codebuddies/django-concept/workflows/Test/badge.svg)
 
 Background: https://github.com/codebuddies/codebuddies/issues/1136
 
