@@ -1,5 +1,7 @@
 # Django proof-of-concept for CodeBuddies V3
 
+![Test](https://github.com/billglover/django-concept/workflows/Test/badge.svg)
+
 Background: https://github.com/codebuddies/codebuddies/issues/1136
 
 The API spec all the proof-of-concepts: https://app.swaggerhub.com/apis-docs/billglover/CodeBuddies/0.0.1
