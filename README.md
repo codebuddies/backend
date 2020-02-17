@@ -100,6 +100,18 @@ To see the full list of management commands use `help`.
 docker-compose run --rm manage help
 ```
 
+### Import Postman collection
+Postman is an interactive tool for verifying the APIs of your project. We've created a shared Postman collection (a .json file) in the `postman` folder to help contributors more easily reproduce observed behaviour in our dev API. To get it set up, please follow these steps:
+
+1. Download Postman (if you already have it installed, please make sure it is at least v7.6.0)
+2. Once you have Postman open, click on file -> import and import the .json file
+3. Click on the settings gear icon on the far top right (next to the eye icon) and click to add a new environment. 
+4. Name your environment `dev` and create a variable called `api_url`. Give it a value of `https://localhost:8000`, which is the URL of your Django dev environment when it is running.
+
+![screenshot of Postman environment variable setup](https://i.imgur.com/6Uq9XQp.png) 
+
+5. Now, as long you have the Django app (https://localhost:8000) running, you should be able to make requests like `POST Create User` and `POST Authenticate` by clicking on the blue "Send" button in Postman. 
+
 ## Removing Everything
 
 To remove all containers run the following:
