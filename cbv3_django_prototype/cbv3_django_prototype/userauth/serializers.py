@@ -43,4 +43,3 @@ class UserSerializerWithToken(serializers.ModelSerializer):
         instance.save()
 
         return instance
-
