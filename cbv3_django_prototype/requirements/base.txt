@@ -22,6 +22,8 @@ django-crispy-forms==1.7.2    # https://github.com/django-crispy-forms/django-cr
 django-filter==2.2.0          # https://github.com/carltongibson/django-filter
 django-environ==0.4.5         # https://github.com/joke2k/django-environ
 django-model-utils==3.2.0     # https://github.com/jazzband/django-model-utils
+django-taggit==1.2.0          # https://github.com/jazzband/django-taggit
+django_taggit_serializer==0.1.7 #https://github.com/glemmaPaul/django-taggit-serializer
 django-redis==4.10.0          # https://github.com/niwinz/django-redis
 
 # Django REST Framework
