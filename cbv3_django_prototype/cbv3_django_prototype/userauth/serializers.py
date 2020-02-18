@@ -10,8 +10,8 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = get_user_model()
-        fields = ('username', 'is_superuser',)
-
+        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'is_superuser',)
+        lookup_field = 'username'
 
 class UserSerializerWithToken(serializers.ModelSerializer):
 
@@ -22,6 +22,9 @@ class UserSerializerWithToken(serializers.ModelSerializer):
         model = get_user_model()
         fields = ('username', 'token', 'password', 'first_name', 'last_name', 'email')
         extra_kwargs = {'password': {'write_only': True}}
+
+    token = serializers.SerializerMethodField()
+    password = serializers.CharField(write_only=True)
 
     def get_token(self, obj):
         jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
@@ -41,5 +44,3 @@ class UserSerializerWithToken(serializers.ModelSerializer):
         instance.save()
 
         return instance
-
-
