@@ -30,10 +30,10 @@ class TagsSerializerField(serializers.ModelField):
         return value
 
     def to_representation(self, instance):
-        tags = instance.tags.names()
+        tag_names = instance.tags.names()
         slugs = instance.tags.slugs()
 
-        value = [{'slug': slug, 'name': name} for slug, name in zip(tags, slugs)]
+        value = [{'slug': slug, 'name': name} for slug, name in zip(slugs, tag_names)]
 
         return value
 
