@@ -18,17 +18,17 @@ vine==1.3.0                    # https://github.com/celery/vine
 django==2.2.4  # pyup: < 3.0  # https://www.djangoproject.com/
 django-allauth==0.39.1        # https://github.com/pennersr/django-allauth
 django-celery-beat==1.5.0      # https://github.com/celery/django-celery-beat
+django-cors-headers==3.0.2    # https://github.com/adamchainz/django-cors-headers
 django-crispy-forms==1.7.2    # https://github.com/django-crispy-forms/django-crispy-forms
-django-filter==2.2.0          # https://github.com/carltongibson/django-filter
 django-environ==0.4.5         # https://github.com/joke2k/django-environ
+django-filter==2.2.0          # https://github.com/carltongibson/django-filter
 django-model-utils==3.2.0     # https://github.com/jazzband/django-model-utils
-django-taggit==1.2.0          # https://github.com/jazzband/django-taggit
-django_taggit_serializer==0.1.7 #https://github.com/glemmaPaul/django-taggit-serializer
 django-redis==4.10.0          # https://github.com/niwinz/django-redis
+django-taggit==1.2.0          # https://github.com/jazzband/django-taggit
 
 # Django REST Framework
 # ______________________________________________________________________________
 djangorestframework==3.10.2   # https://github.com/encode/django-rest-framework
 coreapi==2.3.3                # https://github.com/core-api/python-client
+django_taggit_serializer==0.1.7 #https://github.com/glemmaPaul/django-taggit-serializer
 drf-jwt==1.13.4               # https://github.com/Styria-Digital/django-rest-framework-jwt
-django-cors-headers==3.0.2    # https://github.com/adamchainz/django-cors-headers
