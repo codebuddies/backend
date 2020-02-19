@@ -2,7 +2,6 @@ from rest_framework import status, serializers
 from rest_framework.test import APITestCase
 from rest_framework_jwt.settings import api_settings
 from django.core.management import call_command
-from django.contrib.auth import get_user_model
 
 jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
 jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
@@ -15,16 +14,9 @@ class ResourcesTests(APITestCase):
         call_command('loaddata', 'resources.json', verbosity=0)
         call_command('loaddata', 'tags.json', verbosity=0)
 
-        model = get_user_model()
-        self.person = model.objects.create_user(
-                                                username='PetuniaPig',
-                                                email='pretty.piglet@pigfarm.org',
-                                                password='codebuddies',
-                                                is_superuser=True
-                                                )
-
         url = '/auth/obtain_token/'
-        data = {"username": "PetuniaPig", "password": "codebuddies"}
+        #to do:  choose a user at random from loaded users.json
+        data = {"username": "JuJu", "password": "codebuddies"}
         token_response = self.client.post(url, data, format='json')
         self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + token_response.data['token'])
 
@@ -67,6 +59,7 @@ class ResourcesTests(APITestCase):
 
 
     def test_delete_one_resource(self):
+        #to do:  grab the guid from the created guids in the DB instead of hard coding it.
         url = '/api/v1/resources/7a25b429-20a7-4246-a49a-c614b08bfc72/'
         response = self.client.delete(url)
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
