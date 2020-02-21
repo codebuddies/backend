@@ -1,0 +1,72 @@
+name: Deploy
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: start deployment
+        uses: bobheadxi/deployments@master
+        id: deployment
+        with:
+          step: start
+          token: ${{ secrets.GITHUB_TOKEN }}
+          env: prod
+          transient: true
+          desc: Setting up production deployment for $GITHUB_REF
+
+      - name: copy files
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.DO_PRODUCTION_HOST }}
+          key: ${{ secrets.DO_SSH_KEY }}
+          passphrase: ${{ secrets.DO_SSH_PASSPHRASE }}
+          port: ${{ secrets.DO_PRODUCTION_SSH_PORT }}
+          username: ${{ secrets.DO_SSH_USER }}
+          source: "docker-compose-proxy.yaml,docker-compose-prod.yaml"
+          target: "./"
+
+      - name: run deployment
+        uses: appleboy/ssh-action@master
+        env:
+          DO_PRODUCTION_DB_URL: ${{ secrets.DO_PRODUCTION_DB_URL }}
+          CB_IMAGE_TAG: $GITHUB_REF
+          GITHUB_ACTOR: $GITHUB_ACTOR
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DJANGO_SECRET_KEY: ${{ secrets.PRODUCTION_DJANGO_SECRET_KEY }}
+          DJANGO_ALLOWED_HOSTS: "${{ secrets.PRODUCTION_ALLOWED_HOSTS }}"
+        with:
+          host: ${{ secrets.DO_PRODUCTION_HOST }}
+          key: ${{ secrets.DO_SSH_KEY }}
+          passphrase: ${{ secrets.DO_SSH_PASSPHRASE }}
+          port: ${{ secrets.DO_PRODUCTION_SSH_PORT }}
+          username: ${{ secrets.DO_SSH_USER }}
+          script_stop: true
+          envs: DO_PRODUCTION_DB_URL,CB_IMAGE_TAG,GITHUB_ACTOR,GITHUB_TOKEN,DJANGO_SECRET_KEY,DJANGO_ALLOWED_HOSTS,GITHUB_REF
+          script: |
+            export DB_URL=$DO_PRODUCTION_DB_URL
+            export CB_IMAGE_TAG=`basename $GITHUB_REF`
+            export DJANGO_SECRET_KEY=$DJANGO_SECRET_KEY
+            export DJANGO_ALLOWED_HOSTS=$DJANGO_ALLOWED_HOSTS
+            docker login docker.pkg.github.com -u $GITHUB_ACTOR -p $GITHUB_TOKEN
+            docker-compose --project-name=cb-prod -f docker-compose-prod.yaml rm -f
+            docker-compose --project-name=cb-prod -f docker-compose-prod.yaml pull
+            docker-compose --project-name=cb-prod -f docker-compose-prod.yaml up -d
+
+      - name: finish deployment
+        uses: bobheadxi/deployments@master
+        if: always()
+        with:
+          step: finish
+          token: ${{ secrets.GITHUB_TOKEN }}
+          status: ${{ job.status }}
+          env: ${{ steps.deployment.outputs.env }}
+          env_url: https://${{ secrets.DO_PRODUCTION_HOST }}
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}

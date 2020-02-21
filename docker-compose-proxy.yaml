@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  proxy:
+    image: traefik:v2.1
+    container_name: proxy
+    command:
+      [
+        "--providers.docker",
+        "--entryPoints.http.address=:80",
+        "--entryPoints.https.address=:443",
+        "--certificatesResolvers.letsencrypt.acme.storage=/letsencrypt/acme.json",
+        "--certificatesResolvers.letsencrypt.acme.email=bill@billglover.co.uk",
+        "--certificatesResolvers.letsencrypt.acme.dnsChallenge.provider=digitalocean",
+        "--certificatesResolvers.letsencrypt.acme.dnsChallenge.delayBeforeCheck=0",
+        "--certificatesResolvers.letsencrypt.acme.httpChallenge.entryPoint=http",
+        "--certificatesResolvers.letsencrypt.acme.tlsChallenge=true",
+        "--certificatesresolvers.letsencrypt.acme.dnschallenge=true",
+      ]
+    environment:
+      - DO_AUTH_TOKEN=$DO_AUTH_TOKEN
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ~/data/letsencrypt:/letsencrypt
+    networks:
+      - staging
+      - prod
+
+networks:
+  staging:
+    external: false
+  prod:
+    external: false
