@@ -1,4 +1,5 @@
 [
+<<<<<<< HEAD
    {
       "model":"resources.resource",
       "pk":"02ef2aaa-da96-11e9-8a1f-d20089b01401",
@@ -73,11 +74,60 @@
          "url":"https://www.functionalgeekery.com/podlove/file/329/s/download/c/select-show/functionalgeekery_127_katie_hughes.mp3",
          "referring_url":"https://www.functionalgeekery.com/",
          "other_referring_source":"Brittni Kinforth (bkinforthg@mozilla.com)",
+=======
+ {
+    "model":"resources.resource",
+    "guid":"02ef2aaa-da96-11e9-8a1f-d20089b01401",
+    "fields":{
+       "title":"The Life of a File (in Elm)",
+       "author":"Evan Czaplicki",
+       "description":"Elm Europe 2017 -- Evan Czaplicki, the life of a file",
+       "url":"https://www.youtube.com/watch?v=XpDsk374LDE",
+       "referring_url":"https://www.youtube.com/watch?v=kEitFAY7Gc8",
+       "other_referring_source":"Gina Aspey (gaspeyl@unicef.org)",
+       "user":8,
+       "date_published":"2019-09-19T04:29:04Z",
+       "created":"2019-09-19T04:29:04.069Z",
+       "modified":"2019-09-19T04:29:04Z",
+       "media_type":"TALK",
+       "paid":true
+    }
+ },
+ {
+    "model":"resources.resource",
+    "guid":"1f1969d2-da98-11e9-8a1f-d20089b01401",
+    "fields":{
+       "title":"Over the Wire: Wargames (Games)",
+       "author":"OverTheWire Community",
+       "description":"The wargames offered by the OverTheWire community can help you to learn and practice security concepts in the form of fun-filled games.",
+       "url":"https://overthewire.org/wargames/",
+       "referring_url":"https://overthewire.org",
+       "other_referring_source":"Samaria Jovasevic",
+       "user":21,
+       "date_published":"2019-09-19T04:44:10Z",
+       "created":"2019-09-19T04:44:10.315Z",
+       "modified":"2019-09-19T04:44:10Z",
+       "media_type":"GAME",
+       "paid":true
+    }
+ },
+ {
+    "model":"resources.resource",
+    "guid":"2602cd16-da92-11e9-8a1f-d20089b01401",
+    "fields":{
+       "title":"Funtional Geekery Episode 127",
+       "author":"Katie Hughes",
+       "description":"A talk with **Katie Hughes:** _Her introduction to software development, exposure to functional programming, orienting herself in a new codebase, \u201clearning to trust again\u201d, and much more._",
+       "url":"https://www.functionalgeekery.com/podlove/file/329/s/download/c/select-show/functionalgeekery_127_katie_hughes.mp3",
+       "referring_url":"https://www.functionalgeekery.com/",
+       "other_referring_source":"Brittni Kinforth (bkinforthg@mozilla.com)",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
          "user":14,
          "date_published":"2019-09-19T04:01:24Z",
          "created":"2019-09-19T04:01:24.931Z",
          "modified":"2019-09-19T04:01:24Z",
          "media_type":"PODEP",
+<<<<<<< HEAD
          "paid":false,
          "tags":[
             {
@@ -93,11 +143,18 @@
                "name":"Functional Programming"
             }
          ]
+=======
+         "paid":false
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       }
    },
    {
       "model":"resources.resource",
+<<<<<<< HEAD
       "pk":"27831670-da95-11e9-8a1f-d20089b01401",
+=======
+      "guid":"27831670-da95-11e9-8a1f-d20089b01401",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       "fields":{
          "title":"Weapons of Math Destruction - Cathy O'Neil",
          "author":"",
@@ -110,6 +167,7 @@
          "created":"2019-09-19T04:22:55.939Z",
          "modified":"2019-09-19T04:22:55Z",
          "media_type":"BOOK",
+<<<<<<< HEAD
          "paid":true,
          "tags":[
             {
@@ -121,11 +179,18 @@
                "name":"Math"
             }
          ]
+=======
+         "paid":true
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       }
    },
    {
       "model":"resources.resource",
+<<<<<<< HEAD
       "pk":"2d55f8d8-da8b-11e9-8a1f-d20089b01401",
+=======
+      "guid":"2d55f8d8-da8b-11e9-8a1f-d20089b01401",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       "fields":{
          "title":"GraphQL Full Course - Novice to Expert",
          "author":"",
@@ -138,6 +203,7 @@
          "created":"2019-09-19T03:11:30.743Z",
          "modified":"2019-09-19T03:11:30Z",
          "media_type":"COURSE",
+<<<<<<< HEAD
          "paid":false,
          "tags":[
             {
@@ -157,11 +223,18 @@
                "name":"apis"
             }
          ]
+=======
+         "paid":false
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       }
    },
    {
       "model":"resources.resource",
+<<<<<<< HEAD
       "pk":"2dba3384-da90-11e9-8a1f-d20089b01401",
+=======
+      "guid":"2dba3384-da90-11e9-8a1f-d20089b01401",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       "fields":{
          "title":"Invisible Women:  A Talk with Caroline Criado Perez (99% Invisible Podcast)",
          "author":"Roman Mars",
@@ -174,6 +247,7 @@
          "created":"2019-09-19T03:47:18.883Z",
          "modified":"2019-09-19T03:47:18Z",
          "media_type":"PODEP",
+<<<<<<< HEAD
          "paid":false,
          "tags":[
             {
@@ -189,11 +263,18 @@
                "name":"Ethics in CS"
             }
          ]
+=======
+         "paid":false
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       }
    },
    {
       "model":"resources.resource",
+<<<<<<< HEAD
       "pk":"2fbcc748-da8e-11e9-8a1f-d20089b01401",
+=======
+      "guid":"2fbcc748-da8e-11e9-8a1f-d20089b01401",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       "fields":{
          "title":"Automate the Boring Stuff with Python Programming (Udemy 2017)",
          "author":"Al Sweigart",
@@ -206,6 +287,7 @@
          "created":"2019-09-19T03:33:03.262Z",
          "modified":"2019-09-19T03:33:03Z",
          "media_type":"COURSE",
+<<<<<<< HEAD
          "paid":true,
          "tags":[
             {
@@ -217,11 +299,18 @@
                "name":"Automation"
             }
          ]
+=======
+         "paid":true
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       }
    },
    {
       "model":"resources.resource",
+<<<<<<< HEAD
       "pk":"375969f6-da8a-11e9-8a1f-d20089b01401",
+=======
+      "guid":"375969f6-da8a-11e9-8a1f-d20089b01401",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       "fields":{
          "title":"Getting Started with Vue - An Overview and Walkthrough Tutorial",
          "author":"Tania Rascia",
@@ -234,6 +323,7 @@
          "created":"2019-09-19T03:04:38.046Z",
          "modified":"2019-09-19T03:04:38Z",
          "media_type":"TUTOR",
+<<<<<<< HEAD
          "paid":false,
          "tags":[
             {
@@ -249,11 +339,18 @@
                "name":"Frameworks"
             }
          ]
+=======
+         "paid":false
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       }
    },
    {
       "model":"resources.resource",
+<<<<<<< HEAD
       "pk":"3e67a8ee-da93-11e9-8a1f-d20089b01401",
+=======
+      "guid":"3e67a8ee-da93-11e9-8a1f-d20089b01401",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       "fields":{
          "title":"Elm Crash-Course (Reactivate London)",
          "author":"",
@@ -266,6 +363,7 @@
          "created":"2019-09-19T04:09:15.354Z",
          "modified":"2019-09-19T04:09:15Z",
          "media_type":"TALK",
+<<<<<<< HEAD
          "paid":false,
          "tags":[
             {
@@ -281,11 +379,18 @@
                "name":"JavaScript"
             }
          ]
+=======
+         "paid":false
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       }
    },
    {
       "model":"resources.resource",
+<<<<<<< HEAD
       "pk":"5b14d9c2-da8d-11e9-8a1f-d20089b01401",
+=======
+      "guid":"5b14d9c2-da8d-11e9-8a1f-d20089b01401",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       "fields":{
          "title":"Trying React Hooks for the first time",
          "author":"Dan Abramov",
@@ -298,6 +403,7 @@
          "created":"2019-09-19T03:27:06.485Z",
          "modified":"2019-09-19T03:27:06Z",
          "media_type":"VID",
+<<<<<<< HEAD
          "paid":false,
          "tags":[
             {
@@ -313,11 +419,18 @@
                "name":"React"
             }
          ]
+=======
+         "paid":false
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       }
    },
    {
       "model":"resources.resource",
+<<<<<<< HEAD
       "pk":"66c77394-da9a-11e9-8a1f-d20089b01401",
+=======
+      "guid":"66c77394-da9a-11e9-8a1f-d20089b01401",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       "fields":{
          "title":"The Imposter's Handbook Season 2",
          "author":"Rob Conery",
@@ -330,6 +443,7 @@
          "created":"2019-09-19T05:00:29.567Z",
          "modified":"2019-09-19T05:00:29Z",
          "media_type":"BOOK",
+<<<<<<< HEAD
          "paid":true,
          "tags":[
             {
@@ -349,11 +463,18 @@
                "name":"Career"
             }
          ]
+=======
+         "paid":true
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       }
    },
    {
       "model":"resources.resource",
+<<<<<<< HEAD
       "pk":"69177b18-da94-11e9-8a1f-d20089b01401",
+=======
+      "guid":"69177b18-da94-11e9-8a1f-d20089b01401",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       "fields":{
          "title":"Zen and The Art of VueJS",
          "author":"Jen Looper",
@@ -366,6 +487,7 @@
          "created":"2019-09-19T04:17:36.467Z",
          "modified":"2019-09-19T04:17:36Z",
          "media_type":"TALK",
+<<<<<<< HEAD
          "paid":false,
          "tags":[
             {
@@ -389,11 +511,18 @@
                "name":"Frameworks"
             }
          ]
+=======
+         "paid":false
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       }
    },
    {
       "model":"resources.resource",
+<<<<<<< HEAD
       "pk":"70e6c9b6-3142-11ea-8b21-dca9047779fe",
+=======
+      "guid":"70e6c9b6-3142-11ea-8b21-dca9047779fe",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       "fields":{
          "title":"The Art of Postgresql",
          "author":"Dimitri Fontaine",
@@ -406,6 +535,7 @@
          "created":"2020-01-07T11:40:02.000Z",
          "modified":"2020-01-08T08:31:06Z",
          "media_type":"",
+<<<<<<< HEAD
          "paid":true,
          "tags":[
             {
@@ -421,11 +551,18 @@
                "name":"Databases"
             }
          ]
+=======
+         "paid":true
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       }
    },
    {
       "model":"resources.resource",
+<<<<<<< HEAD
       "pk":"7820525c-da89-11e9-8a1f-d20089b01401",
+=======
+      "guid":"7820525c-da89-11e9-8a1f-d20089b01401",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       "fields":{
          "title":"SOLID Go Design - Dave Cheney",
          "author":"",
@@ -438,6 +575,7 @@
          "created":"2019-09-19T02:59:17.227Z",
          "modified":"2019-09-19T02:59:17Z",
          "media_type":"TALK",
+<<<<<<< HEAD
          "paid":false,
          "tags":[
             {
@@ -449,11 +587,18 @@
                "name":"BackEnd"
             }
          ]
+=======
+         "paid":false
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       }
    },
    {
       "model":"resources.resource",
+<<<<<<< HEAD
       "pk":"7e0893de-da8c-11e9-8a1f-d20089b01401",
+=======
+      "guid":"7e0893de-da8c-11e9-8a1f-d20089b01401",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       "fields":{
          "title":"Getting Started with CSS Grid Layout",
          "author":"Robin Rendle",
@@ -466,6 +611,7 @@
          "created":"2019-09-19T03:20:55.628Z",
          "modified":"2019-09-19T03:20:55Z",
          "media_type":"TUTOR",
+<<<<<<< HEAD
          "paid":false,
          "tags":[
             {
@@ -481,11 +627,18 @@
                "name":"HTML5"
             }
          ]
+=======
+         "paid":false
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       }
    },
    {
       "model":"resources.resource",
+<<<<<<< HEAD
       "pk":"7e08e0b0-da77-11e9-95c3-d20089b01401",
+=======
+      "guid":"7e08e0b0-da77-11e9-95c3-d20089b01401",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       "fields":{
          "title":"The Road to Learn React",
          "author":"Robin Wieruch",
@@ -498,6 +651,7 @@
          "created":"2019-09-19T00:50:36.198Z",
          "modified":"2019-09-19T00:50:36Z",
          "media_type":"BOOK",
+<<<<<<< HEAD
          "paid":true,
          "tags":[
             {
@@ -513,11 +667,18 @@
                "name":"React"
             }
          ]
+=======
+         "paid":true
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       }
    },
    {
       "model":"resources.resource",
+<<<<<<< HEAD
       "pk":"803b4fd2-da8e-11e9-8a1f-d20089b01401",
+=======
+      "guid":"803b4fd2-da8e-11e9-8a1f-d20089b01401",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       "fields":{
          "title":"Linear Digressions",
          "author":"Katie and Ben",
@@ -530,6 +691,7 @@
          "created":"2019-09-19T03:35:18.309Z",
          "modified":"2019-09-19T03:35:18Z",
          "media_type":"POD",
+<<<<<<< HEAD
          "paid":false,
          "tags":[
             {
@@ -541,11 +703,18 @@
                "name":"Math"
             }
          ]
+=======
+         "paid":false
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       }
    },
    {
       "model":"resources.resource",
+<<<<<<< HEAD
       "pk":"8a1072bc-31af-11ea-8018-dca9047779fe",
+=======
+      "guid":"8a1072bc-31af-11ea-8018-dca9047779fe",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       "fields": {
          "title":"modernSQL",
          "author":"Markus Winand",
@@ -558,6 +727,7 @@
          "created":"2020-01-08T00:40:59.359Z",
          "modified":"2020-01-08T08:31:06Z",
          "media_type":"",
+<<<<<<< HEAD
          "paid":false,
          "tags":[
             {
@@ -569,11 +739,18 @@
                "name":"Databases"
             }
          ]
+=======
+         "paid":false
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       }
    },
    {
       "model":"resources.resource",
+<<<<<<< HEAD
       "pk":"92b50ed0-da95-11e9-8a1f-d20089b01401",
+=======
+      "guid":"92b50ed0-da95-11e9-8a1f-d20089b01401",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       "fields":{
          "title":"What the Heck is the Event Loop Anyway?",
          "author":"Pilip Roberts",
@@ -586,6 +763,7 @@
          "created":"2019-09-19T04:25:55.783Z",
          "modified":"2019-09-19T04:25:55Z",
          "media_type":"TALK",
+<<<<<<< HEAD
          "paid":false,
          "tags":[
             {
@@ -601,11 +779,18 @@
                "name":"ES6"
             }
          ]
+=======
+         "paid":false
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       }
    },
    {
       "model":"resources.resource",
+<<<<<<< HEAD
       "pk":"9eb5d75a-da9a-11e9-8a1f-d20089b01401",
+=======
+      "guid":"9eb5d75a-da9a-11e9-8a1f-d20089b01401",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       "fields":{
          "title":"Python Bytes",
          "author":"Michael Kennedy and Brian Okken",
@@ -618,6 +803,7 @@
          "created":"2019-09-19T05:02:03.404Z",
          "modified":"2019-09-19T05:02:03Z",
          "media_type":"POD",
+<<<<<<< HEAD
          "paid":false,
          "tags":[
             {
@@ -625,11 +811,18 @@
                "name":"Python"
             }
          ]
+=======
+         "paid":false
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       }
    },
    {
       "model":"resources.resource",
+<<<<<<< HEAD
       "pk":"a70cf3fc-dea5-11e9-8a1f-d20089b01401",
+=======
+      "guid":"a70cf3fc-dea5-11e9-8a1f-d20089b01401",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       "fields":{
          "title":"On JSON and SQL",
          "author":"Dimitri Fontaine",
@@ -642,6 +835,7 @@
          "created":"2019-09-24T08:31:06.512Z",
          "modified":"2019-09-24T08:31:06Z",
          "media_type":"BLOG",
+<<<<<<< HEAD
          "paid":false,
          "tags":[
             {
@@ -657,11 +851,18 @@
                "name":"Databases"
             }
          ]
+=======
+         "paid":false
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       }
    },
    {
       "model":"resources.resource",
+<<<<<<< HEAD
       "pk":"b8a80988-da4c-11e9-98dd-d20089b01401",
+=======
+      "guid":"b8a80988-da4c-11e9-98dd-d20089b01401",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       "fields":{
          "title":"Django REST Framework Quickstart",
          "author":"Django REST Team",
@@ -674,6 +875,7 @@
          "created":"2019-09-18T19:44:26.190Z",
          "modified":"2019-09-18T19:44:26Z",
          "media_type":"TUTOR",
+<<<<<<< HEAD
          "paid":false,
          "tags":[
             {
@@ -689,11 +891,18 @@
                "name":"REST"
             }
          ]
+=======
+         "paid":false
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       }
    },
    {
       "model":"resources.resource",
+<<<<<<< HEAD
       "pk":"ba3db7da-da96-11e9-8a1f-d20089b01401",
+=======
+      "guid":"ba3db7da-da96-11e9-8a1f-d20089b01401",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       "fields":{
          "title":"Number One Place to Learn Java (From \"The Top 20 Places to Learn Java in 2019\")",
          "author":"",
@@ -706,6 +915,7 @@
          "created":"2019-09-19T04:34:11.607Z",
          "modified":"2019-09-19T04:34:11Z",
          "media_type":"BLOG",
+<<<<<<< HEAD
          "paid":false,
          "tags":[
             {
@@ -713,11 +923,18 @@
                "name":"Java"
             }
          ]
+=======
+         "paid":false
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       }
    },
    {
       "model":"resources.resource",
+<<<<<<< HEAD
       "pk":"c03d29d0-da8d-11e9-8a1f-d20089b01401",
+=======
+      "guid":"c03d29d0-da8d-11e9-8a1f-d20089b01401",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       "fields":{
          "title":"A Tour of Go (from the official Go-lang pages)",
          "author":"The Golang Project",
@@ -730,6 +947,7 @@
          "created":"2019-09-19T03:29:56.199Z",
          "modified":"2019-09-19T03:29:56Z",
          "media_type":"WEB",
+<<<<<<< HEAD
          "paid":false,
          "tags":[
             {
@@ -741,11 +959,18 @@
                "name":"BackEnd"
             }
          ]
+=======
+         "paid":false
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       }
    },
    {
       "model":"resources.resource",
+<<<<<<< HEAD
       "pk":"c60c73f0-da8a-11e9-8a1f-d20089b01401",
+=======
+      "guid":"c60c73f0-da8a-11e9-8a1f-d20089b01401",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       "fields":{
          "title":"Swagger -- Spring REST Example",
          "author":"Sajal Chakraborty",
@@ -758,6 +983,7 @@
          "created":"2019-09-19T03:08:37.456Z",
          "modified":"2019-09-19T03:08:37Z",
          "media_type":"TUTOR",
+<<<<<<< HEAD
          "paid":false,
          "tags":[
             {
@@ -777,11 +1003,18 @@
                "name":"apis"
             }
          ]
+=======
+         "paid":false
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       }
    },
    {
       "model":"resources.resource",
+<<<<<<< HEAD
       "pk":"cb835704-da99-11e9-8a1f-d20089b01401",
+=======
+      "guid":"cb835704-da99-11e9-8a1f-d20089b01401",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       "fields":{
          "title":"Dear SQL DBA",
          "author":"Kendra Little",
@@ -794,6 +1027,7 @@
          "created":"2019-09-19T04:56:09.075Z",
          "modified":"2019-09-19T04:56:09Z",
          "media_type":"BLOG",
+<<<<<<< HEAD
          "paid":false,
          "tags":[
             {
@@ -805,11 +1039,18 @@
                "name":"Databases"
             }
          ]
+=======
+         "paid":false
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       }
    },
    {
       "model":"resources.resource",
+<<<<<<< HEAD
       "pk":"cd198e64-da97-11e9-8a1f-d20089b01401",
+=======
+      "guid":"cd198e64-da97-11e9-8a1f-d20089b01401",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       "fields":{
          "title":"Flexbox Froggy (Game)",
          "author":"Codepip",
@@ -822,6 +1063,7 @@
          "created":"2019-09-19T04:41:52.743Z",
          "modified":"2019-09-19T04:41:52Z",
          "media_type":"GAME",
+<<<<<<< HEAD
          "paid":false,
          "tags":[
             {
@@ -837,11 +1079,18 @@
                "name":"Design"
             }
          ]
+=======
+         "paid":false
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       }
    },
    {
       "model":"resources.resource",
+<<<<<<< HEAD
       "pk":"d5658acc-da89-11e9-8a1f-d20089b01401",
+=======
+      "guid":"d5658acc-da89-11e9-8a1f-d20089b01401",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       "fields":{
          "title":"Don't Install Postgres. Docker Pull Postgres.",
          "author":"Syed (@skabbass1)",
@@ -854,6 +1103,7 @@
          "created":"2019-09-19T03:01:53.708Z",
          "modified":"2019-09-19T03:01:53Z",
          "media_type":"TUTOR",
+<<<<<<< HEAD
          "paid":false,
          "tags":[
             {
@@ -869,11 +1119,18 @@
                "name":"Databases"
             }
          ]
+=======
+         "paid":false
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       }
    },
    {
       "model":"resources.resource",
+<<<<<<< HEAD
       "pk":"e1781eb8-da77-11e9-95c3-d20089b01401",
+=======
+      "guid":"e1781eb8-da77-11e9-95c3-d20089b01401",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       "fields":{
          "title":"Sytax",
          "author":"Wes Bos and Scott Tolinski",
@@ -886,6 +1143,7 @@
          "created":"2019-09-19T00:53:23.022Z",
          "modified":"2019-09-19T00:53:23Z",
          "media_type":"POD",
+<<<<<<< HEAD
          "paid":false,
          "tags":[
             {
@@ -901,11 +1159,18 @@
                "name":"Podcast"
             }
          ]
+=======
+         "paid":false
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       }
    },
    {
       "model":"resources.resource",
+<<<<<<< HEAD
       "pk":"e17f121c-da8c-11e9-8a1f-d20089b01401",
+=======
+      "guid":"e17f121c-da8c-11e9-8a1f-d20089b01401",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       "fields":{
          "title":"LocalStorage and Event Delegation",
          "author":"Wes Bos",
@@ -918,6 +1183,7 @@
          "created":"2019-09-19T03:23:42.499Z",
          "modified":"2019-09-19T03:23:42Z",
          "media_type":"COURSE",
+<<<<<<< HEAD
          "paid":false,
          "tags":[
             {
@@ -929,11 +1195,18 @@
                "name":"FrontEnd"
             }
          ]
+=======
+         "paid":false
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       }
    },
    {
       "model":"resources.resource",
+<<<<<<< HEAD
       "pk":"f7f8ee30-da8e-11e9-8a1f-d20089b01401",
+=======
+      "guid":"f7f8ee30-da8e-11e9-8a1f-d20089b01401",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       "fields":{
          "title":"PyCon Israel, Tel Aviv Keynote:  The Fun of Reinvention - David Beazly",
          "author":"David Beazly",
@@ -946,6 +1219,7 @@
          "created":"2019-09-19T03:38:39.201Z",
          "modified":"2019-09-19T03:38:39Z",
          "media_type":"TALK",
+<<<<<<< HEAD
          "paid":false,
          "tags":[
             {
@@ -953,6 +1227,9 @@
                "name":"Python"
             }
          ]
+=======
+         "paid":false
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
       }
    }
 ]

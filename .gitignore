@@ -293,4 +293,11 @@ cbv3_django_prototype/media/
 .envs/*
 
 ## IDE ignores
+<<<<<<< HEAD
 .vscode
+=======
+.vscode
+
+## Docker ignores
+db_data
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa

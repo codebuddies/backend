@@ -4,7 +4,11 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
+<<<<<<< HEAD
 from rest_framework_jwt.views import obtain_jwt_token
+=======
+from rest_framework.exceptions import server_error
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
 
 
 urlpatterns = [
@@ -43,7 +47,12 @@ if settings.DEBUG:
             default_views.page_not_found,
             kwargs={"exception": Exception("Page not Found")},
         ),
+<<<<<<< HEAD
         path("500/", default_views.server_error),
+=======
+        path("500/", default_views.server_error
+        ),
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
     ]
     if "debug_toolbar" in settings.INSTALLED_APPS:
         import debug_toolbar

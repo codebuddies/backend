@@ -26,7 +26,14 @@ CACHES = {
 # EMAIL
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-host
+<<<<<<< HEAD
 EMAIL_HOST = "localhost"
+=======
+EMAIL_HOST = env(
+    "EMAIL_HOST",
+    default="localhost",
+)  
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-port
 EMAIL_PORT = 1025
 

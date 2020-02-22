@@ -1,0 +1,233 @@
+{
+	"info": {
+		"_postman_id": "5b8c55c5-59e8-4e5b-a4c4-4fe5e0386dec",
+		"name": "CodeBuddies",
+		"description": "# CodeBuddies\n\nThis collection contains requests for CodeBuddies backend APIs.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users & Authentication",
+			"item": [
+				{
+					"name": "Create User",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "3fdee563-a6f5-425f-9c34-6887b3d8b4a0",
+								"exec": [
+									"pm.globals.set(\"username\", pm.variables.replaceIn(\"{{$randomUserName}}\"));",
+									"pm.globals.set(\"password\", pm.variables.replaceIn(\"{{$randomPassword}}\"));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "df18b545-6f8c-4d4e-b2c0-7d194a57ae7f",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"pm.globals.set(\"token\", jsonData.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"{{username}}\",\n\t\"password\": \"{{password}}\",\n\t\"first_name\": \"{{$randomFirstName}}\",\n\t\"last_name\": \"{{$randomLastName}}\",\n\t\"email\": \"{{$randomEmail}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/auth/users/",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"auth",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authenticate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5f595540-a1db-46b0-9008-9bbcc68c4fa3",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"pm.globals.set(\"token\", jsonData.token);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c5b6218c-1b5f-4d9f-ad1a-0af10e88e5d2",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"{{username}}\",\n\t\"password\": \"{{password}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/auth/obtain_token/",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"auth",
+								"obtain_token",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Resources",
+			"item": [
+				{
+					"name": "Get Resources",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/api/v1/resources",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"resources"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Resource",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"{{$randomProductName}}\",\n\t\"url\": \"{{$randomUrl}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/api/v1/resources/",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"resources",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "2d0d1108-ddd6-4b84-be9f-4032954698ff",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "18a56020-3cca-4e90-9ad0-fa01c7098f5e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

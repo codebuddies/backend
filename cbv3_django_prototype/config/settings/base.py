@@ -78,11 +78,20 @@ THIRD_PARTY_APPS = [
     "corsheaders",
     "taggit",
     "django_celery_beat",
+<<<<<<< HEAD
 ]
 
 LOCAL_APPS = [
     "cbv3_django_prototype.users.apps.UsersConfig",
     "resources",
+=======
+    "taggit_serializer"
+]
+
+LOCAL_APPS = [
+    "users.apps.UsersConfig",
+    "resources.apps.ResourcesConfig",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
     'userauth.apps.UserauthConfig'
     # Your stuff: custom apps go here
 ]

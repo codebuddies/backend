@@ -6,10 +6,17 @@
 "password":"argon2$argon2i$v=19$m=512,t=2,p=2$NkticWRCd3VCaXNR$SaNtr1/gOOSbzxfBDtAcpw",
 "last_login":"2020-01-07T02:32:09.518Z",
 "is_superuser":false,
+<<<<<<< HEAD
 "username":"bethanyg",
 "first_name":"",
 "last_name":"",
 "email":"gbethanyg@gmail.com",
+=======
+"username":"georgiag",
+"first_name":"",
+"last_name":"",
+"email":"gggreat@gmail.com",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
 "is_staff":false,
 "is_active":true,
 "date_joined":"2019-08-29T07:40:59.664Z",
@@ -29,7 +36,11 @@
 "password":"argon2$argon2i$v=19$m=512,t=2,p=2$YWdFZ0dLdEZMTUtr$9MPyDgL4kbuxH9fk4VDUqQ",
 "last_login":"2019-12-21T21:54:41.737Z",
 "is_superuser":false,
+<<<<<<< HEAD
 "username":"gBethany",
+=======
+"username":"gBrittani",
+>>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
 "first_name":"",
 "last_name":"",
 "email":"",
