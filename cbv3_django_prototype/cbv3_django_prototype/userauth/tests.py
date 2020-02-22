@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-import unittest
->>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
 from unittest.mock import patch
 from rest_framework import status, serializers
 from rest_framework.test import APITestCase

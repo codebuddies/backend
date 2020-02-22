@@ -1,17 +1,5 @@
 from rest_framework import serializers
 from .models import Resource
-<<<<<<< HEAD
-
-
-class ResourceSerializer(serializers.ModelSerializer):
-    media_type = serializers.SerializerMethodField()
-
-    class Meta:
-        model = Resource
-
-        fields = (
-            'id',
-=======
 from userauth.serializers import UserSerializer
 
 
@@ -91,7 +79,6 @@ class ResourceSerializer(TagSerializer, serializers.ModelSerializer):
 
         fields = (
             'guid',
->>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
             'author',
             'title',
             'description',
@@ -104,18 +91,8 @@ class ResourceSerializer(TagSerializer, serializers.ModelSerializer):
             'modified',
             'media_type',
             'paid',
-<<<<<<< HEAD
             'tags',
         )
 
     def get_media_type(self, obj):
         return obj.get_media_type_display()
-=======
-            'tags'
-        )
-
-
-    def get_media_type(self, obj):
-        return obj.get_media_type_display()
-
->>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa

@@ -69,6 +69,7 @@ DJANGO_APPS = [
     # "django.contrib.humanize", # Handy template tags
     "django.contrib.admin",
 ]
+
 THIRD_PARTY_APPS = [
     "crispy_forms",
     "allauth",
@@ -77,24 +78,16 @@ THIRD_PARTY_APPS = [
     "rest_framework",
     "corsheaders",
     "taggit",
-    "django_celery_beat",
-<<<<<<< HEAD
-]
-
-LOCAL_APPS = [
-    "cbv3_django_prototype.users.apps.UsersConfig",
-    "resources",
-=======
-    "taggit_serializer"
+    "taggit_serializer",
+    "django_celery_beat"
 ]
 
 LOCAL_APPS = [
     "users.apps.UsersConfig",
     "resources.apps.ResourcesConfig",
->>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
-    'userauth.apps.UserauthConfig'
-    # Your stuff: custom apps go here
+    "userauth.apps.UserauthConfig"
 ]
+
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
