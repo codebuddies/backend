@@ -1,23 +1,13 @@
 # Django proof-of-concept for CodeBuddies V3
 
-<<<<<<< HEAD
-=======
 ![Test](https://github.com/codebuddies/django-concept/workflows/Test/badge.svg)
 
->>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
 Background: https://github.com/codebuddies/codebuddies/issues/1136
 
 The API spec all the proof-of-concepts: https://app.swaggerhub.com/apis-docs/billglover/CodeBuddies/0.0.1
 
 Crowdsourced brainstorm of problems we want to solve: https://pad.riseup.net/p/BecKdThFsevRmmG_tqFa-keep
 
-<<<<<<< HEAD
-# Setup
-
-Please see [instructions here](https://github.com/codebuddies/django-concept/wiki/Contribution-instructions)
-
-This project is not deployed yet, but will interact as the API supporting [https://github.com/codebuddies/react-concept](https://github.com/codebuddies/react-concept) 
-=======
 ## Setup
 
 Although it is possible to run this locally, we recommend you run CodeBuddies locally using Docker. We assume you have Docker installed, but if not head on over to the Docker [Getting Started](https://www.docker.com/products/docker-desktop) guide and install Docker for your operating system.
@@ -167,4 +157,3 @@ Please see [instructions here](https://github.com/codebuddies/django-concept/wik
 
 This project is not deployed yet, but will interact as the API supporting [https://github.com/codebuddies/frontend](https://github.com/codebuddies/frontend) 
 
->>>>>>> d57b07986d5c3e64b97c59609e3bb972d01411aa
