@@ -2,12 +2,13 @@
 Base settings to build other settings files upon.
 """
 
+from datetime import timedelta
 import environ
 
 ROOT_DIR = (
     environ.Path(__file__) - 3
-)  # (cbv3_django_prototype/config/settings/base.py - 3 = cbv3_django_prototype/)
-APPS_DIR = ROOT_DIR.path("cbv3_django_prototype")
+)  # (project/config/settings/base.py - 3 = project/)
+APPS_DIR = ROOT_DIR.path("project")
 
 env = environ.Env()
 
@@ -96,7 +97,7 @@ TAGGIT_CASE_INSENSITIVE = True
 # MIGRATIONS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#migration-modules
-MIGRATION_MODULES = {"sites": "cbv3_django_prototype.contrib.sites.migrations"}
+MIGRATION_MODULES = {"sites": "project.contrib.sites.migrations"}
 
 # AUTHENTICATION
 # ------------------------------------------------------------------------------
@@ -292,9 +293,9 @@ LOGGING = {
 # # https://django-allauth.readthedocs.io/en/latest/configuration.html
 # ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 # # https://django-allauth.readthedocs.io/en/latest/configuration.html
-# ACCOUNT_ADAPTER = "cbv3_django_prototype.users.adapters.AccountAdapter"
+# ACCOUNT_ADAPTER = "project.users.adapters.AccountAdapter"
 # # https://django-allauth.readthedocs.io/en/latest/configuration.html
-# SOCIALACCOUNT_ADAPTER = "cbv3_django_prototype.users.adapters.SocialAccountAdapter"
+# SOCIALACCOUNT_ADAPTER = "project.users.adapters.SocialAccountAdapter"
 
 
 REST_FRAMEWORK = {
@@ -314,7 +315,7 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
     ],
-    'DEFAULT_AUTHENTICATION_CLASSES' : [
+    'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication', ],
@@ -322,11 +323,10 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
 }
 
-from datetime import timedelta
 
 JWT_AUTH = {
     'JWT_AUTH_HEADER_PREFIX': 'Bearer',
-    'JWT_RESPONSE_PAYLOAD_HANDLER': 'cbv3_django_prototype.utils.my_jwt_response_handler',
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'project.utils.my_jwt_response_handler',
     'JWT_ALLOW_REFRESH': True,
     'JWT_EXPIRATION_DELTA': timedelta(hours=1),
     'JWT_REFRESH_EXPIRATION_DELTA': timedelta(days=3),

@@ -1,7 +1,7 @@
 import pytest
 
-from cbv3_django_prototype.users.forms import UserCreationForm
-from cbv3_django_prototype.users.tests.factories import UserFactory
+from project.users.forms import UserCreationForm
+from project.users.tests.factories import UserFactory
 
 pytestmark = pytest.mark.django_db
 
