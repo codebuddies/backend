@@ -31,7 +31,7 @@ services:
     restart: on-failure
     command: >
       sh -c "python /opt/project/manage.py migrate &&
-             uwsgi --ini /opt/project/uwsgi.ini"
+             uwsgi --ini /opt/codebuddies/uwsgi.ini"
     volumes:
       - ./project:/opt/codebuddies
     environment:
