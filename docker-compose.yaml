@@ -30,7 +30,7 @@ services:
     container_name: app
     restart: on-failure
     command: >
-      sh -c "python /opt/project/manage.py migrate &&
+      sh -c "python /opt/codebuddies/manage.py migrate &&
              uwsgi --ini /opt/codebuddies/uwsgi.ini"
     volumes:
       - ./project:/opt/codebuddies
