@@ -101,12 +101,31 @@ docker-compose run --rm manage help
 ```
 
 ### Import Postman collection
-Postman is an interactive tool for verifying the APIs of your project. We've created a shared Postman collection (a .json file) in the `postman` folder to help contributors more easily reproduce observed behaviour in our dev API. To get it set up, please follow these steps:
+Postman is a free interactive tool for verifying the APIs of your project. You can download it at postman.com/downloads.
 
-1. Download Postman (if you already have it installed, please make sure it is at least v7.6.0)
+Postman is an interactive tool for verifying the APIs of your project in an isolated environment--think of it as a a virtual playground where we can safely experiment and edit our API before we deploy it on our web app--just like virtual environments help us isolate our python dependencies. 
+
+We've created a shared Postman collection (a .json file) in the postman folder to help contributors more easily reproduce observed behaviour in our dev API. 
+
+To get it set up, please follow these steps:
+
+1. Download Postman
+
+Downloading Postman
+Please make sure it is at least v7.6.0, if installed, or you are downloading the latest stable version.
+Linux,
+- Distro package manager:
+- use the search feature to find in your package manager
+- (RECOMMENDED) Flatpak
+- After setting up flatpak it through flatpak using flatpak install postman and enter "yes"/"y" for all the questions it will ask. Flatpak is designed to provide the most up-to-date versions of software for most distros, so if you have the option, use Flatpak to guarantee Linux OS compatibility and to keep Postman up-to-date.
+
 2. Once you have Postman open, click on file -> import and import the .json file
 3. Click on the settings gear icon on the far top right (next to the eye icon) and click to add a new environment. 
 4. Name your environment `dev` and create a variable called `api_url`. Give it a value of `https://localhost:8000`, which is the URL of your Django dev environment when it is running.
+5. Now, as long you have the Django app (https://localhost:8000) running, you should be able to make requests like POST Create User and POST Authenticate.
+Click on this link to see what you should expect: https://imgur.com/hd9VB6k
+
+POST Create User will create a new user in your localhost:8000 running Django app, and making a request to POST Authenticate will authenticate whether or not that user exists.
 
 ![screenshot of Postman environment variable setup](https://i.imgur.com/6Uq9XQp.png) 
 
