@@ -2,12 +2,14 @@
 Base settings to build other settings files upon.
 """
 
+from datetime import timedelta
 import environ
+import os
 
 ROOT_DIR = (
     environ.Path(__file__) - 3
-)  # (cbv3_django_prototype/config/settings/base.py - 3 = cbv3_django_prototype/)
-APPS_DIR = ROOT_DIR.path("cbv3_django_prototype")
+)  # (project/config/settings/base.py - 3 = project/)
+CORE_DIR = ROOT_DIR.path("core")
 
 env = environ.Env()
 
@@ -96,7 +98,7 @@ TAGGIT_CASE_INSENSITIVE = True
 # MIGRATIONS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#migration-modules
-MIGRATION_MODULES = {"sites": "cbv3_django_prototype.contrib.sites.migrations"}
+MIGRATION_MODULES = {"sites": "core.contrib.sites.migrations"}
 
 # AUTHENTICATION
 # ------------------------------------------------------------------------------
@@ -154,7 +156,7 @@ STATIC_ROOT = str(ROOT_DIR("staticfiles"))
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
-STATICFILES_DIRS = [str(APPS_DIR.path("static"))]
+STATICFILES_DIRS = [str(CORE_DIR.path("static"))]
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
@@ -164,7 +166,7 @@ STATICFILES_FINDERS = [
 # MEDIA
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-root
-MEDIA_ROOT = str(APPS_DIR("media"))
+MEDIA_ROOT = str(CORE_DIR("media"))
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-url
 MEDIA_URL = "/media/"
 
@@ -176,7 +178,7 @@ TEMPLATES = [
         # https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-TEMPLATES-BACKEND
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         # https://docs.djangoproject.com/en/dev/ref/settings/#template-dirs
-        "DIRS": [str(APPS_DIR.path("templates"))],
+        "DIRS": [str(CORE_DIR.path("templates"))],
         "OPTIONS": {
             # https://docs.djangoproject.com/en/dev/ref/settings/#template-loaders
             # https://docs.djangoproject.com/en/dev/ref/templates/api/#loader-types
@@ -204,7 +206,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 # FIXTURES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#fixture-dirs
-FIXTURE_DIRS = (str(APPS_DIR.path("fixtures")),)
+FIXTURE_DIRS = (str(CORE_DIR.path("fixtures")),)
 
 # SECURITY
 # ------------------------------------------------------------------------------
@@ -292,9 +294,9 @@ LOGGING = {
 # # https://django-allauth.readthedocs.io/en/latest/configuration.html
 # ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 # # https://django-allauth.readthedocs.io/en/latest/configuration.html
-# ACCOUNT_ADAPTER = "cbv3_django_prototype.users.adapters.AccountAdapter"
+# ACCOUNT_ADAPTER = "users.adapters.AccountAdapter"
 # # https://django-allauth.readthedocs.io/en/latest/configuration.html
-# SOCIALACCOUNT_ADAPTER = "cbv3_django_prototype.users.adapters.SocialAccountAdapter"
+# SOCIALACCOUNT_ADAPTER = "users.adapters.SocialAccountAdapter"
 
 
 REST_FRAMEWORK = {
@@ -314,7 +316,7 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
     ],
-    'DEFAULT_AUTHENTICATION_CLASSES' : [
+    'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication', ],
@@ -322,11 +324,10 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
 }
 
-from datetime import timedelta
 
 JWT_AUTH = {
     'JWT_AUTH_HEADER_PREFIX': 'Bearer',
-    'JWT_RESPONSE_PAYLOAD_HANDLER': 'cbv3_django_prototype.utils.my_jwt_response_handler',
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'core.utils.my_jwt_response_handler',
     'JWT_ALLOW_REFRESH': True,
     'JWT_EXPIRATION_DELTA': timedelta(hours=1),
     'JWT_REFRESH_EXPIRATION_DELTA': timedelta(days=3),
