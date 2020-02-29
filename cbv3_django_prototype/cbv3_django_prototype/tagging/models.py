@@ -27,7 +27,6 @@ class CustomTag(TagBase):
         return slug
 
 
-
 class TaggedItems(GenericTaggedItemBase, TaggedItemBase):
     tag = models.ForeignKey(CustomTag,
                             on_delete=models.CASCADE,
