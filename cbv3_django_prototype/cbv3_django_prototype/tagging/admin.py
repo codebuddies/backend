@@ -3,6 +3,7 @@ from resources.models import TaggedItems
 from .models import CustomTag
 
 
+
 class TaggedItemInline(admin.StackedInline):
     model = TaggedItems
 
