@@ -85,7 +85,9 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "users.apps.UsersConfig",
     "resources.apps.ResourcesConfig",
+    "tagging.apps.TaggingConfig",
     "userauth.apps.UserauthConfig"
+
 ]
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
