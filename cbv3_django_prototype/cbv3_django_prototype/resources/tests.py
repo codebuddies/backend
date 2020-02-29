@@ -12,7 +12,8 @@ class ResourcesTests(APITestCase):
     def setUp(self):
         call_command('loaddata', 'users.json', verbosity=0)
         call_command('loaddata', 'resources.json', verbosity=0)
-        call_command('loaddata', 'tags.json', verbosity=0)
+        call_command('loaddata', 'tagging.json', verbosity=0)
+        call_command('loaddata', 'taggeditems.json', verbosity=0)
 
         url = '/auth/obtain_token/'
         #to do:  choose a user at random from loaded users.json
@@ -27,6 +28,7 @@ class ResourcesTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['count'], 31)
 
+
     def test_search_resources(self):
         url = '/api/v1/resources/?search=Elm'
         response = self.client.get(url)
@@ -36,24 +38,29 @@ class ResourcesTests(APITestCase):
 
 
     def test_view_one_resource(self):
-        url = '/api/v1/resources/f7f8ee30-da8e-11e9-8a1f-d20089b01401/'
+        url = '/api/v1/resources/96f23048-59f4-11ea-9149-dca9047779fe/'
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data['title'], "PyCon Israel, Tel Aviv Keynote:  The Fun of Reinvention - David Beazly")
+        self.assertEqual(response.data['title'], "modernSQL")
+        self.assertEqual(str(response.data['tags'][6]['guid']), "bd483d4c-2613-4852-9c92-b9070cd30ba0")
 
 
     def test_patch_one_resource(self):
-        url = '/api/v1/resources/f7f8ee30-da8e-11e9-8a1f-d20089b01401/'
+        url = '/api/v1/resources/96f5e4ea-59f4-11ea-9149-dca9047779fe/'
         data= {
-            "description": "A _diabolically irresponsible_ talk in which I celebrate modern Python coding by **abandoning all backwards compatibility** THE END"
-        }
+                "description": "A _diabolically irresponsible_ talk in which I celebrate modern Python coding by **abandoning all backwards compatibility** and look at a variety of new Python 3.6 features. In the talk, I utilize an assortment of advanced language features including _decorators, descriptors, class decorators, and metaclasses_ to build an interesting data-validation system from **type-annotations.** THE END",
+                "tags": ["Testing", "Playing around", "tested again"]
+              }
         response = self.client.patch(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['description'], data['description'])
+        self.assertEqual(
+                        sorted([item['name'] for item in response.data['tags']]),
+                        sorted(data['tags']))
 
 
     def test_delete_one_resource(self):
-        url = '/api/v1/resources/f7f8ee30-da8e-11e9-8a1f-d20089b01401/'
+        url = '/api/v1/resources/96ef85fa-59f4-11ea-9149-dca9047779fe/'
         response = self.client.delete(url)
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         subsequent_response = self.client.get(url)
