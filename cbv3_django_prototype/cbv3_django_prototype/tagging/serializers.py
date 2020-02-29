@@ -1,7 +1,6 @@
 from rest_framework import serializers
 
 
-
 class TagsSerializerField(serializers.ModelField):
 
     child = serializers.CharField()
