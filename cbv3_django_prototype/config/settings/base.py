@@ -78,13 +78,15 @@ THIRD_PARTY_APPS = [
     "corsheaders",
     "taggit",
     "django_celery_beat",
-    "taggit_serializer"
 ]
 
 LOCAL_APPS = [
     "users.apps.UsersConfig",
     "resources.apps.ResourcesConfig",
-    'userauth.apps.UserauthConfig'
+    "tagging.apps.TaggingConfig",
+    "userauth.apps.UserauthConfig",
+
+
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
