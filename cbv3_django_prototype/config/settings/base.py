@@ -84,6 +84,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "users.apps.UsersConfig",
     "resources.apps.ResourcesConfig",
+    "tagging.apps.TaggingConfig",
     'userauth.apps.UserauthConfig'
     # Your stuff: custom apps go here
 ]
