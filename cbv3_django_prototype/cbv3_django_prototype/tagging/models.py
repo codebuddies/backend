@@ -32,7 +32,3 @@ class TaggedItems(GenericTaggedItemBase, TaggedItemBase):
                             on_delete=models.CASCADE,
                             related_name="%(app_label)s_%(class)s_items",
                             )
-
-    #class Meta:
-    #    db_table = "tagging_tagged_item"
-    #    app_label = "taggit"
