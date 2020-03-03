@@ -4,6 +4,8 @@ from django.conf import settings
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth import get_user_model
+from tagging.managers import CustomTaggableManager
+from tagging.models import CustomTag, TaggedItems
 
 
 def get_sentinel_user():
@@ -31,7 +33,7 @@ class Resource(models.Model):
         ('WEB', 'Website')
     ]
 
-    guid = models.UUIDField(default=uuid.uuid4, editable=False)
+    guid = models.UUIDField(default=uuid.uuid1, editable=False)
 
     title = models.CharField(max_length=200)
 
@@ -68,7 +70,7 @@ class Resource(models.Model):
 
     # Allow tags to be used across entities
     # E.g. so we can create composite views showing all entities sharing a common tag
-    tags = TaggableManager(blank=True)
+    tags = TaggableManager(through=TaggedItems, manager=CustomTaggableManager, blank=True)
 
     def __str__(self):
         """A string representation of the model."""
