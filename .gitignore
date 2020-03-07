@@ -284,7 +284,7 @@ pip-selfcheck.json
 ### Project template
 
 MailHog
-cbv3_django_prototype/media/
+project/media/
 
 .pytest_cache/
 

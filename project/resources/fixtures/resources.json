@@ -1,0 +1,591 @@
+[
+   {
+      "model":"resources.resource",
+      "pk":1,
+      "fields":{
+         "guid":"96ec3a94-59f4-11ea-9149-dca9047779fe",
+         "title":"The Life of a File (in Elm)",
+         "author":"Evan Czaplicki",
+         "description":"Elm Europe 2017 -- Evan Czaplicki, the life of a file",
+         "url":"https://www.youtube.com/watch?v=XpDsk374LDE",
+         "referring_url":"https://www.youtube.com/watch?v=kEitFAY7Gc8",
+         "other_referring_source":"Gina Aspey (gaspeyl@unicef.org)",
+         "user":8,
+         "date_published":"2019-09-19T04:29:04Z",
+         "created":"2019-09-19T04:29:04.069Z",
+         "modified":"2019-09-19T04:29:04Z",
+         "media_type":"TALK",
+         "paid":true
+      }
+   },
+   {
+      "model":"resources.resource",
+      "pk":2,
+      "fields":{
+         "guid":"96ee05ea-59f4-11ea-9149-dca9047779fe",
+         "title":"Over the Wire: Wargames (Games)",
+         "author":"OverTheWire Community",
+         "description":"The wargames offered by the OverTheWire community can help you to learn and practice security concepts in the form of fun-filled games.",
+         "url":"https://overthewire.org/wargames/",
+         "referring_url":"https://overthewire.org",
+         "other_referring_source":"Samaria Jovasevic",
+         "user":21,
+         "date_published":"2019-09-19T04:44:10Z",
+         "created":"2019-09-19T04:44:10.315Z",
+         "modified":"2019-09-19T04:44:10Z",
+         "media_type":"GAME",
+         "paid":true
+      }
+   },
+   {
+      "model":"resources.resource",
+      "pk":3,
+      "fields":{
+         "guid":"96ee48b6-59f4-11ea-9149-dca9047779fe",
+         "title":"Funtional Geekery Episode 127",
+         "author":"Katie Hughes",
+         "description":"A talk with **Katie Hughes:** _Her introduction to software development, exposure to functional programming, orienting herself in a new codebase, \u201clearning to trust again\u201d, and much more._",
+         "url":"https://www.functionalgeekery.com/podlove/file/329/s/download/c/select-show/functionalgeekery_127_katie_hughes.mp3",
+         "referring_url":"https://www.functionalgeekery.com/",
+         "other_referring_source":"Brittni Kinforth (bkinforthg@mozilla.com)",
+         "user":14,
+         "date_published":"2019-09-19T04:01:24Z",
+         "created":"2019-09-19T04:01:24.931Z",
+         "modified":"2019-09-19T04:01:24Z",
+         "media_type":"PODEP",
+         "paid":false
+      }
+   },
+   {
+      "model":"resources.resource",
+      "pk":4,
+      "fields":{
+         "guid":"96ee87e0-59f4-11ea-9149-dca9047779fe",
+         "title":"Weapons of Math Destruction - Cathy O'Neil",
+         "author":"",
+         "description":"A former Wall Street quant sounds an alarm on the mathematical models that pervade modern life \u2014 and threaten to rip apart our social fabric.",
+         "url":"https://weaponsofmathdestructionbook.com/",
+         "referring_url":"https://www.goodreads.com/",
+         "other_referring_source":"Tonie Tordiffe (ttordiffej@cnbc.com)",
+         "user":18,
+         "date_published":"2019-09-19T04:22:55Z",
+         "created":"2019-09-19T04:22:55.939Z",
+         "modified":"2019-09-19T04:22:55Z",
+         "media_type":"BOOK",
+         "paid":true
+      }
+   },
+   {
+      "model":"resources.resource",
+      "pk":5,
+      "fields":{
+         "guid":"96eec6e2-59f4-11ea-9149-dca9047779fe",
+         "title":"GraphQL Full Course - Novice to Expert",
+         "author":"",
+         "description":"**Complete course on GraphQL** You'll create a full-stack application from scratch using: - GraphQL server on Node.js - React front-end (_with Apollo_)",
+         "url":"https://www.youtube.com/watch?v=ed8SzALpx1Q",
+         "referring_url":"https://www.freecodecamp.org/",
+         "other_referring_source":"Andi Kanter (@kanterpops)",
+         "user":3,
+         "date_published":"2019-09-19T03:11:30Z",
+         "created":"2019-09-19T03:11:30.743Z",
+         "modified":"2019-09-19T03:11:30Z",
+         "media_type":"COURSE",
+         "paid":false
+      }
+   },
+   {
+      "model":"resources.resource",
+      "pk":6,
+      "fields":{
+         "guid":"96ef0792-59f4-11ea-9149-dca9047779fe",
+         "title":"Invisible Women:  A Talk with Caroline Criado Perez (99% Invisible Podcast)",
+         "author":"Roman Mars",
+         "description":"A lively talk with Caroline Criado Perez, author of Invisible Women: Data Bias in a World Designed for Men, a book about how women are often left out of design.",
+         "url":"https://99percentinvisible.org/episode/invisible-women/",
+         "referring_url":"https://99percentinvisible.org",
+         "other_referring_source":"Frederik Wormell (fwormelle@creativecommons.org)",
+         "user":20,
+         "date_published":"2019-09-19T03:47:18Z",
+         "created":"2019-09-19T03:47:18.883Z",
+         "modified":"2019-09-19T03:47:18Z",
+         "media_type":"PODEP",
+         "paid":false
+      }
+   },
+   {
+      "model":"resources.resource",
+      "pk":7,
+      "fields":{
+         "guid":"96ef4a7c-59f4-11ea-9149-dca9047779fe",
+         "title":"Automate the Boring Stuff with Python Programming (Udemy 2017)",
+         "author":"Al Sweigart",
+         "description":"A practical programming course for office workers, academics, and administrators who want to improve their productivity by using Python",
+         "url":"https://www.udemy.com/automate/?couponCode=PAY_10_DOLLARS",
+         "referring_url":"https://automatetheboringstuff.com/",
+         "other_referring_source":"Betsey Devereu (@betsdevereu)",
+         "user":11,
+         "date_published":"2019-09-19T03:33:03Z",
+         "created":"2019-09-19T03:33:03.262Z",
+         "modified":"2019-09-19T03:33:03Z",
+         "media_type":"COURSE",
+         "paid":true
+      }
+   },
+   {
+      "model":"resources.resource",
+      "pk":8,
+      "fields":{
+         "guid":"96ef85fa-59f4-11ea-9149-dca9047779fe",
+         "title":"Getting Started with Vue - An Overview and Walkthrough Tutorial",
+         "author":"Tania Rascia",
+         "description":"We're in a _golden era of JavaScript libraries and frameworks_. More and more companies are building out full, dynamic web apps in addition to - or in lieu of - traditional desktop applications. This means things are **constantly changing** and frameworks are going in and out of vogue, but the core concepts of what we're trying to accomplish remain similar.",
+         "url":"https://www.taniarascia.com/getting-started-with-vue/",
+         "referring_url":"",
+         "other_referring_source":"Phillipp Lombard",
+         "user":19,
+         "date_published":"2019-09-19T03:04:38Z",
+         "created":"2019-09-19T03:04:38.046Z",
+         "modified":"2019-09-19T03:04:38Z",
+         "media_type":"TUTOR",
+         "paid":false
+      }
+   },
+   {
+      "model":"resources.resource",
+      "pk":9,
+      "fields":{
+         "guid":"96efccfe-59f4-11ea-9149-dca9047779fe",
+         "title":"Elm Crash-Course (Reactivate London)",
+         "author":"",
+         "description":"Elm Crash Course -- **Elm** is a delightful functional language for reliable webapps. It compiles to JavaScript, has great performance, no runtime exceptions, and can be embedded easily into existing JS projects _**without the need for huge rewrites or time investment.**_",
+         "url":"https://www.youtube.com/watch?v=kEitFAY7Gc8",
+         "referring_url":"https://www.freecodecamp.org",
+         "other_referring_source":"Seth Stripp (@stripprSeth)",
+         "user":8,
+         "date_published":"2019-09-19T04:09:15Z",
+         "created":"2019-09-19T04:09:15.354Z",
+         "modified":"2019-09-19T04:09:15Z",
+         "media_type":"TALK",
+         "paid":false
+      }
+   },
+   {
+      "model":"resources.resource",
+      "pk":10,
+      "fields":{
+         "guid":"96f0131c-59f4-11ea-9149-dca9047779fe",
+         "title":"Trying React Hooks for the first time",
+         "author":"Dan Abramov",
+         "description":"Recording of a FunFunFunction Live Stream with Dan Abarmov",
+         "url":"https://www.youtube.com/watch?v=G-aO5hzo1aw&feature=youtu.be",
+         "referring_url":"https://medium.com/humans-create-software",
+         "other_referring_source":"Rossie Rickardsson",
+         "user":5,
+         "date_published":"2019-09-19T03:27:06Z",
+         "created":"2019-09-19T03:27:06.485Z",
+         "modified":"2019-09-19T03:27:06Z",
+         "media_type":"VID",
+         "paid":false
+      }
+   },
+   {
+      "model":"resources.resource",
+      "pk":11,
+      "fields":{
+         "guid":"96f05142-59f4-11ea-9149-dca9047779fe",
+         "title":"The Imposter's Handbook Season 2",
+         "author":"Rob Conery",
+         "description":"CS topics have always been a bit of a blind spot for me so I asked my friend Scott Hanselman to help me dive in and figure this stuff out. The journey continues with Season 2 of The Imposter\u2019s Handbook. We dive into the flow of information: from the roots of logic through Boolean Algebra, binary andbitwise operations, information theory, encryption, hashing, blockchain and a lot more.",
+         "url":"https://bigmachine.io/products/the-imposters-handbook-season-2",
+         "referring_url":"https://www.goodreads.com/book/show/43431709-the-imposter-s-handbook-season-2",
+         "other_referring_source":"Raimondo Pedreschi",
+         "user":23,
+         "date_published":"2019-09-19T05:00:29Z",
+         "created":"2019-09-19T05:00:29.567Z",
+         "modified":"2019-09-19T05:00:29Z",
+         "media_type":"BOOK",
+         "paid":true
+      }
+   },
+   {
+      "model":"resources.resource",
+      "pk":12,
+      "fields":{
+         "guid":"96f090d0-59f4-11ea-9149-dca9047779fe",
+         "title":"Zen and The Art of VueJS",
+         "author":"Jen Looper",
+         "description":"_Jen is a web/mobile developer who is also the founder of Vue Vixens. In this talk, she shows us how a rich artistic tradition can inspire and inform our craft as Vue.js developers._",
+         "url":"https://www.vuemastery.com/conferences/vueconf-us-2019/zen-and-the-art-of-vuejs",
+         "referring_url":"https://www.vuemastery.com/conferences/",
+         "other_referring_source":"Isabelle Alywen (ialywenh@harvard.edu)",
+         "user":6,
+         "date_published":"2019-09-19T04:17:36Z",
+         "created":"2019-09-19T04:17:36.467Z",
+         "modified":"2019-09-19T04:17:36Z",
+         "media_type":"TALK",
+         "paid":false
+      }
+   },
+   {
+      "model":"resources.resource",
+      "pk":13,
+      "fields":{
+         "guid":"96f0ce9c-59f4-11ea-9149-dca9047779fe",
+         "title":"The Art of Postgresql",
+         "author":"Dimitri Fontaine",
+         "description":"The book that teaches SQL to developers: Learn to replace thousands of lines of code with simple queries!",
+         "url":"https://theartofpostgresql.com/",
+         "referring_url":"https://use-the-index-luke.com/",
+         "other_referring_source":"gBethany (BethanyG)",
+         "user":2,
+         "date_published":"2019-01-23T08:31:06Z",
+         "created":"2020-01-07T11:40:02Z",
+         "modified":"2020-01-08T08:31:06Z",
+         "media_type":"",
+         "paid":true
+      }
+   },
+   {
+      "model":"resources.resource",
+      "pk":14,
+      "fields":{
+         "guid":"96f11244-59f4-11ea-9149-dca9047779fe",
+         "title":"SOLID Go Design - Dave Cheney",
+         "author":"",
+         "description":"Golang UK Conference 2016 - Dave Cheney - SOLID Go Design",
+         "url":"https://www.youtube.com/watch?v=zzAdEt3xZ1M&feature=youtu.be",
+         "referring_url":"https://medium.com/full-stack-tips/4-talks-every-gopher-should-see-73cc60f4b1e3",
+         "other_referring_source":"Nancee Tripp (@TrippyNancee)",
+         "user":13,
+         "date_published":"2019-09-19T02:59:17Z",
+         "created":"2019-09-19T02:59:17.227Z",
+         "modified":"2019-09-19T02:59:17Z",
+         "media_type":"TALK",
+         "paid":false
+      }
+   },
+   {
+      "model":"resources.resource",
+      "pk":15,
+      "fields":{
+         "guid":"96f15ad8-59f4-11ea-9149-dca9047779fe",
+         "title":"Getting Started with CSS Grid Layout",
+         "author":"Robin Rendle",
+         "description":"CSS Grid Layout allows us to construct custom grids with more flexibility and control than ever before. Grid Layout gives us the ability to divide a webpage into rows and columns with simple properties. It also allows us to position and size each element inside the grid using CSS only, without any change to the HTML.",
+         "url":"https://scotch.io/tutorials/getting-started-with-css-grid-layout",
+         "referring_url":"https://scotch.io",
+         "other_referring_source":"Marybeth Corona (mcorona7@netscape.com)",
+         "user":17,
+         "date_published":"2019-09-19T03:20:55Z",
+         "created":"2019-09-19T03:20:55.628Z",
+         "modified":"2019-09-19T03:20:55Z",
+         "media_type":"TUTOR",
+         "paid":false
+      }
+   },
+   {
+      "model":"resources.resource",
+      "pk":16,
+      "fields":{
+         "guid":"96f1a740-59f4-11ea-9149-dca9047779fe",
+         "title":"The Road to Learn React",
+         "author":"Robin Wieruch",
+         "description":"This Book is your personal start of learning React and its ecosystem. You will learn plain React, transition from JavaScript ES5 to ES6, and build an application along the way. Afterward you are able to build your own applications and you are prepared to dive into the React ecosystem.",
+         "url":"https://leanpub.com/the-road-to-learn-react",
+         "referring_url":"https://roadtoreact.com/",
+         "other_referring_source":"Lynnea Sauvage (lsauvage0@latimes.com)",
+         "user":20,
+         "date_published":"2019-09-19T00:50:36Z",
+         "created":"2019-09-19T00:50:36.198Z",
+         "modified":"2019-09-19T00:50:36Z",
+         "media_type":"BOOK",
+         "paid":true
+      }
+   },
+   {
+      "model":"resources.resource",
+      "pk":17,
+      "fields":{
+         "guid":"96f1ee80-59f4-11ea-9149-dca9047779fe",
+         "title":"Linear Digressions",
+         "author":"Katie and Ben",
+         "description":"Linear Digressions is a podcast about Machine Learning and Data Science",
+         "url":"http://lineardigressions.com/",
+         "referring_url":"",
+         "other_referring_source":"Henry Melan (hmelanc@blog.com)",
+         "user":10,
+         "date_published":"2019-09-19T03:35:18Z",
+         "created":"2019-09-19T03:35:18.309Z",
+         "modified":"2019-09-19T03:35:18Z",
+         "media_type":"POD",
+         "paid":false
+      }
+   },
+   {
+      "model":"resources.resource",
+      "pk":18,
+      "fields":{
+         "guid":"96f23048-59f4-11ea-9149-dca9047779fe",
+         "title":"modernSQL",
+         "author":"Markus Winand",
+         "description":"modernSQL: Because a LOT as changed since SQL-92",
+         "url":"https://modern-sql.com/",
+         "referring_url":"https://use-the-index-luke.com/",
+         "other_referring_source":"Markus Winand",
+         "user":23,
+         "date_published":"2018-01-23T08:31:06Z",
+         "created":"2020-01-08T00:40:59.359Z",
+         "modified":"2020-01-08T08:31:06Z",
+         "media_type":"",
+         "paid":false
+      }
+   },
+   {
+      "model":"resources.resource",
+      "pk":19,
+      "fields":{
+         "guid":"96f270b2-59f4-11ea-9149-dca9047779fe",
+         "title":"What the Heck is the Event Loop Anyway?",
+         "author":"Pilip Roberts",
+         "description":"JSConf EU 2014 -- JavaScript programmers like to use words like, \u201cevent-loop\u201d, \u201cnon-blocking\u201d, \u201ccallback\u201d, \u201casynchronous\u201d, \u201csingle-threaded\u201d and \u201cconcurrency\u201d.  If you\u2019re anything like me, you nod and agree, as if it\u2019s all obvious, even though you don\u2019t actually know what the words mean; and yet, finding good explanations of how JavaScript actually works isn\u2019t all that easy, so let\u2019s learn!",
+         "url":"https://www.youtube.com/watch?v=8aGhZQkoFbQ",
+         "referring_url":"https://www.youtube.com/channel/UCzoVCacndDCfGDf41P-z0iA",
+         "other_referring_source":"Milt Batham (@miltybathamm)",
+         "user":7,
+         "date_published":"2019-09-19T04:25:55Z",
+         "created":"2019-09-19T04:25:55.783Z",
+         "modified":"2019-09-19T04:25:55Z",
+         "media_type":"TALK",
+         "paid":false
+      }
+   },
+   {
+      "model":"resources.resource",
+      "pk":20,
+      "fields":{
+         "guid":"96f38a56-59f4-11ea-9149-dca9047779fe",
+         "title":"Python Bytes",
+         "author":"Michael Kennedy and Brian Okken",
+         "description":"Python Headlines Delivered Directly to your Earbuds",
+         "url":"https://pythonbytes.fm/",
+         "referring_url":"",
+         "other_referring_source":"Fergus Lucy (@luckyfungus)",
+         "user":9,
+         "date_published":"2019-09-19T05:02:03Z",
+         "created":"2019-09-19T05:02:03.404Z",
+         "modified":"2019-09-19T05:02:03Z",
+         "media_type":"POD",
+         "paid":false
+      }
+   },
+   {
+      "model":"resources.resource",
+      "pk":21,
+      "fields":{
+         "guid":"96f3c2e6-59f4-11ea-9149-dca9047779fe",
+         "title":"On JSON and SQL",
+         "author":"Dimitri Fontaine",
+         "description":"In this article we\u2019ll play with the Magic: the Gathering card data in JSON format data set, provided with a CC0 licence, and process the information provided. We also see how to normalize a JSON document into a proper database model that benefits from some PostgreSQL advanced features, and how to then inject the JSON documents into the normalized database schema. Finally, we compare some non-trivial processing done against both versions of the database schema.",
+         "url":"https://tapoueh.org/blog/2017/09/on-json-and-sql/",
+         "referring_url":"https://tapoueh.org/blog/2018/04/postgresql-data-types-json/",
+         "other_referring_source":"Brian Okken (contact_pythonbytes@talkpython.fm)",
+         "user":17,
+         "date_published":"2018-04-30T08:31:06Z",
+         "created":"2019-09-24T08:31:06.512Z",
+         "modified":"2019-09-24T08:31:06Z",
+         "media_type":"BLOG",
+         "paid":false
+      }
+   },
+   {
+      "model":"resources.resource",
+      "pk":22,
+      "fields":{
+         "guid":"96f3fae0-59f4-11ea-9149-dca9047779fe",
+         "title":"Django REST Framework Quickstart",
+         "author":"Django REST Team",
+         "description":"Can't wait to get started? The Django DRF quickstart guide is the fastest way to get up, running, & building APIs with the Django REST framework.",
+         "url":"https://www.django-rest-framework.org/#quickstart",
+         "referring_url":"https://www.django-rest-framework.org",
+         "other_referring_source":"Random Joe from the Internet",
+         "user":2,
+         "date_published":"2019-09-18T19:44:26Z",
+         "created":"2019-09-18T19:44:26.190Z",
+         "modified":"2019-09-18T19:44:26Z",
+         "media_type":"TUTOR",
+         "paid":false
+      }
+   },
+   {
+      "model":"resources.resource",
+      "pk":23,
+      "fields":{
+         "guid":"96f42c72-59f4-11ea-9149-dca9047779fe",
+         "title":"Number One Place to Learn Java (From \"The Top 20 Places to Learn Java in 2019\")",
+         "author":"",
+         "description":"You can learn Java online in many places. Each learning platform suits different learning styles and knowledge levels. The courses consist of Java tutorials, video lectures, code examples, interactive exercises, quizzes, Q&A forums, and web-based projects in various combinations.",
+         "url":"https://www.tutorialspoint.com/index.htm",
+         "referring_url":"https://raygun.com/blog/top-places-to-learn-java/",
+         "other_referring_source":"Klara Barnwall",
+         "user":27,
+         "date_published":"2019-09-19T04:34:11Z",
+         "created":"2019-09-19T04:34:11.607Z",
+         "modified":"2019-09-19T04:34:11Z",
+         "media_type":"BLOG",
+         "paid":false
+      }
+   },
+   {
+      "model":"resources.resource",
+      "pk":24,
+      "fields":{
+         "guid":"96f46b60-59f4-11ea-9149-dca9047779fe",
+         "title":"A Tour of Go (from the official Go-lang pages)",
+         "author":"The Golang Project",
+         "description":"**Welcome to a tour of the Go programming language.**\r\nThe tour is divided into a list of modules that you can access by clicking on _**A Tour of Go**_ on the top left of the page.\r\nThroughout the tour you will find a series of slides and exercises for you to complete.",
+         "url":"https://tour.golang.org/welcome/1",
+         "referring_url":"https://stackify.com/learn-go-tutorials/",
+         "other_referring_source":"Dari Kidgell (dkidgella@forbes.com)",
+         "user":16,
+         "date_published":"2019-09-19T03:29:56Z",
+         "created":"2019-09-19T03:29:56.199Z",
+         "modified":"2019-09-19T03:29:56Z",
+         "media_type":"WEB",
+         "paid":false
+      }
+   },
+   {
+      "model":"resources.resource",
+      "pk":25,
+      "fields":{
+         "guid":"96f4a1e8-59f4-11ea-9149-dca9047779fe",
+         "title":"Swagger -- Spring REST Example",
+         "author":"Sajal Chakraborty",
+         "description":"Swagger (backed by companies like Google, IBM, Microsoft) does this same job of filling the gap of common documentation style. In this tutorial, we will learn to use Swagger to generate REST API docs using swagger 2 annotations.",
+         "url":"https://howtodoinjava.com/swagger2/swagger-spring-mvc-rest-example/",
+         "referring_url":"https://howtodoinjava.com/swagger2/swagger-spring-mvc-rest-example/",
+         "other_referring_source":"Irita Ikin (iikin5@google.com.br)",
+         "user":29,
+         "date_published":"2019-09-19T03:08:37Z",
+         "created":"2019-09-19T03:08:37.456Z",
+         "modified":"2019-09-19T03:08:37Z",
+         "media_type":"TUTOR",
+         "paid":false
+      }
+   },
+   {
+      "model":"resources.resource",
+      "pk":26,
+      "fields":{
+         "guid":"96f4dd16-59f4-11ea-9149-dca9047779fe",
+         "title":"Dear SQL DBA",
+         "author":"Kendra Little",
+         "description":"Kendra Little answers burning questions from SQL Server Database Administrators -- from dealing with SAN Administrators to handling index rebuilds, she helps DBAs improve their jobs.",
+         "url":"https://player.fm/series/dear-sql-dba",
+         "referring_url":"",
+         "other_referring_source":"Stacia Chipchase (schipchasep@51.la)",
+         "user":20,
+         "date_published":"2019-09-19T04:56:09Z",
+         "created":"2019-09-19T04:56:09.075Z",
+         "modified":"2019-09-19T04:56:09Z",
+         "media_type":"BLOG",
+         "paid":false
+      }
+   },
+   {
+      "model":"resources.resource",
+      "pk":27,
+      "fields":{
+         "guid":"96f510e2-59f4-11ea-9149-dca9047779fe",
+         "title":"Flexbox Froggy (Game)",
+         "author":"Codepip",
+         "description":"Welcome to Flexbox Froggy, a game where you help Froggy and friends by writing CSS code! Guide this frog to the lilypad on the right by using the justify-content property.",
+         "url":"https://flexboxfroggy.com",
+         "referring_url":"",
+         "other_referring_source":"Randolf Cristea (rcristean@prnewswire.com)",
+         "user":24,
+         "date_published":"2019-09-19T04:41:52Z",
+         "created":"2019-09-19T04:41:52.743Z",
+         "modified":"2019-09-19T04:41:52Z",
+         "media_type":"GAME",
+         "paid":false
+      }
+   },
+   {
+      "model":"resources.resource",
+      "pk":28,
+      "fields":{
+         "guid":"96f54864-59f4-11ea-9149-dca9047779fe",
+         "title":"Don't Install Postgres. Docker Pull Postgres.",
+         "author":"Syed (@skabbass1)",
+         "description":"Installing software is _hard_. And it has **nothing to do** with your expertise as a developer.....[**Docker**](https://www.docker.com/) provides a way out of this mess by reducing the task of installing and running software to _**as little as two commands**_ (_docker run and docker pull_). In this post we will see this process in action by taking a step by step look at how easy and **simple** it is to setup a Postgres installation with docker.",
+         "url":"https://hackernoon.com/dont-install-postgres-docker-pull-postgres-bee20e200198",
+         "referring_url":"https://hackernoon.com/",
+         "other_referring_source":"Bessy Buddell (bbuddell3@typepad.com)",
+         "user":30,
+         "date_published":"2019-09-19T03:01:53Z",
+         "created":"2019-09-19T03:01:53.708Z",
+         "modified":"2019-09-19T03:01:53Z",
+         "media_type":"TUTOR",
+         "paid":false
+      }
+   },
+   {
+      "model":"resources.resource",
+      "pk":29,
+      "fields":{
+         "guid":"96f57b68-59f4-11ea-9149-dca9047779fe",
+         "title":"Sytax",
+         "author":"Wes Bos and Scott Tolinski",
+         "description":"A Tasty Treats Podcast for Web Developers.",
+         "url":"https://syntax.fm/",
+         "referring_url":"https://medium.com/@nialljoemaher/the-best-javascript-podcasts-2018-2019-237a21bbf08b",
+         "other_referring_source":"Adaline Goodinson (agoodinson1@indiatimes.com)",
+         "user":32,
+         "date_published":"2019-09-19T00:53:23Z",
+         "created":"2019-09-19T00:53:23.022Z",
+         "modified":"2019-09-19T00:53:23Z",
+         "media_type":"POD",
+         "paid":false
+      }
+   },
+   {
+      "model":"resources.resource",
+      "pk":30,
+      "fields":{
+         "guid":"96f5b010-59f4-11ea-9149-dca9047779fe",
+         "title":"LocalStorage and Event Delegation",
+         "author":"Wes Bos",
+         "description":"Day 14 of WesBos JavaScript 30 Course",
+         "url":"https://courses.wesbos.com/account/access/5cf483ab85f96c03c1e4792e/view/194129092",
+         "referring_url":"https://javascript30.com/",
+         "other_referring_source":"Annecorinne Hymers (ahymers8@cafepress.com)",
+         "user":3,
+         "date_published":"2019-09-19T03:23:42Z",
+         "created":"2019-09-19T03:23:42.499Z",
+         "modified":"2019-09-19T03:23:42Z",
+         "media_type":"COURSE",
+         "paid":false
+      }
+   },
+   {
+      "model":"resources.resource",
+      "pk":31,
+      "fields":{
+         "guid":"96f5e4ea-59f4-11ea-9149-dca9047779fe",
+         "title":"PyCon Israel, Tel Aviv Keynote:  The Fun of Reinvention - David Beazly",
+         "author":"David Beazly",
+         "description":"A _diabolically irresponsible_ talk in which I celebrate modern Python coding by **abandoning all backwards compatibility** and look at a variety of new Python 3.6 features. In the talk, I utilize an assortment of advanced language features including _decorators, descriptors, class decorators, and metaclasses_ to build an interesting data-validation system from **type-annotations.**",
+         "url":"https://www.youtube.com/watch?v=5nXmq1PsoJ0",
+         "referring_url":"https://www.dabeaz.com/talks.html",
+         "other_referring_source":"Debby Ochterlony (@ochterlonydeb)",
+         "user":28,
+         "date_published":"2019-09-19T03:38:39Z",
+         "created":"2019-09-19T03:38:39.201Z",
+         "modified":"2019-09-19T03:38:39Z",
+         "media_type":"TALK",
+         "paid":false
+      }
+   }
+]
