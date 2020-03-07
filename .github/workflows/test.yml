@@ -8,23 +8,23 @@ on:
 
 jobs:
   test:
-
     name: test
     runs-on: ubuntu-latest
-          
+
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Run application
-      run: docker-compose up -d
-    
-    - name: Test Resources
-      run: docker-compose run --rm manage test resources
+      - name: Run application
+        run: docker-compose up -d web
 
-    - name: Test Users
-      run: docker-compose run --rm manage test users
-      if: always()
+      - name: Test Resources
+        run: docker-compose run --rm manage test resources
+        if: always()
 
-    - name: Test UserAuth
-      run: docker-compose run --rm manage test userauth
-      if: always()
+      - name: Test Users
+        run: docker-compose run --rm manage test users
+        if: always()
+
+      - name: Test UserAuth
+        run: docker-compose run --rm manage test userauth
+        if: always()

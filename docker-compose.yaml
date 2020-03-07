@@ -43,9 +43,9 @@ services:
   # The nginx front-end is configured to proxy all traffic to the Django application.
   # We may want to use this to host static content. It is configured to reload
   # configuration every 6 hours.
-  nginx:
+  web:
     image: nginx:1.17-alpine
-    container_name: nginx
+    container_name: web
     restart: on-failure
     ports:
       - "8000:80"
@@ -89,4 +89,3 @@ services:
       - EMAIL_HOST=mailhog
     depends_on:
       - db
-
