@@ -9,10 +9,10 @@ jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
 class ResourcesTests(APITestCase):
 
     def setUp(self):
-
         call_command('loaddata', 'users.json', verbosity=0)
         call_command('loaddata', 'resources.json', verbosity=0)
-        call_command('loaddata', 'tags.json', verbosity=0)
+        call_command('loaddata', 'tagging.json', verbosity=0)
+        call_command('loaddata', 'taggeditems.json', verbosity=0)
 
         url = '/auth/obtain_token/'
         #to do:  choose a user at random from loaded users.json
@@ -37,30 +37,29 @@ class ResourcesTests(APITestCase):
 
 
     def test_view_one_resource(self):
-        url = '/api/v1/resources/?search=Katie Hughes'
-        guid = self.client.get(url, format='json').data['guid']
-        response = self.client.get('api/v1/resources/guid/')
+        url = '/api/v1/resources/96f1ee80-59f4-11ea-9149-dca9047779fe/'
+        response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data['title'],"Funtional Geekery Episode 127")
+        self.assertEqual(response.data['title'],"Linear Digressions")
+        self.assertEqual(response.data['description'], "Linear Digressions is a podcast about Machine Learning and Data Science")
 
 
     def test_patch_one_resource(self):
-        url = '/api/v1/resources/?search=Katie Hughes'
-        guid = self.client.get(url, format='json').data['guid']
+        url = '/api/v1/resources/96f5e4ea-59f4-11ea-9149-dca9047779fe/'
 
         data= {
             "description": "A _diabolically irresponsible_ talk in which I celebrate modern Python coding by **abandoning all backwards compatibility** THE END",
             "tags": ["test tags", "testing"]
         }
-        response = self.client.patch('api/v1/resources/guid/', data, format='json')
+        response = self.client.patch(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['description'], data['description'])
-        self.assertEqual(response.data['tags']["name"], data['tags'][0])
+        self.assertEqual(response.data['tags'][0]["name"], data['tags'][0])
 
 
     def test_delete_one_resource(self):
         #to do:  grab the guid from the created guids in the DB instead of hard coding it.
-        url = '/api/v1/resources/7a25b429-20a7-4246-a49a-c614b08bfc72/'
+        url = '/api/v1/resources/96eec6e2-59f4-11ea-9149-dca9047779fe/'
         response = self.client.delete(url)
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         subsequent_response = self.client.get(url)
