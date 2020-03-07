@@ -26,14 +26,14 @@ services:
   # nginx. The local project folder is mounted into the container as a volume to
   # allow development to be done on the host machine.
   app:
-    build: ./cbv3_django_prototype
+    build: ./project
     container_name: app
     restart: on-failure
     command: >
-      sh -c "python /opt/cbv3_django_prototype/manage.py migrate &&
-             uwsgi --ini /opt/cbv3_django_prototype/uwsgi.ini"
+      sh -c "python /opt/codebuddies/manage.py migrate &&
+             uwsgi --ini /opt/codebuddies/uwsgi.ini"
     volumes:
-      - ./cbv3_django_prototype:/opt/cbv3_django_prototype
+      - ./project:/opt/codebuddies
     environment:
       - DATABASE_URL=postgres://babyyoda:mysecretpassword@db:5432/codebuddies
       - EMAIL_HOST=mailhog
@@ -79,11 +79,11 @@ services:
   manage:
     container_name: manage
     restart: on-failure
-    build: ./cbv3_django_prototype
+    build: ./project
     command: shell
-    entrypoint: /usr/local/bin/python3 /opt/cbv3_django_prototype/manage.py
+    entrypoint: /usr/local/bin/python3 /opt/codebuddies/manage.py
     volumes:
-      - ./cbv3_django_prototype:/opt/cbv3_django_prototype
+      - ./project:/opt/codebuddies
     environment:
       - DATABASE_URL=postgres://babyyoda:mysecretpassword@db:5432/codebuddies
       - EMAIL_HOST=mailhog
