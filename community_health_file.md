@@ -13,14 +13,17 @@ The new version of the website will include features that will help users:
 * find open source projects to work on
 * form study groups
 * collect learning paths and share them
-* pair-programming -- find 1-hour pair programming partners for any topics in a much more easier ways
+* pair programming -- find 1-hour pair programming partners for any topics in a much more easier ways
 
 ## **Role of Backend**
+The backend of the CodeBuddies Version 3 website is an app which is composed of Django REST Framework that provides API endpoints which the frontend app (React) consumes.
 
+We have a technical decision log [here](https://github.com/codebuddies/backend/wiki/Decision-log).
 
 ## **Links to Clients / Frontend**
 
 ## **Technology Used**
+DRF
 
 ## **(SUPPORT.md)**
 
