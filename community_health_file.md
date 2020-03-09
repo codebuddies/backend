@@ -21,20 +21,20 @@ The backend of CBV3 is an app which is composed of Django REST Framework that pr
 We have a technical decision log [here](https://github.com/codebuddies/backend/wiki/Decision-log).
 
 ## **Links to Clients / Frontend**
-The frontend of CBV3 is built with React and is located at here[http://github.com/codebuddies/frontend].
+The frontend of CBV3 is built with React and is located at [here](http://github.com/codebuddies/frontend).
 
 ## **Technology Used**
 Components of the CBV3 Backend:
 * [Django REST Framework](https://www.django-rest-framework.org/)
-* [Cookiecutter][https://cookiecutter.readthedocs.io/en/1.7.0/]
+* [Cookiecutter](https://cookiecutter.readthedocs.io/en/1.7.0/)
 
 Application Deployment
-* [Docker]
+* [Docker Compose](http://docs.docker.com/compose) to stand up local development environments
+* [Github Actions](http://help.github.com/en/actions) to deploy staging and production.
 
 Database:
 * [PostgreSQL](http://postgresql.org)
 * [DigialOcean Droplets](http://digitalocean.com/products/droplets) to store the database on cloud
-
 
 ## **(SUPPORT.md)**
 
