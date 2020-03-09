@@ -57,5 +57,5 @@ Anyone is welcome to contribute and make the website better! You can:
 * Help review [CBV3 backend pull requests](https://github.com/codebuddies/backend/pulls) by recreating the feature
 
 
-## **CODE_OF_CONDUCT.md**
+## **CODE OF CONDUCT.md**
 _Please_ read CodeBuddies' [Code of Conduct](code_of_conduct.md) to understand the responsibility and scope as a contributor at CodeBuddies.
