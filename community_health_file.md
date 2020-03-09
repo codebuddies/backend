@@ -37,11 +37,11 @@ Database:
 * [DigialOcean Droplets](http://digitalocean.com/products/droplets) to store the database on cloud
 
 Core dependencies of CBV3
-| Dependencies | Version | Github Link |
-| ------------ | :-----: | ----------- |
-| djangorestframework | 3.10.2 | https://github.com/encode/django-rest-framework |
-| coreapi | 2.3.3 | https://github.com/core-api/python-client
-| drf-jwt | 1.13.4 | https://githbu.com/Styria-Digital/django-rest-framework-jwt |
+| Dependencies | Version |
+| ------------ | :-----: |
+| [djangorestframework](https://github.com/encode/django-rest-framework) | 3.10.2 |
+| [coreapi](https://github.com/core-api/python-client) | 2.3.3 |
+| [drf-jwt](https://githbu.com/Styria-Digital/django-rest-framework-jwt) | 1.13.4 |
 
 ## **Can I run the website application on my computer?**
 Of course you can. Follow the [instruction](contributing.md) to set up the Django API backend.
@@ -52,6 +52,10 @@ Check out [support.md](support.md) if you're stuck or have questions.
 
 ## **Ways to Get Involved**
 Anyone is welcome to contribute and make the website better! You can:
-* Join our slack community by following the [instruction](https://codebuddies.org/slack) on how to join.
+* Join our slack community in [here](https://codebuddies.org/slack)
+* Share your feedback on [Github CBV3 backend issues](https://github.com/codebuddies/backend/issues)
+* Help review [CBV3 backend pull requests](https://github.com/codebuddies/backend/pulls) by recreating the feature
+
 
 ## **CODE_OF_CONDUCT.md**
+_please_ read CodeBuddies' [Code of Conduct](code_of_conduct.md) to understand the responsibility and scope as a contributor at CodeBuddies.
