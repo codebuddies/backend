@@ -13,7 +13,7 @@ The new version of the website will include features that will help users:
 * find open source projects to work on
 * form study groups
 * collect learning paths and share them
-* pair programming -- find 1-hour pair programming partners for any topics in a much more easier ways
+* pair programming -- find 1-hour pair programming partners for any topics in a much more easier way
 
 ## **Role of Backend**
 The backend of CBV3 is an app which is composed of Django REST Framework that provides API endpoints which the frontend app (React) consumes.
@@ -36,10 +36,22 @@ Database:
 * [PostgreSQL](http://postgresql.org)
 * [DigialOcean Droplets](http://digitalocean.com/products/droplets) to store the database on cloud
 
-## **(SUPPORT.md)**
+Core dependencies of CBV3
+| Dependencies | Version | Github Link |
+| ------------ | :-----: | ----------- |
+| djangorestframework | 3.10.2 | https://github.com/encode/django-rest-framework |
+| coreapi | 2.3.3 | https://github.com/core-api/python-client
+| drf-jwt | 1.13.4 | https://githbu.com/Styria-Digital/django-rest-framework-jwt |
+
+## **Can I run the website application on my computer?**
+Of course you can. Follow the [instruction](contributing.md) to set up the Django API backend.
+Set up using Docker is highly recommended.
+
+## **Have Questions about CBV3?**
+Check out [support.md](support.md) if you're stuck or have questions.
 
 ## **Ways to Get Involved**
-
-## **(CONTRIBUTING.md)**
+Anyone is welcome to contribute and make the website better! You can:
+* Join our slack community by following the [instruction](https://codebuddies.org/slack) on how to join.
 
 ## **CODE_OF_CONDUCT.md**
