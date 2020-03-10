@@ -16,7 +16,7 @@ The new version of the website will include features that will help users:
 * pair programming -- find 1-hour pair programming partners for any topics in a much more easier way
 
 ## **Role of Backend**
-The backend of CBV3 is an app which is composed of Django REST Framework that provides API endpoints which the frontend app (React) consumes.
+The backend is a Django app that provides API endpoints (built using Django REST Framework) that the frontend (a React app) consumes.
 
 We have a technical decision log [here](https://github.com/codebuddies/backend/wiki/Decision-log).
 
@@ -44,7 +44,7 @@ __Core dependencies of CBV3__
 | [drf-jwt](https://githbu.com/Styria-Digital/django-rest-framework-jwt) | 1.13.4 |
 
 ## **Can I run the website application on my computer?**
-Of course you can. Follow the [instruction](contributing.md) to set up the Django API backend.
+Of course you can. Follow the [instructions](contributing.md) to set up the Django API backend.
 Set up using Docker is highly recommended.
 
 ## **Have Questions about CBV3?**
@@ -52,7 +52,7 @@ Check out [support.md](support.md) if you're stuck or have questions.
 
 ## **Ways to Get Involved**
 Anyone is welcome to contribute and make the website better! You can:
-* Join our slack community in [here](https://codebuddies.org/slack)
+* Join our slack community [here](https://codebuddies.org/slack)
 * Share your feedback on [Github CBV3 backend issues](https://github.com/codebuddies/backend/issues)
 * Help review [CBV3 backend pull requests](https://github.com/codebuddies/backend/pulls) by recreating the feature
 
