@@ -33,7 +33,7 @@ class Resource(models.Model):
         ('WEB', 'Website')
     ]
 
-    guid = models.UUIDField(default=uuid.uuid1, editable=False)
+    guid = models.UUIDField(default=uuid.uuid4, editable=False)
 
     title = models.CharField(max_length=200)
 
