@@ -30,7 +30,8 @@ services:
     container_name: app
     restart: on-failure
     command: >
-      sh -c "python /opt/codebuddies/manage.py migrate &&
+      sh -c "python /opt/codebuddies/manage.py collectstatic --clear --no-input &&
+             python /opt/codebuddies/manage.py migrate &&
              uwsgi --ini /opt/codebuddies/uwsgi.ini"
     volumes:
       - ./project:/opt/codebuddies
@@ -51,6 +52,7 @@ services:
       - "8000:80"
     volumes:
       - ./nginx:/etc/nginx/conf.d
+      - ./project/staticfiles/:/static
     command: '/bin/sh -c ''while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
     depends_on:
       - app
