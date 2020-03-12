@@ -59,7 +59,7 @@ To stop the application and remove all containers, run the following.
 docker-compose down
 ```
 
-5. Create a superuser so that you can log into http://localhost:8000/admin by running the following in your terminal: `$ docker-compose run --rm manage createsuperuser`
+5. Create a superuser so that you can log into http://localhost:8000/admin by running the following in your terminal: `$ docker-compose run --rm app ./manage.py createsuperuser`
 
 ## Editing Code
 
@@ -89,16 +89,21 @@ If you would like to tail the logs in the console then you remove the detach fla
 
 The following are examples of some common Django management commands that you may need to run.
 
-* Make Migrations: `docker-compose run --rm manage makemigrations`
-* Merge Migrations: `docker-compose run --rm manage makemigrations --merge`
-* Run Migrations: `docker-compose run --rm manage`
-* Test: `docker-compose run --rm manage test`
+* Make Migrations: `docker-compose run --rm app ./manage.py makemigrations`
+* Merge Migrations: `docker-compose run --rm app ./manage.py makemigrations --merge`
+* Run Migrations: `docker-compose run --rm app ./manage.py migrate`
 
 To see the full list of management commands use `help`.
 
 ```plain
-docker-compose run --rm manage help
+docker-compose run --rm app ./manage.py help
 ```
+
+### Automated Tests
+
+* We use [pytest](https://docs.pytest.org/en/latest/contents.html) with the [pytest-django](https://pytest-django.readthedocs.io/en/latest/) plugin for running tests.
+* Please add tests for your code when contributing.
+* Run the test suite using `docker-compose run --rm app pytest`
 
 ### Import Postman collection
 Postman is a free interactive tool for verifying the APIs of your project. You can download it at postman.com/downloads.
