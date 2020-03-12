@@ -1,9 +1,7 @@
-import unittest
 from unittest.mock import patch
 from rest_framework import status, serializers
 from rest_framework.test import APITestCase
 from rest_framework_jwt.settings import api_settings
-from django.core.management import call_command
 from django.contrib.auth import get_user_model
 
 
@@ -12,14 +10,16 @@ jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
 
 class UserauthTests(APITestCase):
 
+    fixtures = ['users']
+
     def setUp(self):
-        """
-        Loads users.json fixture into test DB and directly creates a new user.
-        """
-        call_command('loaddata', 'users.json', verbosity=0)
+        # create a new user
         model = get_user_model()
-        self.person = model.objects.create_user(username='PetuniaPig', email='pretty.piglet@pigfarm.org',
-                                           password='codebuddies')
+        self.person = model.objects.create_user(
+            username='PetuniaPig',
+            email='pretty.piglet@pigfarm.org',
+            password='codebuddies'
+        )
 
 
     def test_jwt_not_authed(self):
