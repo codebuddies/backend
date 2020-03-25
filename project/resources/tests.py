@@ -1,19 +1,20 @@
-from rest_framework import status, serializers
+from rest_framework import status
 from rest_framework.test import APITestCase
 from rest_framework_jwt.settings import api_settings
-from django.core.management import call_command
 
 jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
 jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
 
 class ResourcesTests(APITestCase):
 
-    def setUp(self):
-        call_command('loaddata', 'users.json', verbosity=0)
-        call_command('loaddata', 'resources.json', verbosity=0)
-        call_command('loaddata', 'tagging.json', verbosity=0)
-        call_command('loaddata', 'taggeditems.json', verbosity=0)
+    fixtures = [
+        'users',
+        'resources',
+        'tagging',
+        'taggeditems'
+    ]
 
+    def setUp(self):
         url = '/auth/obtain_token/'
         #to do:  choose a user at random from loaded users.json
         data = {"username": "JuJu", "password": "codebuddies"}

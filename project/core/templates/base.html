@@ -140,19 +140,19 @@
       <h2>docker-compose commands</h2>
       <ul>
         <li>
-          <code>docker-compose run --rm manage createsuperuser</code> - Command
+          <code>docker-compose run --rm app ./manage.py createsuperuser</code> - Command
           to create a superuser
         </li>
         <li>
-          <code>docker-compose run --rm manage tests</code>- Command to run
+          <code>docker-compose run --rm app pytest</code> - Command to run
           tests
         </li>
         <li>
-          <code>docker-compose run --rm makemigrations</code> - Command to make
+          <code>docker-compose run --rm app ./manage.py makemigrations</code> - Command to make
           migrations (necessary if you change the models)
         </li>
         <li>
-          <code>docker-compose run --rm migrate</code> - Command to migrate the
+          <code>docker-compose run --rm app ./manage.py migrate</code> - Command to migrate the
           migrations (necessary if you ran the previous makemigrations step)
         </li>
       </ul>

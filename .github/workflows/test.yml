@@ -17,18 +17,10 @@ jobs:
       - name: Run application
         run: docker-compose up -d web
 
-      - name: Test Resources
-        run: docker-compose run --rm manage test resources
-        if: always()
-
-      - name: Test Users
-        run: docker-compose run --rm manage test users
-        if: always()
-
-      - name: Test UserAuth
-        run: docker-compose run --rm manage test userauth
+      - name: Run test suite
+        run: docker-compose run -T --rm app pytest -v
         if: always()
 
       - name: Check Migrations are up-to-date
-        run: docker-compose run --rm manage makemigrations --check
+        run: docker-compose run -T --rm app ./manage.py makemigrations --check
         if: always()

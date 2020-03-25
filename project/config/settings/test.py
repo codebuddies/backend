@@ -14,8 +14,6 @@ SECRET_KEY = env(
     "DJANGO_SECRET_KEY",
     default="AcnZMguCngDeMgbwXf6l9d2arow2lU9ZkDweNnoCZmZ2qH6pinB4tLhEYI4Fgf6Y",
 )
-# https://docs.djangoproject.com/en/dev/ref/settings/#test-runner
-TEST_RUNNER = "django.test.runner.DiscoverRunner"
 
 # CACHES
 # ------------------------------------------------------------------------------
@@ -26,11 +24,6 @@ CACHES = {
         "LOCATION": "",
     }
 }
-
-# PASSWORDS
-# ------------------------------------------------------------------------------
-# https://docs.djangoproject.com/en/dev/ref/settings/#password-hashers
-PASSWORD_HASHERS = ["django.contrib.auth.hashers.MD5PasswordHasher"]
 
 # TEMPLATES
 # ------------------------------------------------------------------------------
