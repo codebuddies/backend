@@ -8,6 +8,7 @@ COPY ./requirements/ /opt/codebuddies/requirements/
 
 RUN python3 -m pip install --upgrade pip
 RUN pip3 install -r /opt/codebuddies/requirements/local.txt
+RUN pip3 check
 
 RUN groupadd -r uwsgi && useradd -r -g uwsgi uwsgi
 
