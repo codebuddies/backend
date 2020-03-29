@@ -18,7 +18,7 @@ jobs:
         run: docker-compose up -d web
 
       - name: Run test suite
-        run: docker-compose run -T --rm app pytest -v
+        run: docker-compose run -T --rm app pytest -v --cov-report= --cov=.
         if: always()
 
       - name: Check Migrations are up-to-date
