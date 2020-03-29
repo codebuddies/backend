@@ -104,6 +104,7 @@ docker-compose run --rm app ./manage.py help
 * We use [pytest](https://docs.pytest.org/en/latest/contents.html) with the [pytest-django](https://pytest-django.readthedocs.io/en/latest/) plugin for running tests.
 * Please add tests for your code when contributing.
 * Run the test suite using `docker-compose run --rm app pytest`
+* With test coverage report `docker-compose run --rm app pytest --cov-report=term --cov=.`
 
 ### Import Postman collection
 Postman is a free interactive tool for verifying the APIs of your project. You can download it at postman.com/downloads.
