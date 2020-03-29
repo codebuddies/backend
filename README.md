@@ -1,6 +1,10 @@
 # Django proof-of-concept for CodeBuddies V3
 
 ![Test](https://github.com/codebuddies/django-concept/workflows/Test/badge.svg)
+[![codecov](https://codecov.io/gh/codebuddies/backend/branch/master/graph/badge.svg)](https://codecov.io/gh/codebuddies/backend)
+
+
+
 
 Background: https://github.com/codebuddies/codebuddies/issues/1136
 
