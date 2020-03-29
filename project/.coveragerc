@@ -1,5 +1,12 @@
 [run]
-include = project/*
-omit = *migrations*, *tests*
+omit =
+    */apps.py,
+    */config/*,
+    */migrations/*,
+    */tests/*,
+    */tests.py,
+    */*.html,
+    conftest.py,
+    manage.py,
 plugins =
     django_coverage_plugin
