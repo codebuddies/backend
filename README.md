@@ -1,6 +1,10 @@
 # Django proof-of-concept for CodeBuddies V3
 
 ![Test](https://github.com/codebuddies/django-concept/workflows/Test/badge.svg)
+[![codecov](https://codecov.io/gh/codebuddies/backend/branch/master/graph/badge.svg)](https://codecov.io/gh/codebuddies/backend)
+
+
+
 
 Background: https://github.com/codebuddies/codebuddies/issues/1136
 
@@ -104,6 +108,7 @@ docker-compose run --rm app ./manage.py help
 * We use [pytest](https://docs.pytest.org/en/latest/contents.html) with the [pytest-django](https://pytest-django.readthedocs.io/en/latest/) plugin for running tests.
 * Please add tests for your code when contributing.
 * Run the test suite using `docker-compose run --rm app pytest`
+* With test coverage report `docker-compose run --rm app pytest --cov-report=term --cov=.`
 
 ### Import Postman collection
 Postman is a free interactive tool for verifying the APIs of your project. You can download it at postman.com/downloads.

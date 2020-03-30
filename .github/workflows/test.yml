@@ -18,9 +18,12 @@ jobs:
         run: docker-compose up -d web
 
       - name: Run test suite
-        run: docker-compose run -T --rm app pytest -v
-        if: always()
+        run: docker-compose run -T --rm app pytest -v --cov-report=xml --cov=.
 
       - name: Check Migrations are up-to-date
         run: docker-compose run -T --rm app ./manage.py makemigrations --check
-        if: always()
+
+      - name: Upload coverage report to codecov
+        uses: codecov/codecov-action@v1
+        with:
+          file: ./project/coverage.xml
