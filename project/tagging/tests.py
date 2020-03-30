@@ -29,16 +29,16 @@ class CustomTagTests(TestCase):
             {"name": " గ్రాఫ్", "expected_slug": "గరఫ"},
             {"name": "데이터 베이스", "expected_slug": "데이터-베이스"},
 
-            {"name": "हिंदी में जानकारी", "expected_slug": "-जनकर"},
-            {"name": "प्रयास है", "expected_slug": "रयस-ह"},
-            {"name": "stòran-dàta", "expected_slug": "sstòran-dàta"},
-            {"name": "స్వయంచాలకం", "expected_slug": "యచలక"},
+            {"name": "हिंदी में जानकारी", "expected_slug": "हद-म-जनकर"},
+            {"name": "प्रयास है", "expected_slug": "परयस-ह"},
+            {"name": "stòran-dàta", "expected_slug": "stòran-dàta"},
+            {"name": "స్వయంచాలక", "expected_slug": "సవయచలక"},
 
             {"name": "❤", "expected_slug": ""},
             {"name": "🐸", "expected_slug": "_1"},
         ]
 
-        for tag in test_tags:
-            t = CustomTag(name=tag["name"])
-            t.save()
-            self.assertEqual(t.slug, tag["expected_slug"])
+        for entry in test_tags:
+            tag = CustomTag(name=entry["name"])
+            tag.save()
+            self.assertEqual(tag.slug, entry["expected_slug"])
