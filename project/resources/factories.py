@@ -31,7 +31,7 @@ class ResourceFactory(DjangoModelFactory):
     description = Faker("text")
     url = Faker("uri")
     referring_url = Faker("uri")
-    other_rerring_source = Faker("uri")
+    other_referring_source = Faker("uri")
     user = SubFactory(UserFactory)
     media_type = choice(RESOURCE_TYPES)
     paid = choice(["True", "False"])
