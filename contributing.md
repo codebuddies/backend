@@ -1,43 +1,60 @@
+## **Contributing CodeBuddies website version 3 (CBV3)**
+
 ## **Setup**
 
-Although it is possible to run the website locally, we recommend you run CodeBuddies locally using [Docker](https://www.docker.com/get-started).
+Although it is possible to run the website locally, we recommend you run CodeBuddies locally using [Docker](https://www.docker.com/get-started).  
 
 These instructions have been used on the following operating systems:  
 * Linux
 * Mac OS
-* Windows 10 Pro
+* Windows 10 Pro (Windows 10 Home is supported by Docker Desktop at the moment)
 
-  Please note that Windows 10 Home is not supported by Docker Desktop at this time
+### Prerequisites
 
-  Docker is expected to be installed before the website is deployed. Follow the guide [here](https://www.docker.com/products/docker-desktop) to install it if you have not done so
 
-#### Steps
+
+#### Setup 
+
+Docker is expected to be installed before the website is deployed. Follow the guide [here](https://www.docker.com/products/docker-desktop) to install it if you have not done so
+
 1. Fork this repository. See [Fork a repo](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) for help if needed.   
-2. Clone your fork. This creates a copy on your local computer.
-  For more help see [Cloning a repository](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
+2. Clone your fork.
 
- For Mac OS or Linux
- ```plain
- git clone git@github.com::codebuddies/backend.git cb-backend
- ```
- For Windows follow the instructions on the Cloning a repository link above
-
- We name the folder *cb-backend* but you can change the folder name you desire
+  ```plain
+  git clone git@github.com::codebuddies/backend.git cb-backend
+  ```
+  Clone the forked repository to your computer using the command `git clone` and save as `cb-backend`. This command works on MacOS and Linux. For details or Windows user, follow the instructions on [Cloning a repository](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
 
 3. Navigate into the project directory
   ```plain
   cd cb-backend
   ```
-4. Start the local development environment (for Windows user please ensure your docker is up running)
+
+4. Start the local development environment
+
+  (for Windows user please ensure your docker is up running)
+
   ```plain
   docker-compose up -d
   ```
+
   This will run the following components:
   * Nginx, a web server: http://localhost:8000
   * Adminer, a DB front-end: http://localhost:8001
   * Mailhog, a dummy mailbox: http://localhost:8025
   * A PostgreSQL database
-  * Django web application
+  * Django web application  
+
+
+
+
+
+5. Create a superuser so that you can log into http://localhost:8000/admin by running the following in your terminal:  
+  ```plain
+  docker-compose run --rm app ./manage.py createsuperuser
+  ```
+
+
 
   You can view the application or make API calls by using the Nginx URL.
 
@@ -52,10 +69,7 @@ These instructions have been used on the following operating systems:
   docker-compose down
   ```
 
-5. Create a superuser so that you can log into http://localhost:8000/admin by running the following in your terminal:  
-  ```plain
-  docker-compose run --rm app ./manage.py createsuperuser
-  ```
+
 
 ### Editing the Code
 
