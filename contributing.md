@@ -11,9 +11,10 @@ These instructions have been used on the following operating systems:
 
 ### Prerequisites
 
+  Contributors are expected to have fundamental knowledge of the [technologies used for CBV3](README.md#technologies-used).
+  (recommendations of tutorials?)
 
-
-#### Setup 
+#### Setup
 
 Docker is expected to be installed before the website is deployed. Follow the guide [here](https://www.docker.com/products/docker-desktop) to install it if you have not done so
 
@@ -43,7 +44,20 @@ Docker is expected to be installed before the website is deployed. Follow the gu
   * Adminer, a DB front-end: http://localhost:8001
   * Mailhog, a dummy mailbox: http://localhost:8025
   * A PostgreSQL database
-  * Django web application  
+  * Django web application   
+
+
+  + __Web Server (Nginx)__  
+    You can view the application or make API calls by using the Nginx URL
+
+  + __Accessing Database (Adminer)__  
+    You can access the database through the Adminer front-end or using a loca PostgreSQL client with the following command:
+
+    ```plain
+    postgres://babyyoda:mysecretpassword@localhost:5432/codebuddies
+    ```
+
+
 
 
 
