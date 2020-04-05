@@ -1,4 +1,3 @@
-from uuid import uuid1
 from random import randint
 from rest_framework import status
 from rest_framework.test import APITestCase
@@ -6,7 +5,6 @@ from rest_framework_jwt.settings import api_settings
 from users.factories import UserFactory
 from resources.factories import  ResourceFactory
 from factory import PostGenerationMethodCall, LazyAttribute, create, create_batch
-from factory.fuzzy import FuzzyChoice
 
 
 
