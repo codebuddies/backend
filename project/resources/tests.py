@@ -1,3 +1,4 @@
+from unittest import skip
 from random import randint
 from rest_framework import status
 from rest_framework.test import APITestCase
@@ -49,8 +50,8 @@ class ResourcesTests(APITestCase):
 
 
     def test_view_one_resource(self):
-        new_resource = create(ResourceFactory, guid='96f1ee80-59f4-11ea-9149-dca9047779fe')
-        url = '/api/v1/resources/96f1ee80-59f4-11ea-9149-dca9047779fe/'
+        new_resource = create(ResourceFactory)
+        url = f'/api/v1/resources/{new_resource.guid}/'
 
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -59,23 +60,28 @@ class ResourcesTests(APITestCase):
 
 
     def test_patch_one_resource(self):
-        new_resource = create(ResourceFactory, guid='96f1a740-59f4-11ea-9149-dca9047779fe')
+        new_resource = create(ResourceFactory)
         url = f'/api/v1/resources/{new_resource.guid}/'
 
         data= {
             "description": "A _diabolically irresponsible_ talk in which I celebrate modern Python coding by **abandoning all backwards compatibility** THE END",
-            "author": "David Beazley"
+            "author": "David Beazley",
+            "tags": ["test tags", "testing", "python"]
         }
 
         response = self.client.patch(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['description'], data['description'])
         self.assertEqual(response.data['author'], data['author'])
+        self.assertEqual(
+            sorted(item['name'] for item in response.data['tags']),
+            sorted(data['tags'])
+        )
 
 
     def test_delete_one_resource(self):
         records = create_batch(ResourceFactory, 10)
-        new_resource = create(ResourceFactory, guid='96f4dd16-59f4-11ea-9149-dca9047779fe')
+        new_resource = create(ResourceFactory)
         url = f'/api/v1/resources/{new_resource.guid}/'
 
         response = self.client.delete(url)
@@ -88,6 +94,7 @@ class ResourcesTests(APITestCase):
         self.assertEqual(count_check.data['count'], 10)
 
 
+    @skip('https://github.com/codebuddies/backend/issues/125')
     def test_create_one_resource(self):
         url = '/api/v1/resources/'
         data = {"title": "The Modern JavaScript Tutorial",
@@ -100,7 +107,7 @@ class ResourcesTests(APITestCase):
                      "created":"2019-09-19T03:27:06.485Z",
                      "modified":"2019-09-19T03:27:06Z",
                      "media_type":"WEB",
-                     "tags":["JavaScript", "FrontEnd"]
+                     "tags": ["JavaScript", "FrontEnd"]
              }
 
         response = self.client.post(url, data, format='json')
