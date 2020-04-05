@@ -1,9 +1,10 @@
+from django.core.exceptions import ValidationError
 from django.test import TestCase
 from .models import CustomTag
 
 
 class CustomTagTests(TestCase):
-    def test_slugging(self):
+    def test_valid_slugs(self):
         test_tags = [
             {"name": "programming", "expected_slug": "programming"},
             {"name": "PyCon", "expected_slug": "pycon"},
@@ -33,12 +34,34 @@ class CustomTagTests(TestCase):
             {"name": "प्रयास है", "expected_slug": "परयस-ह"},
             {"name": "stòran-dàta", "expected_slug": "stòran-dàta"},
             {"name": "స్వయంచాలక", "expected_slug": "సవయచలక"},
-
-            {"name": "❤", "expected_slug": ""},
-            {"name": "🐸", "expected_slug": "_1"},
         ]
 
         for entry in test_tags:
             tag = CustomTag(name=entry["name"])
             tag.save()
             self.assertEqual(tag.slug, entry["expected_slug"])
+
+    def test_invalid_slugs(self):
+        invalid_tag_names = [
+            "❤🐸",
+            "🐸",
+            "  %",
+            "//",
+        ]
+        for name in invalid_tag_names:
+            with self.assertRaises(ValidationError):
+                tag = CustomTag(name=name)
+                tag.save()
+
+    def test_duplicates(self):
+        tag1 = CustomTag(name='javascript')
+        tag1.save()
+
+        # fail if we try to generate more tags with the same slug
+        with self.assertRaises(ValidationError):
+            tag2 = CustomTag(name='Javascript')
+            tag2.save()
+
+        with self.assertRaises(ValidationError):
+            tag3 = CustomTag(name='JaVascripT%/')
+            tag3.save()
