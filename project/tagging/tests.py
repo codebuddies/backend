@@ -30,6 +30,7 @@ class CustomTagTests(TestCase):
             {"name": "پژوهش ", "expected_slug": "پژوهش"},
             {"name": " గ్రాఫ్", "expected_slug": "గరఫ"},
             {"name": "데이터 베이스", "expected_slug": "데이터-베이스"},
+            {"name": "stòran-dàta", "expected_slug": "stòran-dàta"},
         ]
 
         for entry in test_tags:
@@ -42,7 +43,6 @@ class CustomTagTests(TestCase):
         test_tags = [
             {"name": "हिंदी में जानकारी", "expected_slug": "TODO"},
             {"name": "प्रयास है", "expected_slug": "TODO"},
-            {"name": "stòran-dàta", "expected_slug": "TODO"},
             {"name": "స్వయంచాలక", "expected_slug": "TODO"},
         ]
 
