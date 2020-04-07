@@ -3,7 +3,7 @@ from celery.result import EagerResult
 
 
 from users.tasks import get_users_count
-from users.tests.factories import UserFactory
+from users.factories import UserFactory
 
 
 @pytest.mark.django_db
