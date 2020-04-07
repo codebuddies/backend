@@ -8,7 +8,12 @@ from django.utils.translation import ugettext_lazy as _
 
 class CustomTag(TagBase):
     guid = models.UUIDField(default=uuid.uuid1, editable=False)
-    slug = models.SlugField(verbose_name=_("Slug"), unique=True, max_length=100)
+    slug = models.SlugField(
+        verbose_name=_("Slug"),
+        unique=True,
+        max_length=100,
+        allow_unicode=True
+    )
     name = models.CharField(verbose_name=_("Name"), unique=True, max_length=100)
 
     class Meta:
@@ -17,15 +22,13 @@ class CustomTag(TagBase):
         verbose_name_plural = _("Tags")
         app_label = 'tagging'
 
+    def save(self, *args, **kwargs):
+        self.slug = self.slugify(self.name)
+        self.full_clean()
+        return super().save(*args, **kwargs)
 
     def slugify(self, tag, i=None):
-        slug = slugify(tag, allow_unicode=True)
-
-        if i is not None:
-            slug += "_%d" % i
-
-        return slug
-
+        return slugify(tag, allow_unicode=True)
 
 class TaggedItems(GenericTaggedItemBase, TaggedItemBase):
     tag = models.ForeignKey(CustomTag,
