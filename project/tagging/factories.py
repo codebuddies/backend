@@ -31,3 +31,4 @@ class TaggedItemsFactory(DjangoModelFactory):
 
     class Meta:
         model = TaggedItems
+        django_get_or_create = ["content_type", "object_id", "tag"]
