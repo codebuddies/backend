@@ -66,11 +66,11 @@ class Command(BaseCommand):
     def create_users(self, num):
         # Create random users.
         # All users have the password 'codebuddies'.
-        return create_batch(
-            UserFactory,
-            num,
-            password=PostGenerationMethodCall('set_password', 'codebuddies')
-        )
+        return [
+            UserFactory(
+                password=PostGenerationMethodCall('set_password', 'codebuddies')
+            ) for _ in range(0, num)
+        ]
 
     def create_tags(self, num):
         initial_tag_count = CustomTag.objects.all().count()
