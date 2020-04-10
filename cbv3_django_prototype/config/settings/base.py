@@ -83,6 +83,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "cbv3_django_prototype.users.apps.UsersConfig",
     "resources",
+    "projects",
     'userauth.apps.UserauthConfig'
     # Your stuff: custom apps go here
 ]

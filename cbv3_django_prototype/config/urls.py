@@ -20,6 +20,7 @@ urlpatterns = [
 
     # Your stuff: custom urls includes go here
     path('api/v1/', include('resources.urls')),
+    path('api/v1/', include('projects.urls')),
     path('auth/', include('userauth.urls', namespace="userauth")),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
