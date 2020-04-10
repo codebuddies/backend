@@ -84,15 +84,12 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-<<<<<<< HEAD:cbv3_django_prototype/config/settings/base.py
     "cbv3_django_prototype.users.apps.UsersConfig",
     "resources",
     "projects",
-=======
     "users.apps.UsersConfig",
     "resources.apps.ResourcesConfig",
     "tagging.apps.TaggingConfig",
->>>>>>> f2515e0a5472dfcd1d20c49c780382e7f9b5370c:project/config/settings/base.py
     'userauth.apps.UserauthConfig'
     # Your stuff: custom apps go here
 ]

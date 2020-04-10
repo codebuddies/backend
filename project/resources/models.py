@@ -4,13 +4,13 @@ from django.conf import settings
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth import get_user_model
-<<<<<<< HEAD:cbv3_django_prototype/cbv3_django_prototype/resources/models.py
+
 from django.apps import apps
 
-=======
+
 from tagging.managers import CustomTaggableManager
 from tagging.models import CustomTag, TaggedItems
->>>>>>> f2515e0a5472dfcd1d20c49c780382e7f9b5370c:project/resources/models.py
+
 
 
 def get_sentinel_user():
@@ -38,7 +38,7 @@ class Resource(models.Model):
         ('WEB', 'Website')
     ]
 
-<<<<<<< HEAD:cbv3_django_prototype/cbv3_django_prototype/resources/models.py
+
     # dynamically load projects model
     Projects = apps.get_model('projects', 'Projects')
 
@@ -46,9 +46,9 @@ class Resource(models.Model):
     projects = models.ManyToManyField(Projects)
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid1, editable=False)
-=======
+
     guid = models.UUIDField(default=uuid.uuid1, editable=False)
->>>>>>> f2515e0a5472dfcd1d20c49c780382e7f9b5370c:project/resources/models.py
+
 
     title = models.CharField(max_length=200)
 
