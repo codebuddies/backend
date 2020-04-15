@@ -33,6 +33,7 @@ services:
       sh -c "python /opt/codebuddies/manage.py collectstatic --clear --no-input &&
              python /opt/codebuddies/manage.py migrate &&
              uwsgi --ini /opt/codebuddies/uwsgi.ini"
+    working_dir: /opt/codebuddies
     volumes:
       - ./project:/opt/codebuddies
     environment:
@@ -76,18 +77,3 @@ services:
     restart: on-failure
     ports:
       - 8025:8025
-
-  # Manager allows you to run Django management tasks on the application.
-  manage:
-    container_name: manage
-    restart: on-failure
-    build: ./project
-    command: shell
-    entrypoint: /usr/local/bin/python3 /opt/codebuddies/manage.py
-    volumes:
-      - ./project:/opt/codebuddies
-    environment:
-      - DATABASE_URL=postgres://babyyoda:mysecretpassword@db:5432/codebuddies
-      - EMAIL_HOST=mailhog
-    depends_on:
-      - db

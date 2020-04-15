@@ -8,7 +8,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('resources', '0005_auto_20200118_1036'),
-        ('tagging', '__latest__')
+        ('tagging', '0001_initial')
     ]
 
     operations = [
