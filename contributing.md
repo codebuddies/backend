@@ -96,22 +96,6 @@ To stop the application and remove all containers, run the following
 
   Merge migrations: `docker-compose run --rm manage makemigrations --merge`
 
-## Other Tasks
-
-### Logs
-  View logs from all containers
-
-  ```plain
-  docker-compose logs
-  ```
-  View logs from a single container (in this case the `app` container)
-  ```plain
-  docker-compose logs app
-  ```
-  You can use the same structure to view logs for the other containers: `nginx`, `db`, `mailhog`, `adminer`, `app`
-
-  To tail logs in console, remove the detach flag `-d` from `docker-compose up` command when you start the application.
-
 ## **Import Postman Collection**
 Postman is a free interactive tool for verifying the APIs of your project in an isolated environment -- think of it as a virtual playground where we can safely experience and edit our API before we deploy it on your web app -- just like virtual envrionments help us isolate our python dependencies. You can download it at [postman.com/downloads](http://postman.com/downloads).
 
@@ -119,82 +103,89 @@ We've created a shared Postman collection (a .json file) in the postman folder t
 
 ### Setup
 
-1. Downloading Postman
+1. Downloading Postman  
+  Please ensure the installed version is later than v7.6.0 if you have previously installed the program.  
 
-Please ensure the installed version is later than v7.6.0 if you have previously installed the program.
+  (Recommendation for Linux user)  
+  [Flatpak](https://flatpak.org/), which can be downloaded from your Liunx distribution (distro) manager, is recommended to manage Postman.  
 
-(linux)?
+  After setting up flatpak, install postman and enter "yes"/"y" for all the questions it will ask. Flatpak is designed to provide the most up-to-date versions of software for most distros, so if you have the option, use Flatpak to guarantee Linux OS compatibility and to keep Postman up-to-date.  
 
-  - Distro package manager:
-    use the search feature to find in your package manager  
-    (RECOMMENDED) Flatpak
-  After setting up flatpak it through flatpak using flatpack install postman and enter "yes"/"y" for all the questions it will ask. Flatpak is designed to provide the most up-to-date versions of software for most distros, so if you have the option, use Flatpak to guarantee Linux OS compatibility and to keep Postman up-to-date.
 
-  2. open Postman, click on file -> import -> import the .json file
+  2. Open Postman, click on File -> Import -> Import the .json file (path: `cb-backend/postman/CodeBuddies.postman_collection.json`)
+
   3. Click the settings gear icon on the far top right (next to the eye icon) and click to add a new environment.
-  4. name your environment `dev` and create a variable call `api_url`. Give it a value of `https://localhost:8000`, which is the URL of your Django dev environment when it is running.
-  5. Now, as long as you have the Django app (https://localhost:8000) running, you should be able to make requests like POST Create User and POST Authenticate. Click on this link to see what you should expect: https://imgur.com/hd9VB6k
 
-5. Now, as long you have the Django app (https://localhost:8000) running, you should be able to make requests like `POST Create User` and `POST Authenticate` by clicking on the blue "Send" button in Postman.
+  4. Name your environment `dev` and create a variable call `api_url`. Give it a value of `https://localhost:8000`, which is the URL of your Django dev environment when it is running.  
+
+  5. Now, as long as you have the Django app (https://localhost:8000) running, you should be able to make requests like `POST Create User` and `POST Authenticate` by clicking on the blue "Send" button in Postman. Click on this link to see what you should expect: https://imgur.com/hd9VB6k
 
   POST Create User will create a new user in your localhost:8000 running Django app, and making a request to POST Authenticate will authenticate whether or not that user exists.
 
   ![screenshot of Postman environment variable setup](https://i.imgur.com/6Uq9XQp.png)
 
+## **Docker Management**
 
-  ## Removing Everything
+### Docker Logs
 
-  To remove all containers run the following:
+  The `-d` from `docker-compose up -d` allows you to detach logs on the console. To tail logs in the console, type in command `docker-compose up` when you start the application
 
-  ```plain
-  docker-compose rm
-  ```
-
-  This will leave a copy of the data volume (holding the PostgreSQL data) behind. To remove that you will need to identify and remove the data volume.
+  View logs from all containers
 
   ```plain
-  docker volume ls
-
-  DRIVER              VOLUME NAME
-  local               django-concept_db_data
+  docker-compose logs
   ```
 
-  Note the name of the data volume, in this case `django-concept_db_data` and delete it.
+  View logs from a single container (in this case the `app` container)
 
   ```plain
-  docker volume rm django-concept_db_data
+  docker-compose logs app
   ```
 
-  Note: it is likely that cached copies of your container images will be retained by Docker on your local machine. This is done to speed things up if you require these images in future. To completely remove unused container images and networks, we recommend you follow Docker [pruning guide](https://docs.docker.com/config/pruning/).
+  You can use the same structure to view logs for the other containers: `nginx`, `db`, `mailhog`, `adminer`, `app`
 
-  ## Proof-of-concept Goals
+### View docker containers / images / volumes
 
-  A resource datastore
+  To view specific items, run the following:
+  ```plain
+  docker container ls
+  ```
+  (Replace `container` to `image` or `volume` to view details)
 
-  - save resource
-  - delete resource
-  - update resource
-  - list resource
-  - search resources
 
-  Resource:
+### Removing Everything
 
-  - title
-  - description
-  - type
-  - credit
-  - url
-  - referrer
+  It is _strongly recommended_ to stop the application using `docker-compose down` which stops all the containers and  remove all the containers completely. Using this method will leave a copy of the data volume(holding the PostgreSQL data) behind and the images behind.
+
+  To remove items on volume or image, run the following:  
+  ```plain
+  docker volume prune
+  ```
+  (Replace `volume` with `image` to do the same on image)
+  Remove specific volume
+  ```plain
+  docker volume rm cb-backend_db_data
+  ```
+
+Note: it is likely that cached copies of your container images will be retained by Docker on your local machine. This is done to speed things up if you require these images in future. To completely remove unused container images and networks, we recommend you follow Docker [pruning guide](https://docs.docker.com/config/pruning/).
+
+## **Proof-of-concept Goals**
+
+| Resource datastore | Resource |
+| ------ | ------ |
+|- save resource<br>- delete resource<br>- update resource<br>- list resource<br>- search resources |- title<br>- description<br>- type<br>- credit<br>- url<br>- referrer|
+
 
   The start of a resource bookmarking/archiving service.
 
   - Calendar/hangouts
     - How easy would it be to make a calendar widget that lets users block out times they're free for hangouts?
 
-  # Findings
+# Findings
 
-  # Technologies Used
-  =======
-  Please see [instructions here](https://github.com/codebuddies/django-concept/wiki/Contribution-instructions)
+# Technologies Used
+=======
 
-  This project is not deployed yet, but will interact as the API supporting [https://github.com/codebuddies/frontend](https://github.com/codebuddies/frontend)
+Please see [instructions here](https://github.com/codebuddies/django-concept/wiki/Contribution-instructions)
+
+This project is not deployed yet, but will interact as the API supporting [https://github.com/codebuddies/frontend](https://github.com/codebuddies/frontend)
