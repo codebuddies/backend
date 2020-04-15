@@ -12,7 +12,6 @@ These instructions have been used on the following operating systems:
 ### Prerequisites
 
   Contributors are expected to have fundamental knowledge of the [technologies used for CBV3](README.md#technologies-used).
-  (recommendations of tutorials?)
 
 #### Steps
 
