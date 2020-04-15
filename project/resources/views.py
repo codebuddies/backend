@@ -2,11 +2,11 @@ from .models import Resource
 from .serializers import ResourceSerializer
 from rest_framework import filters, viewsets
 from rest_framework import mixins
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 
 class ResourceView(viewsets.ModelViewSet, mixins.CreateModelMixin):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
     queryset = Resource.objects.all()
 
@@ -15,10 +15,8 @@ class ResourceView(viewsets.ModelViewSet, mixins.CreateModelMixin):
     search_fields = ['guid', '^media_type', 'title', 'description']
     lookup_field = 'guid'
 
-
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
-
 
     def patch(self, request, guid):
         resource_object = self.get_object(guid)
@@ -27,6 +25,7 @@ class ResourceView(viewsets.ModelViewSet, mixins.CreateModelMixin):
             serializer_class.save()
             return JsonResponse(code=201, data=serializer_class.data)
         return JsonResponse(code=400, data="wrong parameters")
+
 
 '''
 class DynamicSearchFilter(filters.SearchFilter):
