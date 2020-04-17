@@ -51,18 +51,11 @@ class PublicResourcesTests(APITestCase):
         new_resource = create(ResourceFactory)
         url = f'/api/v1/resources/{new_resource.guid}/'
 
-        data = {
-            "description": "A _diabolically irresponsible_ talk in which I celebrate modern Python coding by **abandoning all backwards compatibility** THE END",
-            "author": "David Beazley",
-            "tags": ["test tags", "testing", "python"]
-        }
-
-        response = self.client.patch(url, data, format='json')
+        response = self.client.patch(url, {}, format='json')
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
     # Deleting a resource without a token fails
     def test_delete_one_resource(self):
-        records = create_batch(ResourceFactory, 10)
         new_resource = create(ResourceFactory)
         url = f'/api/v1/resources/{new_resource.guid}/'
 
@@ -72,14 +65,7 @@ class PublicResourcesTests(APITestCase):
     # Creating a resource without a token fails
     def test_create_a_resource(self):
         url = '/api/v1/resources/'
-        data = {
-            "title": "How to automate the boring stuff",
-            "url": "https://https://automatetheboringstuff.com/",
-            "author": "Al Sweigart",
-            "tags": ["javascript"],
-            "description": "Practical programming for total beginners."
-        }
-        response = self.client.post(url, data, format='json')
+        response = self.client.post(url, {}, format='json')
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
 
