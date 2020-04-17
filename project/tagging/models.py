@@ -31,7 +31,11 @@ class CustomTag(TagBase):
         return slugify(tag, allow_unicode=True)
 
 class TaggedItems(GenericTaggedItemBase, TaggedItemBase):
-    tag = models.ForeignKey(CustomTag,
-                            on_delete=models.CASCADE,
-                            related_name="%(app_label)s_%(class)s_items",
-                            )
+    tag = models.ForeignKey(
+        CustomTag,
+        on_delete=models.CASCADE,
+        related_name="%(app_label)s_%(class)s_items",
+    )
+
+    class Meta:
+        unique_together = ("content_type", "object_id", "tag")

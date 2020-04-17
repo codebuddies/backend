@@ -65,6 +65,8 @@ docker-compose down
 
 5. Create a superuser so that you can log into http://localhost:8000/admin by running the following in your terminal: `$ docker-compose run --rm app ./manage.py createsuperuser`
 
+6. You can populate the database with some random test data for development purposes by running `$ docker-compose run --rm app ./manage.py init_data`. All user accounts created by this command have the password `codebuddies`.
+
 ## Editing Code
 
 With the local environment running, you can modify the application code in your editor of choice. As you save changes, the application should reload automatically. There should be no need to restart containers to see code changes.

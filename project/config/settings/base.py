@@ -84,6 +84,7 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
+    "core.apps.CoreConfig",
     "users.apps.UsersConfig",
     "resources.apps.ResourcesConfig",
     "tagging.apps.TaggingConfig",

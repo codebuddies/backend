@@ -18,7 +18,7 @@ class CustomTagFactory(DjangoModelFactory):
 
     class Meta:
         model = CustomTag
-        django_get_or_create = ["guid"]
+        django_get_or_create = ["name"]
 
 
 class TaggedItemsFactory(DjangoModelFactory):
@@ -31,3 +31,4 @@ class TaggedItemsFactory(DjangoModelFactory):
 
     class Meta:
         model = TaggedItems
+        django_get_or_create = ["content_type", "object_id", "tag"]
