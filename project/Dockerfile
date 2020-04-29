@@ -4,6 +4,7 @@ RUN apt-get update && \
     apt-get install -y && \
     pip3 install uwsgi
 
+RUN mkdir -p /opt/codebuddies/requirements/
 COPY ./requirements/ /opt/codebuddies/requirements/
 
 RUN python3 -m pip install --upgrade pip
