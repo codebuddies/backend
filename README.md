@@ -76,6 +76,36 @@ $ docker-compose run --rm app ./manage.py init_data
 
 All user accounts created by this command have the password `codebuddies`.
 
+See the `init_data --help` command for more information:
+
+```bash
+$ docker-compose run --rm app ./manage.py init_data --help
+
+usage: manage.py init_data [-h] [--clear-db] [--num-users NUM-USERS]
+                           [--num-tags NUM-TAGS]
+                           [--num-resources NUM-RESOURCES] [--version]
+                           [-v {0,1,2,3}] [--settings SETTINGS]
+                           [--pythonpath PYTHONPATH] [--traceback]
+                           [--no-color] [--force-color]
+
+Initialize the DB with some random fake data for testing and development
+
+optional arguments:
+  --clear-db            Clear existing data from the DB before creating test
+                        data
+  --num-users NUM-USERS
+                        Number of `User` objects to create (default 10)
+  --num-tags NUM-TAGS   Number of `Tag` objects to create (default 10)
+  --num-resources NUM-RESOURCES
+                        Number of `Resource` objects to create (default 10)
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+```
+
+[See PR 127]
+
+
 ---
 
 To stop the application and remove all containers, run the following:
@@ -197,20 +227,20 @@ $ docker volume rm django-concept_db_data
 
 A resource datastore
 
-- [ ] save resource
-- [ ] delete resource
-- [ ] update resource
-- [ ] list resource
-- [ ] search resources
+- [x] save resource
+- [x] delete resource
+- [x] update resource
+- [x] list resource
+- [x] search resources
 
 Resource:
 
-- [ ] title
-- [ ] description
-- [ ] type
-- [ ] credit
-- [ ] url
-- [ ] referrer
+- [x] title
+- [x] description
+- [x] type
+- [x] credit
+- [x] url
+- [x] referrer
 
 The start of a resource bookmarking/archiving service.
 
@@ -219,17 +249,19 @@ The start of a resource bookmarking/archiving service.
 
 ## Contributing
 
-Please see [how to contribute here]
+Please see [How to contribute here]
 
 <!-- TODO: # Findings -->
 
 <!-- TODO: # Technologies Used -->
 
-[how to contribute here]: https://github.com/codebuddies/django-concept/wiki/Contribution-instructions
+
 [Background]: https://github.com/codebuddies/codebuddies/issues/1136
-[The API spec all the proof-of-concept]: https://app.swaggerhub.com/apis-docs/billglover/CodeBuddies/0.0.1
-[Crowdsourced brainstorm of problems we want to solve]: https://pad.riseup.net/p/BecKdThFsevRmmG_tqFa-keep
-[https://github.com/codebuddies/frontend]: https://github.com/codebuddies/frontend
-[Getting Started]: https://www.docker.com/products/docker-desktop
-[Fork a repo]: https://help.github.com/en/github/getting-started-with-github/fork-a-repo
 [Cloning a repository]: https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository
+[Crowdsourced brainstorm of problems we want to solve]: https://pad.riseup.net/p/BecKdThFsevRmmG_tqFa-keep
+[Fork a repo]: https://help.github.com/en/github/getting-started-with-github/fork-a-repo
+[Getting Started]: https://www.docker.com/products/docker-desktop
+[How to contribute here]: https://github.com/codebuddies/django-concept/wiki/Contribution-instructions
+[https://github.com/codebuddies/frontend]: https://github.com/codebuddies/frontend
+[See PR 127]: https://github.com/codebuddies/backend/pull/129
+[The API spec all the proof-of-concept]: https://app.swaggerhub.com/apis-docs/billglover/CodeBuddies/0.0.1
