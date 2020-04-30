@@ -9,13 +9,13 @@ These instructions have been used on the following operating systems:
 * Mac OS
 * Windows 10 Pro (Windows 10 Home is supported by Docker Desktop at the moment)
 
-### Prerequisites
+### Fundamental Knowledge
 
   Contributors are expected to have fundamental knowledge of the [technologies used for CBV3](README.md#technologies-used).
 
 #### Steps
 
-Docker is expected to be installed before the website is deployed. Follow the guide [here](https://www.docker.com/products/docker-desktop) to install it if you have not done so
+Docker is expected to be installed before the website is deployed. Follow the guide [here](https://www.docker.com/products/docker-desktop) to install it if you have not done so.
 
 1. Fork this repository. See [Fork a repo](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) for help if needed.   
 2. Clone your fork.
@@ -32,7 +32,7 @@ Docker is expected to be installed before the website is deployed. Follow the gu
 
 4. Start the local development environment
 
-  (for Windows user please ensure your docker is up running)
+  (for Windows users please ensure your docker is up running)
 
   ```plain
   docker-compose up -d
@@ -105,7 +105,7 @@ We've created a shared Postman collection (a .json file) in the postman folder t
 1. Downloading Postman  
   Please ensure the installed version is later than v7.6.0 if you have previously installed the program.  
 
-  (Recommendation for Linux user)  
+  (Recommendation for Linux users)  
   [Flatpak](https://flatpak.org/), which can be downloaded from your Liunx distribution (distro) manager, is recommended to manage Postman.  
 
   After setting up flatpak, install postman and enter "yes"/"y" for all the questions it will ask. Flatpak is designed to provide the most up-to-date versions of software for most distros, so if you have the option, use Flatpak to guarantee Linux OS compatibility and to keep Postman up-to-date.  
@@ -154,7 +154,7 @@ We've created a shared Postman collection (a .json file) in the postman folder t
 
 ### Removing Everything
 
-  It is _strongly recommended_ to stop the application using `docker-compose down` which stops all the containers and  remove all the containers completely. Using this method will leave a copy of the data volume(holding the PostgreSQL data) behind and the images behind.
+  It is _strongly recommended_ to stop the application using `docker-compose down` which stops all the containers and remove all the containers completely. Using this method will leave a copy of the data volume(holding the PostgreSQL data) behind and the images behind.
 
   To remove items on volume or image, run the following:  
   ```plain
