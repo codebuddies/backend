@@ -4,11 +4,19 @@ from userauth.serializers import UserSerializer
 from tagging.serializers import TagSerializer, TagsSerializerField
 
 
+class MediaTypeSerializerField(serializers.ChoiceField):
+
+    def to_representation(self, value):
+            return "" if not value else self.choices[value]
+
+    def to_internal_value(self,  value):
+        return value
+
 
 class ResourceSerializer(TagSerializer, serializers.ModelSerializer):
 
     tags = TagsSerializerField(model_field='tags', default='')
-    media_type = serializers.SerializerMethodField()
+    media_type = MediaTypeSerializerField(choices=Resource.RESOURCE_TYPES, allow_blank=True)
     user = UserSerializer(read_only=True)
 
     class Meta:
@@ -31,8 +39,3 @@ class ResourceSerializer(TagSerializer, serializers.ModelSerializer):
             'paid',
             'tags'
         )
-
-
-    def get_media_type(self, obj):
-        return obj.get_media_type_display()
-
