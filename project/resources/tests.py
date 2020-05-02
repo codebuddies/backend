@@ -1,4 +1,5 @@
 from unittest import skip
+from pytest import raises
 from random import randint
 from rest_framework import status
 from rest_framework.test import APITestCase
@@ -186,3 +187,22 @@ class AuthedResourcesTests(APITestCase):
         self.assertEqual(response.data['title'], "The Best Medium-Hard Data Analyst SQL Interview Questions")
         self.assertEqual(response.data['other_referring_source'], "twitter.com/lpnotes")
         self.assertEqual(response.data['media_type'], '')
+
+    def test_create_one_resource_with_invalid_media_type(self):
+        with raises(KeyError, match=r"The media type should be one of the following:"):
+            url = '/api/v1/resources/'
+            data = {"title": "The Best Medium-Hard Data Analyst SQL Interview Questions",
+                    "author": "Zachary Thomas",
+                    "description": "The first 70% of SQL is pretty straightforward but the remaining 30% can be pretty tricky.  These are good practice problems for that tricky 30% part.",
+                    "url": "https://quip.com/2gwZArKuWk7W",
+                    "referring_url": "https://quip.com",
+                    "other_referring_source": "twitter.com/lpnotes",
+                    "date_published": "2020-04-19T03:27:06Z",
+                    "created": "2020-05-02T03:27:06.485Z",
+                    "modified":  "2020-05-02T03:27:06.485Z",
+                    "media_type": "DOP",
+                    "tags": ["SQLt", "BackEnd", "Databases"]
+                    }
+
+            response = self.client.post(url, data, format='json')
+
