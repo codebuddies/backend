@@ -145,8 +145,7 @@ class AuthedResourcesTests(APITestCase):
         self.assertEqual(response.data['title'], new_resource.title)
         self.assertEqual(response.data['description'], new_resource.description)
 
-    @skip('https://github.com/codebuddies/backend/issues/125')
-    def test_create_one_resource(self):
+    def test_create_one_resource_with_media_type(self):
         url = '/api/v1/resources/'
         data = {"title": "The Modern JavaScript Tutorial",
                 "author": "iliakan",
@@ -165,4 +164,25 @@ class AuthedResourcesTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data['title'], "The Modern JavaScript Tutorial")
         self.assertEqual(response.data['other_referring_source'], "iliakan@javascript.info")
-        self.assertEqual(response.data['media_type'], 'WEB')
+        self.assertEqual(response.data['media_type'], 'Website')
+
+    def test_create_one_resource_without_media_type(self):
+        url = '/api/v1/resources/'
+        data = {"title": "The Best Medium-Hard Data Analyst SQL Interview Questions",
+                "author": "Zachary Thomas",
+                "description": "The first 70% of SQL is pretty straightforward but the remaining 30% can be pretty tricky.  These are good practice problems for that tricky 30% part.",
+                "url": "https://quip.com/2gwZArKuWk7W",
+                "referring_url": "https://quip.com",
+                "other_referring_source": "twitter.com/lpnotes",
+                "date_published": "2020-04-19T03:27:06Z",
+                "created": "2020-05-02T03:27:06.485Z",
+                "modified":  "2020-05-02T03:27:06.485Z",
+                "media_type": "",
+                "tags": ["SQLt", "BackEnd", "Databases"]
+                }
+
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(response.data['title'], "The Best Medium-Hard Data Analyst SQL Interview Questions")
+        self.assertEqual(response.data['other_referring_source'], "twitter.com/lpnotes")
+        self.assertEqual(response.data['media_type'], '')
