@@ -7,7 +7,20 @@ from tagging.serializers import TagSerializer, TagsSerializerField
 class MediaTypeSerializerField(serializers.ChoiceField):
 
     def to_representation(self, value):
-            return "" if not value else self.choices[value]
+
+        valid_media_types = ', '.join(item for item in self.choices)
+
+        if not value:
+            return ''
+
+        else:
+            try:
+                media_type = self.choices[value]
+
+            except KeyError as err:
+                raise KeyError(f'Invalid media type.  The media type should be one of the following: {valid_media_types}') from err
+
+            return media_type
 
     def to_internal_value(self,  value):
         return value
