@@ -3,9 +3,7 @@ from rest_framework.exceptions import ValidationError
 from resources.factories import ResourceFactory
 from factory import PostGenerationMethodCall, LazyAttribute, create, create_batch
 from django.test import TestCase
-from taggit.managers import TaggableManager
-from .models import CustomTag, TaggedItems
-from tagging.managers  import CustomTaggableManager
+from .models import CustomTag
 from .serializers import TagsSerializerField
 
 
