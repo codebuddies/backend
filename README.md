@@ -1,4 +1,5 @@
-# Django proof-of-concept for CodeBuddies V3
+# [CodeBuddies V3 Back-end]
+## Django proof-of-concept
 
 ![Test](https://github.com/codebuddies/django-concept/workflows/Test/badge.svg)
 [![codecov](https://codecov.io/gh/codebuddies/backend/branch/master/graph/badge.svg)](https://codecov.io/gh/codebuddies/backend)
@@ -15,7 +16,7 @@
 - [Background]
 - [The API spec all the proof-of-concept]
 - [Crowdsourced brainstorm of problems we want to solve]
-- Will interact as the API supporting [https://github.com/codebuddies/frontend]
+- Will interact as the API supporting the [Codebuddies V3 Front-end]
 
 ## Getting started
 
@@ -251,17 +252,36 @@ The start of a resource bookmarking/archiving service.
 
 Please see [How to contribute here]
 
+## Spec docs
+
+- [CBV3 tech notes doc]
+- [The API spec all the proof-of-concept]
+- [Front-end decision log]
+- [Back-end decision log]
+
 <!-- TODO: # Findings -->
 
 <!-- TODO: # Technologies Used -->
 
-
+<!-- What codebuddies is building links: -->
 [Background]: https://github.com/codebuddies/codebuddies/issues/1136
-[Cloning a repository]: https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository
+[CBV3 tech notes doc]: https://docs.google.com/document/d/1YuVO-v0n73ogoFIwpwJgI1Bkso8sP2mg5zqbX9FB3lU/edit
 [Crowdsourced brainstorm of problems we want to solve]: https://pad.riseup.net/p/BecKdThFsevRmmG_tqFa-keep
+
+<!-- Contribution links -->
+[How to contribute here]: https://github.com/codebuddies/django-concept/wiki/Contribution-instructions
+[See PR 127]: https://github.com/codebuddies/backend/pull/129
+
+<!-- Howto links -->
+[Cloning a repository]: https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository
 [Fork a repo]: https://help.github.com/en/github/getting-started-with-github/fork-a-repo
 [Getting Started]: https://www.docker.com/products/docker-desktop
-[How to contribute here]: https://github.com/codebuddies/django-concept/wiki/Contribution-instructions
-[https://github.com/codebuddies/frontend]: https://github.com/codebuddies/frontend
-[See PR 127]: https://github.com/codebuddies/backend/pull/129
+
+<!-- Spec links -->
 [The API spec all the proof-of-concept]: https://app.swaggerhub.com/apis-docs/billglover/CodeBuddies/0.0.1
+[Front-end decision log]: https://github.com/codebuddies/frontend/wiki/Technical-decision-log
+[Back-end decision log]: https://github.com/codebuddies/backend/wiki/Decision-log
+
+<!-- Reference links -->
+[CodeBuddies V3 Back-end]: https://github.com/codebuddies/backend
+[Codebuddies V3 Front-end]: https://github.com/codebuddies/frontend
