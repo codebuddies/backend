@@ -270,7 +270,7 @@ Please see [How to contribute here]
 
 <!-- Contribution links -->
 [How to contribute here]: https://github.com/codebuddies/django-concept/wiki/Contribution-instructions
-[See PR 127]: https://github.com/codebuddies/backend/pull/129
+[See PR 127]: https://github.com/codebuddies/backend/issues/127
 
 <!-- Howto links -->
 [Cloning a repository]: https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository
