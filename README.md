@@ -111,6 +111,7 @@ optional arguments:
 
 To stop the application and remove all containers, run the following:
 
+
 ```bash
 $ docker-compose down
 ```
