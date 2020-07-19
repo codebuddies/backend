@@ -6,6 +6,17 @@
 
 **Note:** This project is currently _in development_
 
+## Sponsors
+
+Big thanks to the sponsors of this project!
+
+<a href="https://opencollective.com/codebuddies/sponsor/0/website" target="_blank"><img src="https://opencollective.com/codebuddies/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/codebuddies/sponsor/1/website" target="_blank"><img src="https://opencollective.com/codebuddies/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/codebuddies/sponsor/2/website" target="_blank"><img src="https://opencollective.com/codebuddies/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/codebuddies/sponsor/3/website" target="_blank"><img src="https://opencollective.com/codebuddies/sponsor/3/avatar.svg"></a>
+
+<a href="https://gitduck.com/codebuddies/join?t=60ktFkh1Rqnd_AS1kR8ZGyH" target="_blank">Join CodeBuddies on GitDuck</a>
+
 ## Features
 
 - **Auto-reload** - modify the application code in your editor of choice. As you save changes, the application should reload automatically. There should be no need to restart containers to see code changes.
@@ -63,13 +74,13 @@ You can access the database through the Adminer front-end or using a local Postg
 
 ![screenshot of Adminer](https://i.imgur.com/Dtg5Yel.png =250x)
 
-5. Create a superuser so that you can log into `http://localhost:8000/admin` by running the following in your terminal: 
+5. Create a superuser so that you can log into `http://localhost:8000/admin` by running the following in your terminal:
 
 ```bash
 $ docker-compose run --rm app ./manage.py createsuperuser
 ```
 
-6. You can populate the database with some random test data for development purposes by running 
+6. You can populate the database with some random test data for development purposes by running
 
 ```bash
 $ docker-compose run --rm app ./manage.py init_data
@@ -105,7 +116,6 @@ optional arguments:
 ```
 
 [See PR 127]
-
 
 ---
 
@@ -164,9 +174,9 @@ docker-compose run --rm app ./manage.py help
 <br>
 Postman is a free interactive tool for verifying the APIs of your project. You can download it at postman.com/downloads.
 
-Postman is an interactive tool for verifying the APIs of your project in an isolated environment--think of it as a a virtual playground where we can safely experiment and edit our API before we deploy it on our web app--just like virtual environments help us isolate our python dependencies. 
+Postman is an interactive tool for verifying the APIs of your project in an isolated environment--think of it as a a virtual playground where we can safely experiment and edit our API before we deploy it on our web app--just like virtual environments help us isolate our python dependencies.
 
-We've created a shared Postman collection (a .json file) in the postman folder to help contributors more easily reproduce observed behaviour in our dev API. 
+We've created a shared Postman collection (a .json file) in the postman folder to help contributors more easily reproduce observed behaviour in our dev API.
 
 To get it set up, please follow these steps:
 
@@ -175,23 +185,24 @@ To get it set up, please follow these steps:
 Downloading Postman
 Please make sure it is at least v7.6.0, if installed, or you are downloading the latest stable version.
 Linux,
+
 - Distro package manager:
 - use the search feature to find in your package manager
 - (RECOMMENDED) Flatpak
 - After setting up flatpak it through flatpak using flatpak install postman and enter "yes"/"y" for all the questions it will ask. Flatpak is designed to provide the most up-to-date versions of software for most distros, so if you have the option, use Flatpak to guarantee Linux OS compatibility and to keep Postman up-to-date.
 
 2. Once you have Postman open, click on file -> import and import the .json file
-3. Click on the settings gear icon on the far top right (next to the eye icon) and click to add a new environment. 
+3. Click on the settings gear icon on the far top right (next to the eye icon) and click to add a new environment.
 4. Name your environment `dev` and create a variable called `api_url`. Give it a value of `https://localhost:8000`, which is the URL of your Django dev environment when it is running.
 5. Now, as long you have the Django app (https://localhost:8000) running, you should be able to make requests like POST Create User and POST Authenticate.
-Click on this link to see what you should expect: https://imgur.com/hd9VB6k
+   Click on this link to see what you should expect: https://imgur.com/hd9VB6k
 
-- `POST` Create User will create a new user in your `localhost:8000` running Django app, 
+- `POST` Create User will create a new user in your `localhost:8000` running Django app,
 - making a request to `POST Authenticate` will authenticate whether or not that user exists.
 
-![screenshot of Postman environment variable setup](https://i.imgur.com/6Uq9XQp.png) 
+![screenshot of Postman environment variable setup](https://i.imgur.com/6Uq9XQp.png)
 
-5. Now, as long you have the Django app (https://localhost:8000) running, you should be able to make requests like `POST Create User` and `POST Authenticate` by clicking on the blue "Send" button in Postman. 
+5. Now, as long you have the Django app (https://localhost:8000) running, you should be able to make requests like `POST Create User` and `POST Authenticate` by clicking on the blue "Send" button in Postman.
 
 </details>
 
