@@ -1,4 +1,5 @@
 # Contributing Instructions
+(Originally created on [the backend wiki](https://github.com/codebuddies/backend/wiki/Contribution-Instructions#reviewing-prs)).
 
 **Note:** This is a working document. When we have settled on a reasonable structure to our Contributing Guidelines, the contents of this document should be moved to `CONTRIBUTING.md` in line with [GitHub guidance](https://help.github.com/en/github/building-a-strong-community/setting-guidelines-for-repository-contributors).
 
@@ -19,12 +20,31 @@
    1. [All things Git](#all-things-git)
    2. [Documentation](#documentation)
    3. [Python](#python)
+6. [Frequently Asked Questions](#FAQ)
 
 ## Code of Conduct
 
 ## I have a Question
 
 ## Who can Contribute?
+### Prerequisites (STRONGLY RECOMMENDED)
+Anyone who has the motivation can contribute to our codebase. Working on improving our documentation is often a great way for less experienced programmers to get started, but at any level the following will eventually be needed for you to have as much fun as possible working with us! If you are not familar with any of these bullet points, consider them a good a learning path.
+
+You will need to be comfortable: 
+- using Git to create branches and track changes.
+- using the terminal and related commands.
+- using Python primitives, datatypes, loops, and decorators: an "advanced beginner". 
+- some knowledge of JavaScript--especially JSON.
+- some knowledge of HTML and CSS.
+- using Django--you should have completed at least one tutorial that covers making a website in Django.
+- understand the basic ideas, motivations, and approach behind Test Driven Development. 
+- using Docker and docker-compose commands and their config files to bring up a local application.
+
+
+You need to understand certain concepts: 
+- how the internet works
+- what a RESTful and API mean, and also what they mean, together.
+- What MVC web architecture is.
 
 ## How do I Contribute?
 
@@ -42,11 +62,10 @@ Remember, not all features will be implemented. If we've decided not to proceed 
 
 ### Your first Contribution to Maintenance
 
-## Style Guides
+## Gitiquette
+This section covers the basic building blocks for how to collaborate and contribute to our repository using the power of git.
 
-### All things Git
-
-#### Branching
+### Branching
 
 Create a branch before working on an issue. Please follow our branch naming convention: `issue-123-decsription`.
 
@@ -56,12 +75,20 @@ Create a branch before working on an issue. Please follow our branch naming conv
 
 **Example:** `issue-44-docker-environment`
 
-#### Creating a PR
+### Creating a PR
 
-#### Reviewing PRs
+### Reviewing PRs
+
+### Troubleshooting
+#### When I `git pull upstream` 
+
+
+## Style Guides
 
 ### Documentation
 
 ### Python
 
 #### Migrations
+
+## FAQ
