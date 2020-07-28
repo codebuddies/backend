@@ -77,13 +77,13 @@ You can access the database through the Adminer front-end or using a local Postg
 5. Create a superuser so that you can log into `http://localhost:8000/admin` by running the following in your terminal:
 
 ```bash
-$ docker-compose run --rm app ./manage.py createsuperuser
+$ docker-compose run --rm app python ./manage.py createsuperuser
 ```
 
 6. You can populate the database with some random test data for development purposes by running
 
 ```bash
-$ docker-compose run --rm app ./manage.py init_data
+$ docker-compose run --rm app python ./manage.py init_data
 ```
 
 All user accounts created by this command have the password `codebuddies`.
@@ -91,7 +91,7 @@ All user accounts created by this command have the password `codebuddies`.
 See the `init_data --help` command for more information:
 
 ```bash
-$ docker-compose run --rm app ./manage.py init_data --help
+$ docker-compose run --rm app python ./manage.py init_data --help
 
 usage: manage.py init_data [-h] [--clear-db] [--num-users NUM-USERS]
                            [--num-tags NUM-TAGS]
@@ -157,14 +157,14 @@ If you would like to tail the logs in the console then you remove the detach fla
 
 The following are examples of some common Django management commands that you may need to run.
 
-- Make Migrations: `docker-compose run --rm app ./manage.py makemigrations`
-- Merge Migrations: `docker-compose run --rm app ./manage.py makemigrations --merge`
-- Run Migrations: `docker-compose run --rm app ./manage.py migrate`
+- Make Migrations: `docker-compose run --rm app python ./manage.py makemigrations`
+- Merge Migrations: `docker-compose run --rm app python ./manage.py makemigrations --merge`
+- Run Migrations: `docker-compose run --rm app python ./manage.py migrate`
 
 To see the full list of management commands use `help`.
 
 ```plain
-docker-compose run --rm app ./manage.py help
+docker-compose run --rm app python ./manage.py help
 ```
 
 ### Postman
