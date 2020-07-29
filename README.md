@@ -193,8 +193,8 @@ Linux,
 
 2. Once you have Postman open, click on file -> import and import the .json file
 3. Click on the settings gear icon on the far top right (next to the eye icon) and click to add a new environment.
-4. Name your environment `dev` and create a variable called `api_url`. Give it a value of `https://localhost:8000`, which is the URL of your Django dev environment when it is running.
-5. Now, as long you have the Django app (https://localhost:8000) running, you should be able to make requests like POST Create User and POST Authenticate.
+4. Name your environment `dev` and create a variable called `api_url`.  For both the "Initial Value" and "Current Value," fill in `http://localhost:8000` which is the URL of your Django dev environment when it is running.
+5. Now, as long you have the Django app (http://localhost:8000) running, you should be able to make requests like POST Create User and POST Authenticate.
    Click on this link to see what you should expect: https://imgur.com/hd9VB6k
 
 - `POST` Create User will create a new user in your `localhost:8000` running Django app,
@@ -202,7 +202,7 @@ Linux,
 
 ![screenshot of Postman environment variable setup](https://i.imgur.com/6Uq9XQp.png)
 
-5. Now, as long you have the Django app (https://localhost:8000) running, you should be able to make requests like `POST Create User` and `POST Authenticate` by clicking on the blue "Send" button in Postman.
+5. Now, as long you have the Django app (http://localhost:8000) running, you should be able to make requests like `POST Create User` and `POST Authenticate` by clicking on the blue "Send" button in Postman.
 
 </details>
 
