@@ -200,7 +200,7 @@ Linux,
 - `POST` Create User will create a new user in your `localhost:8000` running Django app,
 - making a request to `POST Authenticate` will authenticate whether or not that user exists.
 
-![screenshot of Postman environment variable setup](https://i.imgur.com/6Uq9XQp.png)
+![screenshot of Postman environment variable setup](https://user-images.githubusercontent.com/4512699/88751261-14fa9280-d10c-11ea-80c4-2934c27254ad.png)
 
 5. Now, as long you have the Django app (http://localhost:8000) running, you should be able to make requests like `POST Create User` and `POST Authenticate` by clicking on the blue "Send" button in Postman.
 
