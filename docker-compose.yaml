@@ -12,7 +12,7 @@ services:
     container_name: db
     restart: on-failure
     ports:
-      - "5432:5432"
+      - "5000:5432"
     volumes:
       - db_data:/var/lib/postgresql/data
     environment:
