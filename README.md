@@ -77,13 +77,13 @@ You can access the database through the Adminer front-end or using a local Postg
 5. Create a superuser so that you can log into `http://localhost:8000/admin` by running the following in your terminal:
 
 ```bash
-$ docker-compose run --rm app ./manage.py createsuperuser
+$ docker-compose run --rm app python ./manage.py createsuperuser
 ```
 
 6. You can populate the database with some random test data for development purposes by running
 
 ```bash
-$ docker-compose run --rm app ./manage.py init_data
+$ docker-compose run --rm app python ./manage.py init_data
 ```
 
 All user accounts created by this command have the password `codebuddies`.
@@ -91,7 +91,7 @@ All user accounts created by this command have the password `codebuddies`.
 See the `init_data --help` command for more information:
 
 ```bash
-$ docker-compose run --rm app ./manage.py init_data --help
+$ docker-compose run --rm app python ./manage.py init_data --help
 
 usage: manage.py init_data [-h] [--clear-db] [--num-users NUM-USERS]
                            [--num-tags NUM-TAGS]
@@ -157,14 +157,14 @@ If you would like to tail the logs in the console then you remove the detach fla
 
 The following are examples of some common Django management commands that you may need to run.
 
-- Make Migrations: `docker-compose run --rm app ./manage.py makemigrations`
-- Merge Migrations: `docker-compose run --rm app ./manage.py makemigrations --merge`
-- Run Migrations: `docker-compose run --rm app ./manage.py migrate`
+- Make Migrations: `docker-compose run --rm app python ./manage.py makemigrations`
+- Merge Migrations: `docker-compose run --rm app python ./manage.py makemigrations --merge`
+- Run Migrations: `docker-compose run --rm app python ./manage.py migrate`
 
 To see the full list of management commands use `help`.
 
 ```plain
-docker-compose run --rm app ./manage.py help
+docker-compose run --rm app python ./manage.py help
 ```
 
 ### Postman
@@ -193,16 +193,16 @@ Linux,
 
 2. Once you have Postman open, click on file -> import and import the .json file
 3. Click on the settings gear icon on the far top right (next to the eye icon) and click to add a new environment.
-4. Name your environment `dev` and create a variable called `api_url`. Give it a value of `https://localhost:8000`, which is the URL of your Django dev environment when it is running.
-5. Now, as long you have the Django app (https://localhost:8000) running, you should be able to make requests like POST Create User and POST Authenticate.
+4. Name your environment `dev` and create a variable called `api_url`.  For both the "Initial Value" and "Current Value," fill in `http://localhost:8000` which is the URL of your Django dev environment when it is running.
+5. Now, as long you have the Django app (http://localhost:8000) running, you should be able to make requests like POST Create User and POST Authenticate.
    Click on this link to see what you should expect: https://imgur.com/hd9VB6k
 
 - `POST` Create User will create a new user in your `localhost:8000` running Django app,
 - making a request to `POST Authenticate` will authenticate whether or not that user exists.
 
-![screenshot of Postman environment variable setup](https://i.imgur.com/6Uq9XQp.png)
+![screenshot of Postman environment variable setup](https://user-images.githubusercontent.com/4512699/88751261-14fa9280-d10c-11ea-80c4-2934c27254ad.png)
 
-5. Now, as long you have the Django app (https://localhost:8000) running, you should be able to make requests like `POST Create User` and `POST Authenticate` by clicking on the blue "Send" button in Postman.
+5. Now, as long you have the Django app (http://localhost:8000) running, you should be able to make requests like `POST Create User` and `POST Authenticate` by clicking on the blue "Send" button in Postman.
 
 </details>
 
