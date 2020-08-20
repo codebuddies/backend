@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5b8c55c5-59e8-4e5b-a4c4-4fe5e0386dec",
+		"_postman_id": "439a9eb2-2c95-40f5-beb9-d7d40a660755",
 		"name": "CodeBuddies",
 		"description": "# CodeBuddies\n\nThis collection contains requests for CodeBuddies backend APIs.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -15,7 +15,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "3fdee563-a6f5-425f-9c34-6887b3d8b4a0",
+								"id": "16cd9a3f-dd4a-49e8-95bb-5a223ea4521a",
 								"exec": [
 									"pm.globals.set(\"username\", pm.variables.replaceIn(\"{{$randomUserName}}\"));",
 									"pm.globals.set(\"password\", pm.variables.replaceIn(\"{{$randomPassword}}\"));"
@@ -26,7 +26,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "df18b545-6f8c-4d4e-b2c0-7d194a57ae7f",
+								"id": "57091b04-855b-42db-8f77-85842f515779",
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"pm.globals.set(\"token\", jsonData.token);"
@@ -77,7 +77,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5f595540-a1db-46b0-9008-9bbcc68c4fa3",
+								"id": "a065c4da-7168-4f34-a5d7-72c19c72f004",
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"pm.globals.set(\"token\", jsonData.token);"
@@ -88,7 +88,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "c5b6218c-1b5f-4d9f-ad1a-0af10e88e5d2",
+								"id": "2e42b467-5668-40f6-889a-1f28c5766a34",
 								"exec": [
 									""
 								],
@@ -97,9 +97,6 @@
 						}
 					],
 					"request": {
-						"auth": {
-							"type": "noauth"
-						},
 						"method": "POST",
 						"header": [
 							{
@@ -192,26 +189,42 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/api/v1/resources/?search=benefit",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"resources",
+								""
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "benefit"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
 		}
 	],
-	"auth": {
-		"type": "bearer",
-		"bearer": [
-			{
-				"key": "token",
-				"value": "{{token}}",
-				"type": "string"
-			}
-		]
-	},
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "2d0d1108-ddd6-4b84-be9f-4032954698ff",
+				"id": "1a4b8bb3-f435-4d5a-a1db-2abfd238538c",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -221,7 +234,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "18a56020-3cca-4e90-9ad0-fa01c7098f5e",
+				"id": "8caf2b43-2571-4dbe-8ecd-faabfc4b8b5a",
 				"type": "text/javascript",
 				"exec": [
 					""
