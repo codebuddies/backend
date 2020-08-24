@@ -44,7 +44,7 @@ Placeholder example:
 [x] Added tests to make sure PATCH and POST fail without a token
 [x] Added test to make sure DEL fails without a token
 
-## Related Tickets & Documents (Optional)
+## New Libraries/Dependancies Introduced (Fill out as needed)
 
 - [ ] I've updated `requirements.txt`
 
