@@ -47,7 +47,9 @@ Placeholder example:
 ## New Libraries/Dependancies Introduced (Fill out as needed)
 
 
-List the new libraries here:
+If you have added libraries or other dependancies, please list them (and links to their repos) below:
+
+- [ ] I've updated `requirements.txt`
 
 ## Any new migration files added?
 
