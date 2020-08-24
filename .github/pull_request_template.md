@@ -46,7 +46,6 @@ Placeholder example:
 
 ## New Libraries/Dependancies Introduced (Fill out as needed)
 
-- [ ] I've updated `requirements.txt`
 
 List the new libraries here:
 
