@@ -6,7 +6,6 @@
 - [ ] 📝 Documentation
 - [ ] 🔖 Release
 - [ ] 🚩 Other (**concerning:**          )
-- [ ] ✨ Feature (e.g. API change)
 - [ ] 🐛 Bug Fix
 - [ ] 🎨 Enhancement
 - [ ] 📝 Documentation Update
