@@ -1,6 +1,11 @@
 ## What type of PR is this? (check all applicable)
 
+- [ ] 🐛 Bug Fix
+- [ ] ✨ Feature (_**e.g.** API change, enhancement, addition, etc._)
 - [ ] ♻️ Refactor
+- [ ] 📝 Documentation
+- [ ] 🔖 Release
+- [ ] 🚩 Other (**concerning:**          )
 - [ ] ✨ Feature (e.g. API change)
 - [ ] 🐛 Bug Fix
 - [ ] 🎨 Enhancement
