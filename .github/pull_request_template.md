@@ -6,7 +6,6 @@
 - [ ] 📝 Documentation
 - [ ] 🔖 Release
 - [ ] 🚩 Other (**concerning:**          )
-- [ ] 📝 Documentation Update
 - [ ] 🔖 Release
 - [ ] 🚩 Other
 
