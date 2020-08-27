@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "439a9eb2-2c95-40f5-beb9-d7d40a660755",
+		"_postman_id": "33a47d6b-653f-44e0-aede-2ffbb1da79a3",
 		"name": "CodeBuddies",
 		"description": "# CodeBuddies\n\nThis collection contains requests for CodeBuddies backend APIs.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -15,7 +15,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "16cd9a3f-dd4a-49e8-95bb-5a223ea4521a",
+								"id": "9abecff8-0a40-4958-b961-b1409bbf26b1",
 								"exec": [
 									"pm.globals.set(\"username\", pm.variables.replaceIn(\"{{$randomUserName}}\"));",
 									"pm.globals.set(\"password\", pm.variables.replaceIn(\"{{$randomPassword}}\"));"
@@ -26,7 +26,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "57091b04-855b-42db-8f77-85842f515779",
+								"id": "af8aeee3-9500-43b6-9377-bfa7c3a561db",
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"pm.globals.set(\"token\", jsonData.token);"
@@ -77,7 +77,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "a065c4da-7168-4f34-a5d7-72c19c72f004",
+								"id": "8f6e61ef-2617-4199-a1da-d01e3f232086",
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"pm.globals.set(\"token\", jsonData.token);"
@@ -88,7 +88,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "2e42b467-5668-40f6-889a-1f28c5766a34",
+								"id": "572b9c2e-cecc-4fb6-82d4-f5cf7d25a3cf",
 								"exec": [
 									""
 								],
@@ -97,6 +97,9 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -220,11 +223,21 @@
 			"protocolProfileBehavior": {}
 		}
 	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "1a4b8bb3-f435-4d5a-a1db-2abfd238538c",
+				"id": "a2d64a11-feb5-427b-8928-5ef9bf8cc7b0",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -234,7 +247,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "8caf2b43-2571-4dbe-8ecd-faabfc4b8b5a",
+				"id": "fd65f89c-f27b-4185-b536-e7818a9eab45",
 				"type": "text/javascript",
 				"exec": [
 					""
