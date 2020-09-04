@@ -4,6 +4,7 @@ Werkzeug==0.14.1  # pyup: < 0.15 # https://github.com/pallets/werkzeug
 ipdb==0.12.2  # https://github.com/gotcha/ipdb
 Sphinx==2.2.0  # https://github.com/sphinx-doc/sphinx
 psycopg2-binary==2.8.3  # https://github.com/psycopg/psycopg2
+ansible==2.9.12             # https://github.com/ansible/ansible
 
 # Testing
 # ------------------------------------------------------------------------------
@@ -11,6 +12,8 @@ mypy==0.720  # https://github.com/python/mypy
 pytest==5.1.1  # https://github.com/pytest-dev/pytest
 pytest-cov==2.8.1  # https://github.com/pytest-dev/pytest-cov
 pytest-sugar==0.9.2  # https://github.com/Frozenball/pytest-sugar
+pytest-bdd==3.4.0           # https://github.com/pytest-dev/pytest-bdd
+molecule==3.0.8             # https://github.com/ansible-community/molecule
 
 # Code quality
 # ------------------------------------------------------------------------------

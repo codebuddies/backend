@@ -130,10 +130,16 @@ $ docker-compose down
 
 ### Automated Tests
 
-- We use [pytest](https://docs.pytest.org/en/latest/contents.html) with the [pytest-django](https://pytest-django.readthedocs.io/en/latest/) plugin for running tests.
+![Test](https://github.com/codebuddies/django-concept/workflows/Test/badge.svg)
+[![codecov](https://codecov.io/gh/codebuddies/backend/branch/master/graph/badge.svg)](https://codecov.io/gh/codebuddies/backend)
+See those numbers there? We want to ensure the tests are always passing, and that we have 100% code coverage.
+
+- We use [pytest](https://docs.pytest.org/en/latest/contents.html) with the [pytest-django] plugin for running tests.
 - Please add tests for your code when contributing.
 - Run the test suite using `docker-compose run --rm app pytest`
 - With test coverage report `docker-compose run --rm app pytest --cov-report=term --cov=.`
+- Tests have been extended with [pytest-bdd] and [pytest-sugar]
+- Ansible is tested with [molecule]
 
 ### Debugging with Docker Logs
 
@@ -297,3 +303,10 @@ Please see [How to contribute here]
 <!-- Reference links -->
 [CodeBuddies V3 Back-end]: https://github.com/codebuddies/backend
 [Codebuddies V3 Front-end]: https://github.com/codebuddies/frontend
+
+[pytest]: https://github.com/pytest-dev/pytest
+[pytest-bdd]: https://github.com/pytest-dev/pytest-bdd
+[pytest-cov]: https://github.com/pytest-dev/pytest-cov
+[pytest-django]: https://pytest-django.readthedocs.io/en/latest/
+[pytest-sugar]: https://github.com/Frozenball/pytest-sugar
+[molecule]: https://github.com/ansible-community/molecule
