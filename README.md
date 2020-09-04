@@ -6,6 +6,8 @@
 
 **Note:** This project is currently _in development_
 
+**Note:** The production branch of this repo is called `main` [to support the black lives matters movement]
+
 ## Sponsors
 
 Big thanks to the sponsors of this project!
@@ -297,3 +299,5 @@ Please see [How to contribute here]
 <!-- Reference links -->
 [CodeBuddies V3 Back-end]: https://github.com/codebuddies/backend
 [Codebuddies V3 Front-end]: https://github.com/codebuddies/frontend
+
+[to support the black lives matters movement]: https://www.zdnet.com/article/github-to-replace-master-with-alternative-term-to-avoid-slavery-references/
