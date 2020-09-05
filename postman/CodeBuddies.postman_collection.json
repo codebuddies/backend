@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5b8c55c5-59e8-4e5b-a4c4-4fe5e0386dec",
+		"_postman_id": "33a47d6b-653f-44e0-aede-2ffbb1da79a3",
 		"name": "CodeBuddies",
 		"description": "# CodeBuddies\n\nThis collection contains requests for CodeBuddies backend APIs.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -15,7 +15,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "3fdee563-a6f5-425f-9c34-6887b3d8b4a0",
+								"id": "9abecff8-0a40-4958-b961-b1409bbf26b1",
 								"exec": [
 									"pm.globals.set(\"username\", pm.variables.replaceIn(\"{{$randomUserName}}\"));",
 									"pm.globals.set(\"password\", pm.variables.replaceIn(\"{{$randomPassword}}\"));"
@@ -26,7 +26,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "df18b545-6f8c-4d4e-b2c0-7d194a57ae7f",
+								"id": "af8aeee3-9500-43b6-9377-bfa7c3a561db",
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"pm.globals.set(\"token\", jsonData.token);"
@@ -77,7 +77,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5f595540-a1db-46b0-9008-9bbcc68c4fa3",
+								"id": "8f6e61ef-2617-4199-a1da-d01e3f232086",
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"pm.globals.set(\"token\", jsonData.token);"
@@ -88,7 +88,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "c5b6218c-1b5f-4d9f-ad1a-0af10e88e5d2",
+								"id": "572b9c2e-cecc-4fb6-82d4-f5cf7d25a3cf",
 								"exec": [
 									""
 								],
@@ -192,6 +192,32 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/api/v1/resources/?search=benefit",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"resources",
+								""
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "benefit"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -211,7 +237,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "2d0d1108-ddd6-4b84-be9f-4032954698ff",
+				"id": "a2d64a11-feb5-427b-8928-5ef9bf8cc7b0",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -221,7 +247,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "18a56020-3cca-4e90-9ad0-fa01c7098f5e",
+				"id": "fd65f89c-f27b-4185-b536-e7818a9eab45",
 				"type": "text/javascript",
 				"exec": [
 					""
