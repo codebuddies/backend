@@ -6,6 +6,8 @@
 
 **Note:** This project is currently _in development_
 
+**Note:** The production branch of this repo is called `main` [to support the black lives matters movement]
+
 ## Sponsors
 
 Big thanks to the sponsors of this project!
@@ -310,3 +312,4 @@ Please see [How to contribute here]
 [pytest-django]: https://pytest-django.readthedocs.io/en/latest/
 [pytest-sugar]: https://github.com/Frozenball/pytest-sugar
 [molecule]: https://github.com/ansible-community/molecule
+[to support the black lives matters movement]: https://www.zdnet.com/article/github-to-replace-master-with-alternative-term-to-avoid-slavery-references/
