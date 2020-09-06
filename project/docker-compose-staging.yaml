@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  app_staging:
+    image: "docker.pkg.github.com/codebuddies/backend/cb-backend:$CB_IMAGE_TAG"
+    labels:
+      - "traefik.http.routers.https_to_stage.rule=Host(`api-staging.codebuddies.org`)"
+      - "traefik.http.routers.https_to_stage.tls=true"
+      - "traefik.http.routers.https_to_stage.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.https_to_stage.entrypoints=https"
+      - "traefik.http.routers.http_to_stage.rule=Host(`api-staging.codebuddies.org`)"
+      - "traefik.http.routers.http_to_stage.entrypoints=http"
+    container_name: staging-app
+    restart: on-failure
+    command: >
+      sh -c "python /opt/cbv3_django_prototype/manage.py migrate &&
+             uwsgi --ini /opt/cbv3_django_prototype/uwsgi.ini"
+    environment:
+      - DATABASE_URL=${DB_URL}
+      - EMAIL_HOST=localhost
+      - DJANGO_SETTINGS_MODULE=config.settings.production
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
+      - DJANGO_ADMIN_URL=admin/
+      - DJANGO_ALLOWED_HOSTS=${DJANGO_ALLOWED_HOSTS}
+      - DJANGO_SECURE_SSL_REDIRECT=True
+    networks:
+      - cb_staging
+
+networks:
+  cb_staging:
+    external: true
