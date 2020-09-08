@@ -45,7 +45,6 @@ Placeholder example:
 
 ## New Libraries/Dependancies Introduced (Fill out as needed)
 
-
 If you have added libraries or other dependancies, please list them (and links to their repos) below:
 
 - [ ] I've updated `requirements.txt`
@@ -59,8 +58,11 @@ If you have added libraries or other dependancies, please list them (and links t
 **_Code added or changed without test coverage or good reason for exemption won't be approved._**
 
 - [ ] 👍 yes
+    - [ ] 👍 Behaviour Driven Development (BDD) tests in a `.feature` file
+    - [ ] 👍 Unit tests
+    - [ ] 👍 e2e tests
 - [ ] 🙋 no, because I need help
-- [ ] 🙅 no, because they aren't needed
+- [ ] 🙅 no, because they aren't needed because ...
 
 ## Did you add documentation?
 

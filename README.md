@@ -132,10 +132,15 @@ $ docker-compose down
 
 ### Automated Tests
 
-- We use [pytest](https://docs.pytest.org/en/latest/contents.html) with the [pytest-django](https://pytest-django.readthedocs.io/en/latest/) plugin for running tests.
+![Test](https://github.com/codebuddies/django-concept/workflows/Test/badge.svg)
+[![codecov](https://codecov.io/gh/codebuddies/backend/branch/master/graph/badge.svg)](https://codecov.io/gh/codebuddies/backend)
+Have you seen our test coverage? We need to ensure our tests are passing, and that the code coverage is at 100%
+
+- We use [pytest] with the [pytest-django] plugin for running tests.
 - Please add tests for your code when contributing.
 - Run the test suite using `docker-compose run --rm app pytest`
 - With test coverage report `docker-compose run --rm app pytest --cov-report=term --cov=.`
+- Tests have been extended with [pytest-bdd] and [pytest-sugar]
 
 ### Debugging with Docker Logs
 
@@ -299,5 +304,11 @@ Please see [How to contribute here]
 <!-- Reference links -->
 [CodeBuddies V3 Back-end]: https://github.com/codebuddies/backend
 [Codebuddies V3 Front-end]: https://github.com/codebuddies/frontend
-
 [to support the black lives matters movement]: https://www.zdnet.com/article/github-to-replace-master-with-alternative-term-to-avoid-slavery-references/
+
+<!-- Libraries links -->
+[pytest]: https://docs.pytest.org/en/latest/contents.html
+[pytest-bdd]: https://github.com/pytest-dev/pytest-bdd
+[pytest-cov]: https://github.com/pytest-dev/pytest-cov
+[pytest-django]: https://pytest-django.readthedocs.io/en/latest/
+[pytest-sugar]: https://github.com/Frozenball/pytest-sugar
