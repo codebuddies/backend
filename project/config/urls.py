@@ -21,6 +21,8 @@ urlpatterns = [
     # Your stuff: custom urls includes go here
     path('api/v1/', include('resources.urls')),
     path('auth/', include('userauth.urls', namespace="userauth")),
+    path('rest-auth/', include('rest_auth.urls')),
+    path('rest-auth/registration/', include('rest_auth.registration.urls'))
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
