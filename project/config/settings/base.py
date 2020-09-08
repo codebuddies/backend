@@ -77,10 +77,13 @@ THIRD_PARTY_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "rest_framework",
+    "rest_framework.authtoken",
     "corsheaders",
     "taggit",
     "django_celery_beat",
-    "taggit_serializer"
+    "taggit_serializer",
+    "rest_auth",
+    "rest_auth.registration"
 ]
 
 LOCAL_APPS = [
@@ -327,6 +330,7 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
 }
 
+REST_USE_JWT = True
 
 JWT_AUTH = {
     'JWT_AUTH_HEADER_PREFIX': 'Bearer',
