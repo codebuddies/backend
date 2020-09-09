@@ -19,3 +19,16 @@ Feature: Create views for the new Projects API Endpoint.
     Scenario: Add/define queryset for the list view of projects
 
     Scenario: Add links to associated serializers
+
+# Tests(?)
+## On POST:
+    - For a given set of dummy data for the Projects model, return JSON string with all available projects.
+    - For a given set of dummy data for the Projects model, return JSON string for the Projects guid.
+
+NOTES:
+    - Endpoints, test to check that each endpoint exists
+    - Test that a specific Projects endpoint gives back desired data/matches data we expect.
+    - Test that authenticated-only users can create a new project API endpoint.
+
+    - 'Evil user tests': test what happens if user deliberately breaks CRUD API actions on Projects Endpoints
+    - Write test in way that we know are going to fail, make a checklist_id?
