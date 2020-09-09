@@ -32,3 +32,4 @@ NOTES:
 
     - 'Evil user tests': test what happens if user deliberately breaks CRUD API actions on Projects Endpoints
     - Write test in way that we know are going to fail, make a checklist_id?
+    - Confirm 200 server code for an api endpoint instance.
