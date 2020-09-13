@@ -7,12 +7,13 @@ from django.contrib.auth import get_user_model
 from tagging.managers import CustomTaggableManager
 from tagging.models import CustomTag, TaggedItems
 
+
 def get_sentinel_user():
-    return get_user_model().objects.get_or_create(username='deleted')[0]
+    return get_user_model().objects.get_or_create(username="deleted")[0]
 
 
 def get_tags_display(self):
-    return self.tags.values_list('name', flat=True)
+    return self.tags.values_list("name", flat=True)
 
 
 class OSProjects(models.Model):
@@ -29,7 +30,9 @@ class OSProjects(models.Model):
     url = models.URLField(max_length=300)
 
     # user who posted the project
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET(get_sentinel_user))
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.SET(get_sentinel_user)
+    )
 
     # creation date of project entry
     created = models.DateTimeField(auto_now_add=True)
@@ -45,7 +48,9 @@ class OSProjects(models.Model):
 
     # Allow tags to be used across entities
     # E.g. so we can create composite views showing all entities sharing a common tag
-    tags = TaggableManager(through=TaggedItems, manager=CustomTaggableManager, blank=True)
+    tags = TaggableManager(
+        through=TaggedItems, manager=CustomTaggableManager, blank=True
+    )
 
     def __str__(self):
         """A string representation of the model."""
