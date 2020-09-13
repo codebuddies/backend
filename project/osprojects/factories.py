@@ -4,6 +4,7 @@ from factory import DjangoModelFactory, Faker, fuzzy, LazyAttribute, SubFactory
 import datetime
 from users.factories import UserFactory
 from .models import OSProjects
+from django.utils import timezone
 
 
 class OSProjectsFactory(DjangoModelFactory):
@@ -16,8 +17,8 @@ class OSProjectsFactory(DjangoModelFactory):
     description = Faker("text")
     url = Faker("uri")
     user = SubFactory(UserFactory)
-    created = fuzzy.FuzzyDate(datetime.date(2019, 1, 1))
-    modified = fuzzy.FuzzyDate(datetime.date(2020, 1, 1))
+    created = timezone.now()
+    modified = timezone.now()
     open_to_contributors = choice(["True", "False"])
     tags = fuzzy.FuzzyChoice(['javascript', 'python', 'react', 'go'])
 
