@@ -74,7 +74,7 @@ This will run the following components:
 
 You can access the database through the Adminer front-end or using a local PostgreSQL client
 
-![screenshot of Adminer](https://i.imgur.com/Dtg5Yel.png =250x)
+![screenshot of Adminer](https://i.imgur.com/Dtg5Yel.png | width=250)
 
 5. Create a superuser so that you can log into `http://localhost:8000/admin` by running the following in your terminal:
 
