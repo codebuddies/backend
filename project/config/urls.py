@@ -4,25 +4,31 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
-from rest_framework.exceptions import server_error
+from rest_framework import routers, serializers, viewsets
+from resources.urls import router as resources_router
+from userauth.urls import router as userauth_router
 
+router = routers.DefaultRouter()
+router.registry.extend(resources_router.registry)
+router.registry.extend(userauth_router.registry)
 
 urlpatterns = [
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
-    path(
-        "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
-    ),
+    path("about/", TemplateView.as_view(template_name="pages/about.html"), name="about"),
+
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
+
     # User management
     path("users/", include("users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
 
     # Your stuff: custom urls includes go here
-    path('api/v1/', include('resources.urls')),
-    path('auth/', include('userauth.urls', namespace="userauth")),
-    path('rest-auth/', include('rest_auth.urls')),
-    path('rest-auth/registration/', include('rest_auth.registration.urls'))
+    #this is a route for logging into the "browsable api"  if not needed for testing, it should be omitted.
+    path('api/v1/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api/v1/auth/', include('userauth.urls', namespace="userauth")),
+    path('api/v1/', include('resources.urls', namespace='resources')),
+
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
