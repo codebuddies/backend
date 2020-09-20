@@ -69,9 +69,9 @@ jobs:
             export DJANGO_SECRET_KEY=$DJANGO_SECRET_KEY
             export DJANGO_ALLOWED_HOSTS=$DJANGO_ALLOWED_HOSTS
             docker login docker.pkg.github.com -u $GITHUB_ACTOR -p $GITHUB_TOKEN
-            docker-compose --project-name=-stage -f docker-compose-staging.yaml rm -f
-            docker-compose --project-name=-stage -f docker-compose-staging.yaml pull
-            docker-compose --project-name=-stage -f docker-compose-staging.yaml up -d
+            docker-compose --project-name=-stage -f project/docker-compose-staging.yaml rm -f
+            docker-compose --project-name=-stage -f project/docker-compose-staging.yaml pull
+            docker-compose --project-name=-stage -f project/docker-compose-staging.yaml up -d
       - name: finish deployment
         uses: bobheadxi/deployments@master
         if: always()
