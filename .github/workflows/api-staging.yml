@@ -3,7 +3,7 @@ name: Staging
 on:
   push:
     branches:
-     - staging-deployment-experiment
+      - staging-deployment-experiment
 
 jobs:
   stage:
@@ -42,7 +42,7 @@ jobs:
           passphrase: ${{ secrets.DO_SSH_PASSPHRASE }}
           port: ${{ secrets.DO_STAGING_SSH_PORT }}
           username: ${{ secrets.DO_SSH_USER }}
-          source: "docker-compose-proxy.yaml,docker-compose-staging.yaml"
+          source: "project/docker-compose-staging.yaml"
           target: "./"
 
       - name: run deployment
