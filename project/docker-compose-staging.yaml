@@ -6,8 +6,8 @@ services:
     container_name: staging-app
     restart: on-failure
     command: >
-      sh -c "python /opt/cbv3_django_prototype/manage.py migrate &&
-             uwsgi --ini /opt/cbv3_django_prototype/uwsgi.ini"
+      sh -c "python /opt/codebuddies/project/manage.py migrate &&
+             uwsgi --ini /opt/codebuddies/project/uwsgi.ini"
     environment:
       - DATABASE_URL=${DB_URL}
       - EMAIL_HOST=localhost
