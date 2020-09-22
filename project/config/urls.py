@@ -20,13 +20,16 @@ urlpatterns = [
     path(settings.ADMIN_URL, admin.site.urls),
 
     # User management
-    path("users/", include("users.urls", namespace="users")),
+    #currently inactive endpoint, but can re-activate if needed
+    #path("users/", include("users.urls", namespace="users")),
+
+    #we have to include these for registration email validation, but otherwise these paths are NOT used
     path("accounts/", include("allauth.urls")),
 
     # Your stuff: custom urls includes go here
     #this is a route for logging into the "browsable api"  if not needed for testing, it should be omitted.
     path('api/v1/', include('rest_framework.urls', namespace='rest_framework')),
-    path('api/v1/auth/', include('userauth.urls', namespace="userauth")),
+    path('api/v1/auth/', include(('userauth.urls', 'userauth'), namespace="userauth")),
     path('api/v1/', include('resources.urls', namespace='resources')),
 
 
