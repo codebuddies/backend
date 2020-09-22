@@ -297,7 +297,7 @@ LOGGING = {
 # # ------------------------------------------------------------------------------
 ACCOUNT_ADAPTER = "userauth.adapter.CustomAccountAdapter"
 CUSTOM_ACCOUNT_CONFIRM_EMAIL_URL = "verify-email/?key={0}"
-CUSTOM_ACCOUNT_PASSWORD_RESET_CONFIRM_URL = "password/reset/confirm/"
+CUSTOM_ACCOUNT_PASSWORD_RESET_CONFIRM_URL = "password/reset/<uidb64>/<token>/"
 #URL_FRONT = "http://localhost:8000/"
 #ACCOUNT_ADAPTER = "users.adapters.AccountAdapter"
 ACCOUNT_ALLOW_REGISTRATION = env.bool("DJANGO_ACCOUNT_ALLOW_REGISTRATION", True)
@@ -326,6 +326,12 @@ JWT_AUTH_COOKIE = 'cb-auth'
 OLD_PASSWORD_FIELD_ENABLED = True
 LOGOUT_ON_PASSWORD_CHANGE = True
 
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'userauth.serializers.CustomUserDetailSerializer',
+    'PASSWORD_RESET_SERIALIZER' : 'userauth.serializers.CustomPasswordResetSerializer',
+    'PASSWORD_RESET_CONFIRM_SERIALIZER': 'userauth.serializers.CustomPasswordResetConfirmSerializer',
+}
+
 
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
@@ -346,9 +352,9 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-       # 'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication', ],
+
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
 }
