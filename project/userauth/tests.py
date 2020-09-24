@@ -1,20 +1,14 @@
 import re
 import pytest, pytest_django
 import datetime
-from unittest.mock import patch
 from allauth.account.models import EmailAddress
 from rest_framework import status, serializers
 from rest_framework.test import APITestCase, URLPatternsTestCase
-from rest_framework_jwt.settings import api_settings
 from rest_framework_simplejwt.tokens import Token, AccessToken, RefreshToken
-from rest_framework_simplejwt.utils import (aware_utcnow, datetime_from_epoch, datetime_to_epoch, format_lazy)
 from users.factories import UserFactory
 from factory import PostGenerationMethodCall
 from django.core import mail
 from django.contrib.auth import get_user_model
-from django.utils.translation import gettext_lazy as _
-from django.db import models
-
 
 
 class UserauthTests(APITestCase):
@@ -704,7 +698,6 @@ class UserauthTests(APITestCase):
         self.assertEqual(user_details_response.status_code, status.HTTP_200_OK)
         self.assertEqual(user_details_response.data['username'], user_to_view.username)
 
-
     def test_view_user_details_unauthed(self):
 
         details_uri = '/api/v1/auth/user/'
@@ -714,10 +707,37 @@ class UserauthTests(APITestCase):
         self.assertEqual(details_response.data['detail'], "Authentication credentials were not provided.")
 
     def test_current_user_method_authed(self):
-        pass
+
+        token_uri = '/api/v1/auth/token/'
+        user_to_auth = UserFactory(password=PostGenerationMethodCall('set_password', 'codebuddies'))
+        user_to_auth_data = {
+            "username": user_to_auth.username,
+            "password": 'codebuddies'
+        }
+
+        authed_user_tokens = self.client.post(token_uri, user_to_auth_data, format='json')
+        authed_user_access_token = authed_user_tokens.data['access']
+        authed_user_refresh_token = authed_user_tokens.data['refresh']
+        authed_user_uri = '/api/v1/auth/current_user/'
+
+        self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + authed_user_access_token)
+        current_user_request = self.client.get(authed_user_uri)
+
+        #do we get back the "current users" view info?
+        self.assertEqual(current_user_request.status_code, status.HTTP_200_OK)
+        self.assertEqual(current_user_request.data['username'], user_to_auth.username)
+        self.assertContains(current_user_request, 'is_superuser')
+        self.assertContains(current_user_request, 'last_name')
+        self.assertContains(current_user_request, 'id')
 
     def test_current_user_method_unauthed(self):
-        pass
+
+        unauthed_user_uri = '/api/v1/auth/current_user/'
+
+        unauthed_current_user_request = self.client.get(unauthed_user_uri)
+
+        #do we get rejcted by the api?
+        self.assertEqual(unauthed_current_user_request.status_code, status.HTTP_401_UNAUTHORIZED)
 
     def test_JWTtoken_obtain_pair(self):
         token_uri = '/api/v1/auth/token/'
@@ -732,28 +752,7 @@ class UserauthTests(APITestCase):
         self.assertContains(JWT_user_tokens,  "access")
         self.assertContains(JWT_user_tokens, "refresh")
 
-    def test_JWTtoken_refresh(self):
-        token_uri = '/api/v1/auth/token/'
-        user_to_refresh = UserFactory(password=PostGenerationMethodCall('set_password', 'codebuddies'))
-        user_refresh_data = {
-            "username": user_to_refresh.username,
-            "password": 'codebuddies'
-        }
-
-        JWT_user_obtain_tokens = self.client.post(token_uri, user_refresh_data, format='json')
-
-        #now we refresh the token
-        refresh_uri = '/api/v1/auth/token/refresh/'
-        data_to_refresh = {
-            "refresh": JWT_user_obtain_tokens.data['refresh'],
-        }
-
-        renewed_token = self.client.post(refresh_uri, data_to_refresh, format='json')
-
-        self.assertEqual(renewed_token.status_code, status.HTTP_200_OK)
-        self.assertContains(renewed_token, "access")
-
-    def test_JWTtoken_validate_access(self):
+    def test_JWTtoken_verify_active_access_token(self):
 
         token_uri = '/api/v1/auth/token/'
         user_to_validate = UserFactory(password=PostGenerationMethodCall('set_password', 'codebuddies'))
@@ -773,7 +772,7 @@ class UserauthTests(APITestCase):
         validated_token = self.client.post(validation_uri, data_to_validate, format='json')
         self.assertEqual(validated_token.status_code, status.HTTP_200_OK)
 
-    def test_JWTtoken_validate_refresh(self):
+    def test_JWTtoken_verify_active_refresh_token(self):
 
         token_uri = '/api/v1/auth/token/'
         user_to_validate = UserFactory(password=PostGenerationMethodCall('set_password', 'codebuddies'))
@@ -793,7 +792,7 @@ class UserauthTests(APITestCase):
         validated_token = self.client.post(validation_uri, data_to_validate, format='json')
         self.assertEqual(validated_token.status_code, status.HTTP_200_OK)
 
-    def test_JWTtoken_expired_access(self):
+    def test_JWTtoken_verify_with_expired_access_token(self):
 
         #make a user to auth
         user_to_expire = UserFactory(password=PostGenerationMethodCall('set_password', 'codebuddies'))
@@ -818,11 +817,75 @@ class UserauthTests(APITestCase):
         self.assertEqual(expired_token_response.data['detail'], "Token is invalid or expired")
         self.assertEqual(expired_token_response.data['code'], "token_not_valid")
 
+    def test_JWTtoken_verify_with_expired_refresh_token(self):
 
-    # self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + token_response.data['token'])
-    # self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + token_response.data['token'])
+        #make a user to auth
+        user_to_expire_refresh = UserFactory(password=PostGenerationMethodCall('set_password', 'codebuddies'))
 
-    def test_JWTtoken_refresh_expired_access(self):
+        #make a date that's yesterday
+        today = datetime.datetime.now()
+        diff = datetime.timedelta(days=1)
+        start_time = today - diff
+
+        #now we manually create a token with our user and a token that expired yesterday
+        expired_refresh_token = RefreshToken.for_user(user_to_expire_refresh)
+        expired_refresh_token.set_exp(from_time=start_time)
+
+        # now we attempt to validate the expired token
+        expiration_validation_uri = '/api/v1/auth/token/verify/'
+        data_to_validate_expired_refresh = {"token": str(expired_refresh_token),}
+        expired_token_response = self.client.post(expiration_validation_uri, data_to_validate_expired_refresh, format='json')
+
+
+        #did we get rejected by the API?
+        self.assertEqual(expired_token_response.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertEqual(expired_token_response.data['detail'], "Token is invalid or expired")
+        self.assertEqual(expired_token_response.data['code'], "token_not_valid")
+
+    def test_JWTtoken_refresh_access_token_with_active_refresh_token(self):
+        token_uri = '/api/v1/auth/token/'
+        user_to_refresh = UserFactory(password=PostGenerationMethodCall('set_password', 'codebuddies'))
+        user_refresh_data = {
+            "username": user_to_refresh.username,
+            "password": 'codebuddies'
+        }
+
+        JWT_user_obtain_tokens = self.client.post(token_uri, user_refresh_data, format='json')
+
+        #now we call refresh with the active refresh token
+        refresh_uri = '/api/v1/auth/token/refresh/'
+        data_to_refresh = {
+            "refresh": JWT_user_obtain_tokens.data['refresh'],
+        }
+
+        renewed_token = self.client.post(refresh_uri, data_to_refresh, format='json')
+
+        # Did we get a new access token in exchange for the refresh request?
+        self.assertEqual(renewed_token.status_code, status.HTTP_200_OK)
+        self.assertContains(renewed_token, "access")
+
+    def test_JWTtoken_refresh_access_token_with_active_access_token(self):
+        token_uri = '/api/v1/auth/token/'
+        user_to_refresh_access = UserFactory(password=PostGenerationMethodCall('set_password', 'codebuddies'))
+        user_refresh_access_data = {
+            "username": user_to_refresh_access.username,
+            "password": 'codebuddies'
+        }
+
+        JWT_user_obtain_tokens_to_refresh = self.client.post(token_uri, user_refresh_access_data, format='json')
+
+        #now we call refresh with the active refresh token
+        refresh_uri = '/api/v1/auth/token/refresh/'
+        access_data_to_refresh = {
+            "refresh": JWT_user_obtain_tokens_to_refresh.data['access'],
+        }
+
+        renewed_access_token = self.client.post(refresh_uri, access_data_to_refresh, format='json')
+
+        # Did we get rejected from refresh request due to it being an access token?
+        self.assertEqual(renewed_access_token.status_code, status.HTTP_401_UNAUTHORIZED)
+
+    def test_JWTtoken_refresh_expired_access_token_with_expired_access_token(self):
 
         # make a user to auth
         user_to_expire_refresh = UserFactory(password=PostGenerationMethodCall('set_password', 'codebuddies'))
@@ -846,178 +909,59 @@ class UserauthTests(APITestCase):
         self.assertEqual(expired_refresh_response.data['detail'], "Token is invalid or expired")
         self.assertEqual(expired_refresh_response.data['code'], "token_not_valid")
 
+    def test_JWTtoken_refresh_expired_access_token_with_valid_refresh_token(self):
+        # make a user to auth
+        user_to_refresh = UserFactory(password=PostGenerationMethodCall('set_password', 'codebuddies'))
 
-    @patch('rest_framework_simplejwt.tokens.Token.check_exp')
-    def test_JWTtoken_expired_after_refresh(self, check_exp):
-        pass
-
-'''
-class UserauthTests(APITestCase):
-
-    def setUp(self):
-        self.user = UserFactory(
-            password=PostGenerationMethodCall('set_password', 'codebuddies')
-        )
-
-    def test_jwt_not_authed(self):
-        """
-        Ensure that if we aren't authed with a token, we don't get to view the
-        current_user
-        """
-
-        url = '/auth/current_user/'
-        response = self.client.get(url)
-        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+        # make a date that's yesterday
+        today = datetime.datetime.now()
+        diff = datetime.timedelta(days=1)
+        diff_refresh = datetime.timedelta(hours=1)
+        start_time = today - diff
+        start_time_refresh = today + diff_refresh
 
 
-    def test_jwt_auth(self):
-        """
-        Ensure we can obtain a token with a valid UN and PW combo.
-        """
+        # now we manually create a access token with our user and a token that expired yesterday
+        expired_token = AccessToken.for_user(user_to_refresh)
+        expired_token.set_exp(from_time=start_time)
 
-        url = '/auth/obtain_token/'
-        data = {"username": self.user.username, "password": "codebuddies"}
-        response = self.client.post(url, data, format='json')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertContains(response, 'token')
+        # next, we manually crate a valid refresh token with our user and a now() date
+        refresh_token = RefreshToken.for_user(user_to_refresh)
+        refresh_token.set_exp(from_time=start_time_refresh)
 
+        # now we attempt to refresh the expired access token with the refresh token
+        expiration_refresh_uri = '/api/v1/auth/token/refresh/'
+        data_to_refresh_expired = {"refresh": str(refresh_token), }
+        refresh_response = self.client.post(expiration_refresh_uri, data_to_refresh_expired, format='json')
 
-    def test_jwt_validate(self):
-        """
-        Ensure we can validate a previously acquired token.
-        """
-        token_response = self.client.post(
-            '/auth/obtain_token/',
-            {"username": self.user.username, "password": "codebuddies"},
-            format='json'
-        )
-        token = token_response.data['token']
-        url = '/auth/validate_token/'
-        data = {"token": token}
-        response = self.client.post(url, data, format='json')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertContains(response, token)
-        self.assertContains(response, self.user.username)
+        # did we get a new, valid access token from the API?
+        self.assertEqual(refresh_response.status_code, status.HTTP_200_OK)
+        self.assertContains(refresh_response, 'access')
 
+    def test_JWTtoken_refresh_expired_access_token_with_expired_refresh_token(self):
+        # make a user to auth
+        user_to_refresh = UserFactory(password=PostGenerationMethodCall('set_password', 'codebuddies'))
 
-    def test_jwt_current_user(self):
-        """
-        Ensure that if we obtain a token in the 'browser',
-        we can retrieve the current_user based on the browser token
-        """
+        # make a date that's yesterday
+        today = datetime.datetime.now()
+        diff = datetime.timedelta(days=1)
+        start_time = today - diff
+        start_time_refresh_past = today - diff
 
-        token_response = self.client.post(
-            '/auth/obtain_token/',
-            {"username": self.user.username, "password": "codebuddies"},
-            format='json'
-        )
-        url = '/auth/current_user/'
-        self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + token_response.data['token'])
-        response = self.client.get(url)
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertContains(response, self.user.username)
-        self.assertContains(response, 'is_superuser')
+        # now we manually create a access token with our user and a token that expired yesterday
+        expired_token = AccessToken.for_user(user_to_refresh)
+        expired_token.set_exp(from_time=start_time)
 
+        # next, we manually crate a refresh token with our user and a now() date
+        past_refresh_token = RefreshToken.for_user(user_to_refresh)
+        past_refresh_token.set_exp(from_time=start_time_refresh_past)
 
-    def test_jwt_refresh(self):
-        """
-        Ensure that if we ask for a token refresh based on our current token
-        we get a refreshed token in return.
-        """
+        # now we attempt to refresh the expired access token with the refresh token
+        expiration_refresh_uri = '/api/v1/auth/token/refresh/'
+        data_to_refresh_past = {"refresh": str(past_refresh_token), }
+        past_refresh_response = self.client.post(expiration_refresh_uri, data_to_refresh_past, format='json')
 
-        token_response = self.client.post(
-            '/auth/obtain_token/',
-            {"username": self.user.username, "password": "codebuddies"},
-            format='json'
-        )
-        url = '/auth/refresh_token/'
-        self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + token_response.data['token'])
-        data = {"token": token_response.data['token']}
-        response = self.client.post(url, data, format='json')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(token_response.data['token'], response.data['token'], msg=None)
-
-
-    @patch('rest_framework_jwt.serializers.RefreshAuthTokenSerializer.validate')
-    def test_jwt_expired_refresh(self, validate_mock):
-        """
-        Ensure that a request to refresh and expired token fails.
-        """
-        token_response = self.client.post(
-            '/auth/obtain_token/',
-            {"username": self.user.username, "password": "codebuddies"},
-            format='json'
-        )
-        url = '/auth/refresh_token/'
-        data = {"token": token_response.data['token']}
-        self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + token_response.data['token'])
-        validate_mock.side_effect = serializers.ValidationError('Refresh has expired.')
-        response = self.client.post(url, data, format='json')
-        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-
-
-    @patch('rest_framework_jwt.serializers._check_payload')
-    def test_jwt_expired_token_validate(self, validate_mock):
-        """
-        Ensure that a request to validate an expired token fails.
-        """
-        token_response = self.client.post(
-            '/auth/obtain_token/',
-            {"username": self.user.username, "password": "codebuddies"},
-            format='json'
-        )
-        url = '/auth/validate_token/'
-        data = {"token": token_response.data['token']}
-        self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + token_response.data['token'])
-        validate_mock.side_effect = serializers.ValidationError('Token has expired.')
-        response = self.client.post(url, data, format='json')
-        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-
-
-    @patch('rest_framework_jwt.serializers._check_payload')
-    def test_jwt_expired_token_access(self, validate_mock):
-        """
-        Ensure that a request to a protected api endpoint fails with an
-        expired token.
-        """
-        token_response = self.client.post(
-            '/auth/obtain_token/',
-            {"username": self.user.username, "password": "codebuddies"},
-            format='json'
-        )
-        url = '/api/v1/resources/'
-        data = {"token": token_response.data['token']}
-        self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + token_response.data['token'])
-        validate_mock.side_effect = serializers.ValidationError('Token has expired.')
-        response = self.client.post(url, data, format='json')
-        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-
-
-    def test_create_new_user(self):
-        """
-        Ensure that a new user is created in the DB and a token for that user
-        is returned with valid confirmation data.
-        """
-
-        url = '/auth/users/'
-        data = {
-                "username": "claudette",
-                "password": "codebuddies",
-                "first_name": "Cali",
-                "last_name": "French",
-                "email": "asificare@mailme.net"
-                }
-        token_response = self.client.post(
-            '/auth/obtain_token/',
-            {"username": self.user.username, "password": "codebuddies"},
-            format='json'
-        )
-        self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + token_response.data['token'])
-        response = self.client.post(url, data, format='json')
-
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(response.data['username'], 'claudette')
-        self.assertEqual((response.data['first_name'], response.data['last_name']),('Cali', 'French'))
-        self.assertEqual(response.data['email'], 'asificare@mailme.net')
-        self.assertContains(response, 'token', status_code=201)
-'''
+        # did we get rejected because the refresh token has expired?
+        self.assertEqual(past_refresh_response.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertEqual(past_refresh_response.data['detail'], "Token is invalid or expired")
+        self.assertEqual(past_refresh_response.data['code'], "token_not_valid")
