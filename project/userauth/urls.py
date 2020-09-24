@@ -15,8 +15,9 @@ router = routers.SimpleRouter(r'userauth')
 urlpatterns = (
     path('', include('dj_rest_auth.urls')),
     path('', include(router.urls)),
-    path('registration/', include('dj_rest_auth.registration.urls')),
-    path('registration/verify-email/', views.CustomVerifyEmailView.as_view(), name='account_email_verification_sent'),
+    path('registration/', include('dj_rest_auth.registration.urls'), name='registration'),
+    path('registration/verify-email/$', views.CustomVerifyEmailView.as_view(), name='account_email_verification_sent'),
+    path('registration/verify-email/(?P<key>[-:\w]+)/$', views.CustomVerifyEmailView.as_view(), name='account_confirm_email'),
     path('password/reset/', PasswordResetView.as_view(), name='password_reset'),
     path('password/reset/confirm/<uidb64>/<token>/', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
