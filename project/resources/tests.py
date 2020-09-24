@@ -1,16 +1,9 @@
-from unittest import skip
-from pytest import raises
 from random import randint
-from rest_framework import status
-from rest_framework.test import APITestCase
-from rest_framework_jwt.settings import api_settings
+from rest_framework import status, serializers
+from rest_framework.test import APITestCase, URLPatternsTestCase
 from users.factories import UserFactory
 from resources.factories import ResourceFactory
 from factory import PostGenerationMethodCall, LazyAttribute, create, create_batch
-
-
-jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
-jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
 
 
 class PublicResourcesTests(APITestCase):
@@ -73,13 +66,16 @@ class PublicResourcesTests(APITestCase):
 class AuthedResourcesTests(APITestCase):
 
     def setUp(self):
-        self.user = UserFactory(password=PostGenerationMethodCall('set_password', 'codebuddies'))
+        token_uri = '/api/v1/auth/token/'
+        user_to_auth = UserFactory(password=PostGenerationMethodCall('set_password', 'codebuddies'))
+        user_auth_data = {
+            "username": user_to_auth.username,
+            "password": 'codebuddies'
+        }
 
-        url = '/auth/obtain_token/'
-        data = {"username": self.user.username, "password": "codebuddies"}
-        token_response = self.client.post(url, data, format='json')
+        JWT_user_tokens = self.client.post(token_uri, user_auth_data, format='json')
 
-        self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + token_response.data['token'])
+        self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + JWT_user_tokens.data['access'])
 
     def test_patch_one_resource(self):
         new_resource = create(ResourceFactory)
@@ -189,20 +185,22 @@ class AuthedResourcesTests(APITestCase):
         self.assertEqual(response.data['media_type'], '')
 
     def test_create_one_resource_with_invalid_media_type(self):
-        with raises(KeyError, match=r"The media type should be one of the following:"):
-            url = '/api/v1/resources/'
-            data = {"title": "The Best Medium-Hard Data Analyst SQL Interview Questions",
-                    "author": "Zachary Thomas",
-                    "description": "The first 70% of SQL is pretty straightforward but the remaining 30% can be pretty tricky.  These are good practice problems for that tricky 30% part.",
-                    "url": "https://quip.com/2gwZArKuWk7W",
-                    "referring_url": "https://quip.com",
-                    "other_referring_source": "twitter.com/lpnotes",
-                    "date_published": "2020-04-19T03:27:06Z",
-                    "created": "2020-05-02T03:27:06.485Z",
-                    "modified":  "2020-05-02T03:27:06.485Z",
-                    "media_type": "DOP",
-                    "tags": ["SQLt", "BackEnd", "Databases"]
-                    }
+        url = '/api/v1/resources/'
+        data = {"title": "The Best Medium-Hard Data Analyst SQL Interview Questions",
+                "author": "Zachary Thomas",
+                "description": "The first 70% of SQL is pretty straightforward but the remaining 30% can be pretty tricky.  These are good practice problems for that tricky 30% part.",
+                "url": "https://quip.com/2gwZArKuWk7W",
+                "referring_url": "https://quip.com",
+                "other_referring_source": "twitter.com/lpnotes",
+                "date_published": "2020-04-19T03:27:06Z",
+                "created": "2020-05-02T03:27:06.485Z",
+                "modified":  "2020-05-02T03:27:06.485Z",
+                "media_type": "DOP",
+                "tags": ["SQLt", "BackEnd", "Databases"]
+                }
 
-            response = self.client.post(url, data, format='json')
+        response = self.client.post(url, data, format='json')
+
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(response.data[0], "Invalid media type.  The media type should be one of the following:  VID, POD, PODEP, TALK, TUTOR, COURSE, BOOK, BLOG, GAME, EVENT, TOOL, LIB, WEB")
 
