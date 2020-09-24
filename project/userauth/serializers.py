@@ -1,5 +1,4 @@
 from rest_framework import serializers
-from rest_framework_jwt.settings import api_settings
 from dj_rest_auth.serializers import JWTSerializer, UserDetailsSerializer
 from dj_rest_auth.registration.serializers import VerifyEmailSerializer
 from dj_rest_auth.serializers import PasswordResetSerializer, PasswordResetConfirmSerializer
