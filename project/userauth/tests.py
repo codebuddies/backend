@@ -139,7 +139,6 @@ class UserauthTests(APITestCase):
         validate_email_url = f'{confirmation_uri[0]}'
         validate_key_data = {"key": confirmation_uri[3]}
         validation_response = self.client.post(validate_email_url, validate_key_data, format='json')
-        print(validation_response)
 
         # did the post result in the correct status messages?
         self.assertEqual(validation_response.status_code, status.HTTP_200_OK)
