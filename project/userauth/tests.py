@@ -136,7 +136,7 @@ class UserauthTests(APITestCase):
         confirmation_uri = re.search(uri_regex, verify_email_message)
 
         # now, let's post the key to trigger validation
-        validate_email_url = f'/api/v1/auth/registration/verify-email/'
+        validate_email_url = f'/api/v1/auth/registration/verify-email/?key={confirmation_uri[3]}/'
         validate_key_data = {"key": confirmation_uri[3]}
         validation_response = self.client.post(validate_email_url, validate_key_data, format='json')
         print(validation_response)

@@ -20,8 +20,8 @@ urlpatterns = [
     path(settings.ADMIN_URL, admin.site.urls),
 
     # User management
-    #currently inactive endpoint, but can re-activate if needed
-    #path("users/", include("users.urls", namespace="users")),
+    #currently an unused endpoint, but can be used if needed for extended user profiles, etc.
+    path("users/", include("users.urls", namespace="users")),
 
     #we have to include these for registration email validation, but otherwise these paths are NOT used
     path("accounts/", include("allauth.urls")),
