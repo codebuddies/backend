@@ -118,25 +118,25 @@ class UserauthTests(APITestCase):
     def test_verify_email_path_post(self):
 
         # start by registering a user
-        reg_url = '/api/v1/auth/registration/'
-        reg_data = {
+        new_user_reg_url = '/api/v1/auth/registration/'
+        new_user_reg_data = {
             "username": self.user['username'],
             "email": self.user['email'],
             "password1": self.user['password1'],
             "password2": self.user['password2']
         }
-        response = self.client.post(reg_url, reg_data, format='json')
+        response = self.client.post(new_user_reg_url, new_user_reg_data, format='json')
 
         # grab email from outbox so we can extract the verification link
         email_message = mail.outbox[0]
         verify_email_message = email_message.body
 
         # extracting what we need for the verification post action
-        uri_regex = re.compile(r"(\/api\/v1\/auth\/registration\/verify-email\/)(\?key=)([\w:]+)")
+        uri_regex = re.compile(r"(\/api\/v1\/auth\/registration\/verify-email\/)(\?key=)([\w:-]+)")
         confirmation_uri = re.search(uri_regex, verify_email_message)
 
         # now, let's post the key to trigger validation
-        validate_email_url = f'/api/v1/auth/registration/verify-email/?key={confirmation_uri[3]}/'
+        validate_email_url = f'{confirmation_uri[0]}'
         validate_key_data = {"key": confirmation_uri[3]}
         validation_response = self.client.post(validate_email_url, validate_key_data, format='json')
         print(validation_response)
@@ -171,6 +171,7 @@ class UserauthTests(APITestCase):
         email_url = '/api/v1/auth/registration/verify-email/'
         key_data = {"key": confirmation_uri[3]}
         response = self.client.post(email_url, key_data, format='json')
+
 
         #did the post succeed in marking the email as valid in the DB?
         model = get_user_model()
