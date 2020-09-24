@@ -6,6 +6,7 @@ from django.views.generic import TemplateView
 from django.views import defaults as default_views
 from rest_framework import routers, serializers, viewsets
 from resources.urls import router as resources_router
+from userauth.views import CustomVerifyEmailView
 from userauth.urls import router as userauth_router
 
 router = routers.DefaultRouter()
@@ -23,14 +24,14 @@ urlpatterns = [
     #currently an unused endpoint, but can be used if needed for extended user profiles, etc.
     path("users/", include("users.urls", namespace="users")),
 
-    #we have to include these for registration email validation, but otherwise these paths are NOT used
-    path("accounts/", include("allauth.urls")),
-
     # Your stuff: custom urls includes go here
     #this is a route for logging into the "browsable api"  if not needed for testing, it should be omitted.
     path('api/v1/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/v1/auth/', include(('userauth.urls', 'userauth'), namespace="userauth")),
     path('api/v1/', include('resources.urls', namespace='resources')),
+
+    #we have to include these for registration email validation, but otherwise these paths are NOT used
+    path("accounts/", include("allauth.urls")),
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
