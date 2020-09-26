@@ -92,7 +92,8 @@ LOCAL_APPS = [
     "resources.apps.ResourcesConfig",
     "tagging.apps.TaggingConfig",
     'userauth.apps.UserauthConfig',
-    'osprojects.apps.OsprojectsConfig'
+    'osprojects.apps.OsprojectsConfig',
+    'hangouts.apps.HangoutsConfig'
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
