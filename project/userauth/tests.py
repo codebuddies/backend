@@ -95,7 +95,7 @@ class UserauthTests(APITestCase):
 
         #is the email subject what we expect it to be?
         verify_email_message = mail.outbox[0]
-        self.assertEqual(verify_email_message.subject, 'Codebuddies: Please Confirm Your E-mail Address')
+        self.assertEqual(verify_email_message.subject, 'CodeBuddies: Please Confirm Your E-mail Address')
 
         #extracting what we need for the verification link
         uri_regex = re.compile(r"(\/api\/v1\/auth\/registration\/verify-email\/)(\?key=)([\w:-]+)")
