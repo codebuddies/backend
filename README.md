@@ -162,6 +162,7 @@ The following are examples of some common Django management commands that you ma
 - Make Migrations: `docker-compose run --rm app python ./manage.py makemigrations`
 - Merge Migrations: `docker-compose run --rm app python ./manage.py makemigrations --merge`
 - Run Migrations: `docker-compose run --rm app python ./manage.py migrate`
+- Make sure new packages are installed: `docker-compose up -d --build`
 
 To see the full list of management commands use `help`.
 

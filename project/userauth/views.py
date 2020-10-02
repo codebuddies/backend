@@ -1,8 +1,15 @@
+from django.contrib.auth import get_user_model
+from django.contrib.sites.models import Site
+from django.contrib.auth import views as auth_views
+from django.utils.translation import ugettext_lazy as _
 from rest_framework import permissions, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.exceptions import NotFound, MethodNotAllowed
 from rest_framework.views import APIView
-from .serializers import UserSerializer, UserSerializerWithToken
+from dj_rest_auth.registration.views import VerifyEmailView
+from dj_rest_auth.views import PasswordResetConfirmView as dj_PasswordResetConfirmView
+from .serializers import UserSerializer, CustomVerifyEmailSerializer
 
 
 @api_view(['GET'])
@@ -15,17 +22,21 @@ def current_user(request):
     return Response(serializer.data)
 
 
-class UserList(APIView):
-    """
-    Create a new user. It's called 'UserList' because normally we'd have a get
-    method here too, for retrieving a list of all User objects.
-    """
-
+#this is required for the allauth "validate your email address" email to work.
+class CustomVerifyEmailView(VerifyEmailView):
     permission_classes = (permissions.AllowAny,)
+    allowed_methods = ('POST', 'OPTIONS', 'HEAD')
 
-    def post(self, request, format=None):
-        serializer = UserSerializerWithToken(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    def get_serializer(self, *args, **kwargs):
+        return VerifyEmailSerializer(*args, **kwargs)
+
+    def get(self, *args, **kwargs):
+        raise MethodNotAllowed('GET')
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.kwargs['key'] = serializer.validated_data['key']
+        confirmation = self.get_object()
+        confirmation.confirm(self.request)
+        return Response({'detail': _('ok')}, status=status.HTTP_200_OK)

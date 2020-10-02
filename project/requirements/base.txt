@@ -32,4 +32,6 @@ django-taggit==1.2.0          # https://github.com/jazzband/django-taggit
 djangorestframework==3.10.2   # https://github.com/encode/django-rest-framework
 coreapi==2.3.3                # https://github.com/core-api/python-client
 django_taggit_serializer==0.1.7 #https://github.com/glemmaPaul/django-taggit-serializer
-drf-jwt==1.13.4               # https://github.com/Styria-Digital/django-rest-framework-jwt
+djangorestframework-simplejwt #https://github.com/SimpleJWT/django-rest-framework-simplejwt
+dj-rest-auth==1.1.1                       #https://github.com/jazzband/dj-rest-auth
+django-rest-authtoken==2.1.3 #https://pypi.org/project/django-rest-authtoken/

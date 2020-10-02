@@ -77,10 +77,13 @@ THIRD_PARTY_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "rest_framework",
+    "rest_framework.authtoken",
     "corsheaders",
     "taggit",
     "django_celery_beat",
-    "taggit_serializer"
+    "taggit_serializer",
+    "dj_rest_auth",
+    "dj_rest_auth.registration",
 ]
 
 LOCAL_APPS = [
@@ -287,19 +290,47 @@ LOGGING = {
 # CELERY_TASK_SOFT_TIME_LIMIT = 60
 # # http://docs.celeryproject.org/en/latest/userguide/configuration.html#beat-scheduler
 # CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
-# # django-allauth
+
+
+# # django-allauth config
+# # https://django-allauth.readthedocs.io/en/latest/configuration.html
 # # ------------------------------------------------------------------------------
-# ACCOUNT_ALLOW_REGISTRATION = env.bool("DJANGO_ACCOUNT_ALLOW_REGISTRATION", True)
-# # https://django-allauth.readthedocs.io/en/latest/configuration.html
-# ACCOUNT_AUTHENTICATION_METHOD = "username"
-# # https://django-allauth.readthedocs.io/en/latest/configuration.html
-# ACCOUNT_EMAIL_REQUIRED = True
-# # https://django-allauth.readthedocs.io/en/latest/configuration.html
-# ACCOUNT_EMAIL_VERIFICATION = "mandatory"
-# # https://django-allauth.readthedocs.io/en/latest/configuration.html
-# ACCOUNT_ADAPTER = "users.adapters.AccountAdapter"
-# # https://django-allauth.readthedocs.io/en/latest/configuration.html
+ACCOUNT_ADAPTER = "userauth.adapter.CustomAccountAdapter"
+CUSTOM_ACCOUNT_CONFIRM_EMAIL_URL = "verify-email/?key={0}"
+CUSTOM_ACCOUNT_PASSWORD_RESET_CONFIRM_URL = "password/reset/<uidb64>/<token>/"
+#URL_FRONT = "http://localhost:8000/"
+#ACCOUNT_ADAPTER = "users.adapters.AccountAdapter"
+ACCOUNT_ALLOW_REGISTRATION = env.bool("DJANGO_ACCOUNT_ALLOW_REGISTRATION", True)
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"
+ACCOUNT_CONFIRM_EMAIL_ON_GET = False
+#ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = None
+#ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = reverse_lazy('account_confirm_complete')
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 3
+ACCOUNT_EMAIL_CONFIRMATION_HMAC = True
+ACCOUNT_EMAIL_SUBJECT_PREFIX = "CodeBuddies: "
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "http"
+ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True
+ACCOUNT_LOGOUT_ON_GET = False
+
 # SOCIALACCOUNT_ADAPTER = "users.adapters.SocialAccountAdapter"
+
+
+# #dj-rest-auth config
+# #https://dj-rest-auth.readthedocs.io/en/latest/configuration.html
+# # ---------------------------------------------------------------------------------
+REST_USE_JWT = True
+JWT_AUTH_COOKIE = 'cb-auth'
+OLD_PASSWORD_FIELD_ENABLED = True
+LOGOUT_ON_PASSWORD_CHANGE = True
+
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'userauth.serializers.CustomUserDetailSerializer',
+    'PASSWORD_RESET_SERIALIZER' : 'userauth.serializers.CustomPasswordResetSerializer',
+    'PASSWORD_RESET_CONFIRM_SERIALIZER': 'userauth.serializers.CustomPasswordResetConfirmSerializer',
+}
 
 
 REST_FRAMEWORK = {
@@ -320,20 +351,12 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.BrowsableAPIRenderer',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication', ],
+
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
-}
-
-
-JWT_AUTH = {
-    'JWT_AUTH_HEADER_PREFIX': 'Bearer',
-    'JWT_RESPONSE_PAYLOAD_HANDLER': 'core.utils.my_jwt_response_handler',
-    'JWT_ALLOW_REFRESH': True,
-    'JWT_EXPIRATION_DELTA': timedelta(hours=1),
-    'JWT_REFRESH_EXPIRATION_DELTA': timedelta(days=3),
 }
 
 CORS_ORIGIN_WHITELIST = (
