@@ -1,12 +1,60 @@
-# [CodeBuddies V3 Back-end]
-## Django proof-of-concept
-
 ![Test](https://github.com/codebuddies/django-concept/workflows/Test/badge.svg)
 [![codecov](https://codecov.io/gh/codebuddies/backend/branch/master/graph/badge.svg)](https://codecov.io/gh/codebuddies/backend)
+
+## Overview of CodeBuddies
+CodeBuddies is a remote-first community of independent code learners who enjoy sharing knowledge and helping each other learn faster via discussions and pairing. It is free and open-sourced, and supported by open source contributors and financial backers on our [Open Collective](https://opencollective.com/codebuddies). 
+ 
+We are building out a new platform (codebuddies version 3 - cbv3) to replace the old website at at [codebuddies.org](https://codebuddies.org).
+ 
+The new version of the website will include features that will help users:
+share and recommend links to resources/tutorials
+find open source projects to work on
+form study groups 
+collect learning paths and share them
+find 1-hour pair programming partners for any topic much more easily
+
 
 **Note:** This project is currently _in development_
 
 **Note:** The production branch of this repo is called `main` [to support the black lives matters movement]
+
+## Code of Conduct
+We expect contributors to follow our [code of conduct](https://codebuddies.org/slack). 
+
+## Role of the Backend
+The backend is a Django app that provides API endpoints that the frontend (a React app) consumes. 
+
+We have a technical decision log [here](https://github.com/codebuddies/backend/wiki/Decision-log), and we document technical discussions and learnings in the [discussions tab](https://github.com/codebuddies/backend/discussions). 
+
+## Front End
+The front-end repo is built using React and is located at [github.com/codebuddies/frontend](https://github.com/codebuddies/frontend). Until a staging-api.codebuddies.org URL is live, contributors need to have this backend app running locally (localhost:8000) in order to develop on the front-end.
+
+## Tech used
+The backend uses Django built on top of [Cookiecutter](https://cookiecutter.readthedocs.io/en/1.7.0/) and [Django Rest Framework](https://www.django-rest-framework.org/).
+
+We use Docker Compose to stand up local development environments, and GitHub Actions to deploy staging and production. We host on DigitalOcean and store everything in a managed PostgreSQL database.
+
+Some core dependencies we use:
+djangorestframework==3.10.2   # https://github.com/encode/django-rest-framework
+coreapi==2.3.3                # https://github.com/core-api/python-client
+drf-jwt==1.13.4               # https://github.com/Styria-Digital/django-rest-framework-jwt
+
+## Contributing & Development Environment Set-Up
+
+Please see [CONTRIBUTING.MD]
+
+## Get Help
+Ways you can get help if you're stuck or have questions:
+-[ ] Create a new [discussion](https://github.com/codebuddies/backend/discussions) post with your question
+-[ ] Ask in the #codebuddies-meta channel on the CodeBuddies Slack (see: codebuddies.org/slack)
+
+## Other Ways to Contribute
+There are other ways to contribute to CodeBuddies besides making pull requests to the codebase! 
+
+You can:
+[x] participate in the community on Slack
+[x] share your feedback on GitHub issues or discussions
+[x] help review pull requests by checking out the branch and affirming that the expected changes are there
 
 ## Sponsors
 
@@ -24,224 +72,11 @@ Big thanks to the sponsors of this project!
 - **Auto-reload** - modify the application code in your editor of choice. As you save changes, the application should reload automatically. There should be no need to restart containers to see code changes.
 <!-- TODO -->
 
-## Reference
-
-- [Background]
-- [The API spec all the proof-of-concept]
-- [Crowdsourced brainstorm of problems we want to solve]
-- Will interact as the API supporting the [Codebuddies V3 Front-end]
-
-## Getting started
-
-We recommend you run CodeBuddies locally using Docker. We assume you have Docker installed, but if not head on over to the Docker [Getting Started] guide and install Docker for your operating system.
-
-These instructions have been used on the following operating systems.
-
-- Linux
-- Mac OS
-- Windows 10 Pro - Please note that Windows 10 Home is not supported by Docker Desktop at this time.
-
-1. Fork this repository. This creates a copy of the repository for you to work on. For more help see this GitHub guide: [Fork a repo].
-2. Clone your fork. This creates a copy on your local computer. For more help see this GitHub guide: [Cloning a repository].
-
-```bash
-$ git clone https://github.com/codebuddies/backend codebuddies-backend
-```
-
-3. Navigate into the project directory.
-
-```bash
-$ cd codebuddies-backend
-```
-
-4. Start the local development environment.
-
-```bash
-$ docker-compose up -d
-```
-
-**Note:** `-d` starts Docker in detatched mode. See [logs](#debugging-with-docker-logs)
-
-### Local development environment details
-
-This will run the following components:
-
-- Nginx, a web server: http://localhost:8000 - view the application or make API calls
-- Mailhog, a dummy mailbox: http://localhost:8025
-- The Django web application
-- Adminer, a DB front-end: http://localhost:8001
-- A PostgreSQL database `postgres://babyyoda:mysecretpassword@localhost:5432/codebuddies`
-
-You can access the database through the Adminer front-end or using a local PostgreSQL client
-
-![screenshot of Adminer](https://i.imgur.com/Dtg5Yel.png =250x)
-
-5. Create a superuser so that you can log into `http://localhost:8000/admin` by running the following in your terminal:
-
-```bash
-$ docker-compose run --rm app python ./manage.py createsuperuser
-```
-
-6. You can populate the database with some random test data for development purposes by running
-
-```bash
-$ docker-compose run --rm app python ./manage.py init_data
-```
-
-All user accounts created by this command have the password `codebuddies`.
-
-See the `init_data --help` command for more information:
-
-```bash
-$ docker-compose run --rm app python ./manage.py init_data --help
-
-usage: manage.py init_data [-h] [--clear-db] [--num-users NUM-USERS]
-                           [--num-tags NUM-TAGS]
-                           [--num-resources NUM-RESOURCES] [--version]
-                           [-v {0,1,2,3}] [--settings SETTINGS]
-                           [--pythonpath PYTHONPATH] [--traceback]
-                           [--no-color] [--force-color]
-
-Initialize the DB with some random fake data for testing and development
-
-optional arguments:
-  --clear-db            Clear existing data from the DB before creating test
-                        data
-  --num-users NUM-USERS
-                        Number of `User` objects to create (default 10)
-  --num-tags NUM-TAGS   Number of `Tag` objects to create (default 10)
-  --num-resources NUM-RESOURCES
-                        Number of `Resource` objects to create (default 10)
-  -v {0,1,2,3}, --verbosity {0,1,2,3}
-                        Verbosity level; 0=minimal output, 1=normal output,
-                        2=verbose output, 3=very verbose output
-```
-
-[See PR 127]
-
----
-
-To stop the application and remove all containers, run the following:
-
-
-```bash
-$ docker-compose down
-```
-
-## Other Tasks
-
-### Automated Tests
-
-- We use [pytest](https://docs.pytest.org/en/latest/contents.html) with the [pytest-django](https://pytest-django.readthedocs.io/en/latest/) plugin for running tests.
-- Please add tests for your code when contributing.
-- Run the test suite using `docker-compose run --rm app pytest`
-- With test coverage report `docker-compose run --rm app pytest --cov-report=term --cov=.`
-
-### Debugging with Docker Logs
-
-View logs from all containers.
-
-```bash
-$ docker-compose logs
-```
-
-View logs from a single container (in this case the `app` container).
-
-```bash
-$ docker-compose logs app
-```
-
-You can use the same structure to view logs for the other containers; `nginx`, `db`, `mailhog`, `adminer`, `app`.
-
-If you would like to tail the logs in the console then you remove the detach flag, `-d`, from the `docker-compose up` command that you use to start the application.
-
-### Django Management
-
-The following are examples of some common Django management commands that you may need to run.
-
-- Make Migrations: `docker-compose run --rm app python ./manage.py makemigrations`
-- Merge Migrations: `docker-compose run --rm app python ./manage.py makemigrations --merge`
-- Run Migrations: `docker-compose run --rm app python ./manage.py migrate`
-- Make sure new packages are installed: `docker-compose up -d --build`
-
-To see the full list of management commands use `help`.
-
-```plain
-docker-compose run --rm app python ./manage.py help
-```
-
-### Postman
-
-<details>
-<summary>Importing Postman collection</summary>
-<br>
-Postman is a free interactive tool for verifying the APIs of your project. You can download it at postman.com/downloads.
-
-Postman is an interactive tool for verifying the APIs of your project in an isolated environment--think of it as a a virtual playground where we can safely experiment and edit our API before we deploy it on our web app--just like virtual environments help us isolate our python dependencies.
-
-We've created a shared Postman collection (a .json file) in the postman folder to help contributors more easily reproduce observed behaviour in our dev API.
-
-To get it set up, please follow these steps:
-
-1. Download Postman
-
-Downloading Postman
-Please make sure it is at least v7.6.0, if installed, or you are downloading the latest stable version.
-Linux,
-
-- Distro package manager:
-- use the search feature to find in your package manager
-- (RECOMMENDED) Flatpak
-- After setting up flatpak it through flatpak using flatpak install postman and enter "yes"/"y" for all the questions it will ask. Flatpak is designed to provide the most up-to-date versions of software for most distros, so if you have the option, use Flatpak to guarantee Linux OS compatibility and to keep Postman up-to-date.
-
-2. Once you have Postman open, click on file -> import and import the .json file
-3. Click on the settings gear icon on the far top right (next to the eye icon) and click to add a new environment.
-4. Name your environment `dev` and create a variable called `api_url`.  For both the "Initial Value" and "Current Value," fill in `http://localhost:8000` which is the URL of your Django dev environment when it is running.
-5. Now, as long you have the Django app (http://localhost:8000) running, you should be able to make requests like POST Create User and POST Authenticate.
-   Click on this link to see what you should expect: https://imgur.com/hd9VB6k
-
-- `POST` Create User will create a new user in your `localhost:8000` running Django app,
-- making a request to `POST Authenticate` will authenticate whether or not that user exists.
-
-![screenshot of Postman environment variable setup](https://user-images.githubusercontent.com/4512699/88751261-14fa9280-d10c-11ea-80c4-2934c27254ad.png)
-
-5. Now, as long you have the Django app (http://localhost:8000) running, you should be able to make requests like `POST Create User` and `POST Authenticate` by clicking on the blue "Send" button in Postman.
-
-</details>
-
-## Removing Everything
-
-<details>
-<summary>To remove all containers</summary>
-<br>
-To remove all containers run the following:
-
-```bash
-$ docker-compose rm
-```
-
-This will leave a copy of the data volume (holding the PostgreSQL data) behind. To remove that you will need to identify and remove the data volume.
-
-```bash
-$ docker volume ls
-
-DRIVER              VOLUME NAME
-local               django-concept_db_data
-```
-
-Note the name of the data volume, in this case `django-concept_db_data` and delete it.
-
-```bash
-$ docker volume rm django-concept_db_data
-```
-
-**Note:** it is likely that cached copies of your container images will be retained by Docker on your local machine. This is done to speed things up if you require these images in future. To completely remove unused container images and networks, we recommend you follow Docker [pruning guide](https://docs.docker.com/config/pruning/).
-
-</details>
-
 ## Proof-of-concept Goals
 
-A resource datastore
+[MVP Progress tracker board](https://github.com/codebuddies/backend/projects/1)
+
+1. A resource datastore
 
 - [x] save resource
 - [x] delete resource
@@ -249,7 +84,7 @@ A resource datastore
 - [x] list resource
 - [x] search resources
 
-Resource:
+2. Resource:
 
 - [x] title
 - [x] description
@@ -258,33 +93,28 @@ Resource:
 - [x] url
 - [x] referrer
 
-The start of a resource bookmarking/archiving service.
+3. Authentication
 
-- [ ] Calendar/hangouts
-  - How easy would it be to make a calendar widget that lets users block out times they're free for hangouts?
+## Reference Links
 
-## Contributing
-
-Please see [How to contribute here]
-
-## Spec docs
-
-- [CBV3 tech notes doc]
-- [The API spec all the proof-of-concept]
+- [Original Discussion]
+- [CBV3 tech notes doc] (note: we're moving technical discussion to the new [discussion tab](https://github.com/codebuddies/backend/discussions).
+- [API spec draft on Swaggerhub]
 - [Front-end decision log]
 - [Back-end decision log]
+- [Crowdsourced brainstorm of problems we want to solve]
 
 <!-- TODO: # Findings -->
 
 <!-- TODO: # Technologies Used -->
 
 <!-- What codebuddies is building links: -->
-[Background]: https://github.com/codebuddies/codebuddies/issues/1136
+[Original Discussion]: https://github.com/codebuddies/codebuddies/issues/1136
 [CBV3 tech notes doc]: https://docs.google.com/document/d/1YuVO-v0n73ogoFIwpwJgI1Bkso8sP2mg5zqbX9FB3lU/edit
 [Crowdsourced brainstorm of problems we want to solve]: https://pad.riseup.net/p/BecKdThFsevRmmG_tqFa-keep
 
 <!-- Contribution links -->
-[How to contribute here]: https://github.com/codebuddies/django-concept/wiki/Contribution-instructions
+[CONTRIBUTING.MD]: https://github.com/codebuddies/backend/blob/main/contributing.md
 [See PR 127]: https://github.com/codebuddies/backend/issues/127
 
 <!-- Howto links -->
@@ -293,7 +123,7 @@ Please see [How to contribute here]
 [Getting Started]: https://www.docker.com/products/docker-desktop
 
 <!-- Spec links -->
-[The API spec all the proof-of-concept]: https://app.swaggerhub.com/apis-docs/billglover/CodeBuddies/0.0.1
+[API spec draft on Swaggerhub]: https://app.swaggerhub.com/apis-docs/billglover/CodeBuddies/0.0.1
 [Front-end decision log]: https://github.com/codebuddies/frontend/wiki/Technical-decision-log
 [Back-end decision log]: https://github.com/codebuddies/backend/wiki/Decision-log
 
