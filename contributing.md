@@ -1,190 +1,240 @@
-## **Contributing CodeBuddies website version 3 (CBV3)**
+## Getting started
 
-## **Setup**
+We recommend you run CodeBuddies locally using Docker. We assume you have Docker installed, but if not please [install Docker for your operating system](https://docs.docker.com/desktop/). 
 
-Although it is possible to run the website locally, we recommend you run CodeBuddies locally using [Docker](https://www.docker.com/get-started).  
+These instructions have been used on the following operating systems.
 
-These instructions have been used on the following operating systems:  
-* Linux
-* Mac OS
-* Windows 10 Pro (Windows 10 Home is supported by Docker Desktop at the moment)
+- [Linux Docker installation guide](https://docs.docker.com/engine/install/ubuntu/)
+- [Mac OS Docker installation guide](https://docs.docker.com/docker-for-mac/install/)
+- [Windows 10 Pro Docker installion guide](https://docs.docker.com/docker-for-windows/install/)
+- [Windows 10 Home Docker installation guide](https://docs.docker.com/docker-for-windows/install-windows-home/)
 
-### Fundamental Knowledge
+## Development Environment Setup 
+1. Fork this repository. This creates a copy of the repository for you to work on. For more help see this GitHub guide: [Fork a repo].
 
-  Contributors are expected to have fundamental knowledge of the [technologies used for CBV3](README.md#technologies-used).
+2. Clone your fork. This creates a copy on your local computer. For more help see this GitHub guide: [Cloning a repository].
 
-#### Steps
+```bash
+$ git clone https://github.com/codebuddies/backend codebuddies-backend
+```
 
-Docker is expected to be installed before the website is deployed. Follow the guide [here](https://www.docker.com/products/docker-desktop) to install it if you have not done so.
+3. Navigate into the project directory.
 
-1. Fork this repository. See [Fork a repo](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) for help if needed.   
-2. Clone your fork.
+```bash
+$ cd codebuddies-backend
+```
 
-  ```plain
-  git clone git@github.com::codebuddies/backend.git cb-backend
-  ```
-  Clone the forked repository to your computer using the command `git clone` and save as `cb-backend`. This command works on MacOS and Linux. For details or Windows user, follow the instructions on [Cloning a repository](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
+4. Run the following docker command to start up the local development environment.
 
-3. Navigate into the project directory
-  ```plain
-  cd cb-backend
-  ```
+```bash
+$ docker-compose up -d
+```
 
-4. Start the local development environment
+**Note:** `-d` starts Docker in detatched mode. See [logs](#debugging-with-docker-logs)
 
-  (for Windows users please ensure your docker is up running)
+### Local development environment details
 
-  ```plain
-  docker-compose up -d
-  ```
+This will run the following components:
 
-  This will run the following components:
-  * Nginx, a web server: http://localhost:8000
-  * Adminer, a DB front-end: http://localhost:8001
-  * Mailhog, a dummy mailbox: http://localhost:8025
-  * A PostgreSQL database
-  * Django web application   
+- Nginx, a web server: http://localhost:8000 - view the application or make API calls
+- Mailhog, a dummy mailbox: http://localhost:8025
+- The Django web application
+- Adminer, a DB front-end: http://localhost:8001
+- A PostgreSQL database `postgres://babyyoda:mysecretpassword@localhost:5432/codebuddies`
+
+You can access the database through the Adminer front-end or using a local PostgreSQL client
+
+![screenshot of Adminer](https://i.imgur.com/Dtg5Yel.png =250x)
+
+5. Create a superuser so that you can log into `http://localhost:8000/admin` by running the following in your terminal:
+
+```bash
+$ docker-compose run --rm app python ./manage.py createsuperuser
+```
+
+6. You can populate the database with some random test data for development purposes by running
+
+```bash
+$ docker-compose run --rm app python ./manage.py init_data
+```
+
+All user accounts created by this command have the password `codebuddies`.
+
+See the `init_data --help` command for more information:
+
+```bash
+$ docker-compose run --rm app python ./manage.py init_data --help
+
+usage: manage.py init_data [-h] [--clear-db] [--num-users NUM-USERS]
+                           [--num-tags NUM-TAGS]
+                           [--num-resources NUM-RESOURCES] [--version]
+                           [-v {0,1,2,3}] [--settings SETTINGS]
+                           [--pythonpath PYTHONPATH] [--traceback]
+                           [--no-color] [--force-color]
+
+Initialize the DB with some random fake data for testing and development
+
+optional arguments:
+  --clear-db            Clear existing data from the DB before creating test
+                        data
+  --num-users NUM-USERS
+                        Number of `User` objects to create (default 10)
+  --num-tags NUM-TAGS   Number of `Tag` objects to create (default 10)
+  --num-resources NUM-RESOURCES
+                        Number of `Resource` objects to create (default 10)
+  -v {0,1,2,3}, --verbosity {0,1,2,3}
+                        Verbosity level; 0=minimal output, 1=normal output,
+                        2=verbose output, 3=very verbose output
+```
+
+[See PR 127]
+
+---
+
+To stop the application and remove all containers, run the following:
 
 
-  * __Web Server (Nginx)__  
-    You can view the application or make API calls by using the Nginx URL
+```bash
+$ docker-compose down
+```
 
-  * __Accessing Database (Adminer)__  
-    You can access the database through the Adminer front-end or using a loca PostgreSQL client with the following command:
+## Other Tasks
 
-    ```plain
-    postgres://babyyoda:mysecretpassword@localhost:5432/codebuddies
-    ```      
+### Automated Tests
 
-5. Create a superuser so that you can log into http://localhost:8000/admin by running the following in your terminal:  
-  ```plain
-  docker-compose run --rm app ./manage.py createsuperuser
-  ```
+- We use [pytest](https://docs.pytest.org/en/latest/contents.html) with the [pytest-django](https://pytest-django.readthedocs.io/en/latest/) plugin for running tests.
+- Please add tests for your code when contributing.
+- Run the test suite using `docker-compose run --rm app pytest`
+- With test coverage report `docker-compose run --rm app pytest --cov-report=term --cov=.`
 
-  ![screenshot of Adminer](https://i.imgur.com/Dtg5Yel.png)  
+### Debugging with Docker Logs
 
-To stop the application and remove all containers, run the following  
-  ```plain
-  docker-compose down
-  ```
+View logs from all containers.
+
+```bash
+$ docker-compose logs
+```
+
+View logs from a single container (in this case the `app` container).
+
+```bash
+$ docker-compose logs app
+```
+
+You can use the same structure to view logs for the other containers; `nginx`, `db`, `mailhog`, `adminer`, `app`.
+
+If you would like to tail the logs in the console then you remove the detach flag, `-d`, from the `docker-compose up` command that you use to start the application.
+
+### Django Management
+
+Migrations are Django's way of propogating model changes into the database schema (([doc](https://docs.djangoproject.com/en/3.1/topics/migrations/)). 
+
+Whenever you made a change to a model file*, you should run `docker-compose run --rm app python ./manage.py makemigrations` and `docker-compose run --rm app python ./manage.py migrate` in order to update the models for the database. 
+
+A PR reviewer should see the associated migration files in the PR diff when there is a model change.
+
+
+The following list contains some common Django management commands that you may need to run.
+
+- Make Migrations: `docker-compose run --rm app python ./manage.py makemigrations`
+- Merge Migrations: `docker-compose run --rm app python ./manage.py makemigrations --merge`
+- Run Migrations: `docker-compose run --rm app python ./manage.py migrate`
+- Make sure new packages are installed: `docker-compose up -d --build`
+
+To see the full list of management commands use `help`.
+
+```plain
+docker-compose run --rm app python ./manage.py help
+```
+
+*Examples of changes to model files:
+
+PK changes
+removals
+fieldname changes
+multiple sets of changes with reversions
+datatype changes
+
+You should be double checking their migration files and consolidating, organizing, and deleting excess where necessary.
+
+Only the migration files that make the final intended changes should be checked in (e.g. the final field name in its migration, or the final PK change in its migration). 
+
 
 ### Editing the Code
 
   With the local environment running, you can modify the application code in your editor of choice. As you save changes, the application should reload automatically. There should be no need to restart container to see code changes.
 
-## **Django Management via Docker**
+### Postman
 
-  Notes: The following commands are only applicable to MacOS and Linux.
+<details>
+<summary>Importing Postman collection</summary>
+<br>
+Postman is a free interactive tool for verifying the APIs of your project. You can download it at postman.com/downloads.
 
-  __Common Commands for Managing Django project__
-
-  Majority of the Django manage.py commands can also be applied through docker. Below are some examples:
-
-  * Access Python shell (IPython): `docker-compose run --rm manage shell`
-  * Run test: `docker-compose run --rm manage test`
-
-  See the full list of commands: `docker-compose run --rm manage help`
-
-  __Migrating Models__
-
-  If any changes are made on the project models, we will need to migrate it to apply the changes. See [Django Migration](https://docs.djangoproject.com/en/3.0/topics/migrations/) for details.
-
-  Steps to apply migrations via docker:
-  1. Make migrations: `docker-compose run --rm manage makemigrations`
-  2. Apply migrations: `docker-compose run --rm manage migrate`
-
-  Merge migrations: `docker-compose run --rm manage makemigrations --merge`
-
-## **Import Postman Collection**
-Postman is a free interactive tool for verifying the APIs of your project in an isolated environment -- think of it as a virtual playground where we can safely experience and edit our API before we deploy it on your web app -- just like virtual envrionments help us isolate our python dependencies. You can download it at [postman.com/downloads](http://postman.com/downloads).
+Postman is an interactive tool for verifying the APIs of your project in an isolated environment--think of it as a a virtual playground where we can safely experiment and edit our API before we deploy it on our web app--just like virtual environments help us isolate our python dependencies.
 
 We've created a shared Postman collection (a .json file) in the postman folder to help contributors more easily reproduce observed behaviour in our dev API.
 
-### Setup
+To get it set up, please follow these steps:
 
-1. Downloading Postman  
-  Please ensure the installed version is later than v7.6.0 if you have previously installed the program.  
+1. Download Postman
 
-  (Recommendation for Linux users)  
-  [Flatpak](https://flatpak.org/), which can be downloaded from your Liunx distribution (distro) manager, is recommended to manage Postman.  
+Downloading Postman
+Please make sure it is at least v7.6.0, if installed, or you are downloading the latest stable version.
+Linux,
 
-  After setting up flatpak, install postman and enter "yes"/"y" for all the questions it will ask. Flatpak is designed to provide the most up-to-date versions of software for most distros, so if you have the option, use Flatpak to guarantee Linux OS compatibility and to keep Postman up-to-date.  
+- Distro package manager:
+- use the search feature to find in your package manager
+- (RECOMMENDED) Flatpak
+- After setting up flatpak it through flatpak using flatpak install postman and enter "yes"/"y" for all the questions it will ask. Flatpak is designed to provide the most up-to-date versions of software for most distros, so if you have the option, use Flatpak to guarantee Linux OS compatibility and to keep Postman up-to-date.
 
+2. Once you have Postman open, click on file -> import and import the .json file
+3. Click on the settings gear icon on the far top right (next to the eye icon) and click to add a new environment.
+4. Name your environment `dev` and create a variable called `api_url`.  For both the "Initial Value" and "Current Value," fill in `http://localhost:8000` which is the URL of your Django dev environment when it is running.
+5. Now, as long you have the Django app (http://localhost:8000) running, you should be able to make requests like POST Create User and POST Authenticate.
+   Click on this link to see what you should expect: https://imgur.com/hd9VB6k
 
-  2. Open Postman, click on File -> Import -> Import the .json file (path: `cb-backend/postman/CodeBuddies.postman_collection.json`)
+- `POST` Create User will create a new user in your `localhost:8000` running Django app,
+- making a request to `POST Authenticate` will authenticate whether or not that user exists.
 
-  3. Click the settings gear icon on the far top right (next to the eye icon) and click to add a new environment.
+![screenshot of Postman environment variable setup](https://user-images.githubusercontent.com/4512699/88751261-14fa9280-d10c-11ea-80c4-2934c27254ad.png)
 
-  4. Name your environment `dev` and create a variable call `api_url`. Give it a value of `https://localhost:8000`, which is the URL of your Django dev environment when it is running.  
+5. Now, as long you have the Django app (http://localhost:8000) running, you should be able to make requests like `POST Create User` and `POST Authenticate` by clicking on the blue "Send" button in Postman.
 
-  5. Now, as long as you have the Django app (https://localhost:8000) running, you should be able to make requests like `POST Create User` and `POST Authenticate` by clicking on the blue "Send" button in Postman. Click on this link to see what you should expect: https://imgur.com/hd9VB6k
+</details>
 
-  POST Create User will create a new user in your localhost:8000 running Django app, and making a request to POST Authenticate will authenticate whether or not that user exists.
+## Removing Everything
 
-  ![screenshot of Postman environment variable setup](https://i.imgur.com/6Uq9XQp.png)
+<details>
+<summary>To remove all containers</summary>
+<br>
+To remove all containers run the following:
 
-## **Docker Management**
+```bash
+$ docker-compose rm
+```
 
-### Docker Logs
+This will leave a copy of the data volume (holding the PostgreSQL data) behind. To remove that you will need to identify and remove the data volume.
 
-  The `-d` from `docker-compose up -d` allows you to detach logs on the console. To tail logs in the console, type in command `docker-compose up` when you start the application
+```bash
+$ docker volume ls
 
-  View logs from all containers
+DRIVER              VOLUME NAME
+local               django-concept_db_data
+```
 
-  ```plain
-  docker-compose logs
-  ```
+Note the name of the data volume, in this case `django-concept_db_data` and delete it.
 
-  View logs from a single container (in this case the `app` container)
+```bash
+$ docker volume rm django-concept_db_data
+```
 
-  ```plain
-  docker-compose logs app
-  ```
+**Note:** it is likely that cached copies of your container images will be retained by Docker on your local machine. This is done to speed things up if you require these images in future. To completely remove unused container images and networks, we recommend you follow Docker [pruning guide](https://docs.docker.com/config/pruning/).
+</details>
 
-  You can use the same structure to view logs for the other containers: `nginx`, `db`, `mailhog`, `adminer`, `app`
+## Getting Help
+Ways you can get help if you're stuck or have questions: 
 
-### View docker containers / images / volumes
+-[x] Create a [new discussion post](https://github.com/codebuddies/backend/discussions) with your question 
 
-  To view specific items, run the following:
-  ```plain
-  docker container ls
-  ```
-  (Replace `container` to `image` or `volume` to view details)
-
-
-### Removing Everything
-
-  It is _strongly recommended_ to stop the application using `docker-compose down` which stops all the containers and remove all the containers completely. Using this method will leave a copy of the data volume(holding the PostgreSQL data) behind and the images behind.
-
-  To remove items on volume or image, run the following:  
-  ```plain
-  docker volume prune
-  ```
-  (Replace `volume` with `image` to do the same on image)
-  Remove specific volume
-  ```plain
-  docker volume rm cb-backend_db_data
-  ```
-
-Note: it is likely that cached copies of your container images will be retained by Docker on your local machine. This is done to speed things up if you require these images in future. To completely remove unused container images and networks, we recommend you follow Docker [pruning guide](https://docs.docker.com/config/pruning/).
-
-## **Proof-of-concept Goals**
-
-| Resource datastore | Resource |
-| ------ | ------ |
-|- save resource<br>- delete resource<br>- update resource<br>- list resource<br>- search resources |- title<br>- description<br>- type<br>- credit<br>- url<br>- referrer|
-
-
-  The start of a resource bookmarking/archiving service.
-
-  - Calendar/hangouts
-    - How easy would it be to make a calendar widget that lets users block out times they're free for hangouts?
-
-# Findings
-
-# Technologies Used
-=======
-
-Please see [instructions here](https://github.com/codebuddies/django-concept/wiki/Contribution-instructions)
-
-This project is not deployed yet, but will interact as the API supporting [https://github.com/codebuddies/frontend](https://github.com/codebuddies/frontend)
+-[x] Ask in the #codebuddies-meta channel on the CodeBuddies Slack (see: [codebuddies.org/slack](https://codebuddies.org/slack)
