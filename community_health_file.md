@@ -1,6 +1,6 @@
 [//]: <> (github.com/codebuddies/backend/)
 
-## **Overview of Codebuddies**
+## Overview of Codebuddies
 
 ### What is CodeBuddies?
 
