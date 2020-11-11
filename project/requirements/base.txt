@@ -5,7 +5,7 @@ python-slugify==4.0.0          # https://github.com/un33k/python-slugify
 pytz==2019.2                   # https://github.com/stub42/pytz
 redis==3.3.8                   # https://github.com/antirez/redis
 regex==2020.4.4           #https://bitbucket.org/mrabarnett/mrab-regex/src/hg/
-
+gunicorn==20.0.4
 
 # Celery
 # _____________________________________________________________________________
