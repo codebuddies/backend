@@ -5,6 +5,7 @@ services:
       repo_clone_url: "https://github.com/codebuddies/backend.git"
       branch: do_app_platform
     source_dir: project
+    run_command: gunicorn --worker-tmp-dir /dev/shm config.wsgi
     envs:
       - key: DISABLE_COLLECTSTATIC
         value: "1"
