@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+open_a_discussion:
+  - name: Open a discussion
+    url: https://github.com/codebuddies/backend/discussions/new
+    about: Open a new discussion
