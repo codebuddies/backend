@@ -65,12 +65,12 @@ You can:
 Big thanks to the sponsors of this project!
 
 <a href="https://opencollective.com/codebuddies/sponsor/0/website" target="_blank"><img src="https://opencollective.com/codebuddies/sponsor/0/avatar.svg"></a>
-<a href="https://opencollective.com/codebuddies/sponsor/1/website" target="_blank"><img src="https://opencollective.com/codebuddies/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/codebuddies/sponsor/1/website" target="_blank"><img src="https://user-images.githubusercontent.com/4512699/117554546-324e7c80-b00d-11eb-98b6-0cdc02a3ca33.png" width="64"></a>
 <a href="https://opencollective.com/codebuddies/sponsor/2/website" target="_blank"><img src="https://opencollective.com/codebuddies/sponsor/2/avatar.svg"></a>
 <a href="https://opencollective.com/codebuddies/sponsor/3/website" target="_blank"><img src="https://opencollective.com/codebuddies/sponsor/3/avatar.svg"></a>
 <a href="https://digitalocean.com/" target="_blank"><img src="https://opencollective-production.s3.us-west-1.amazonaws.com/a5c4c6d0-bfd4-11ea-991a-c3d30978b44b.png" width="300" alt="DigitalOcean"></a>
 
-<a href="https://gitduck.com/codebuddies/join?t=60ktFkh1Rqnd_AS1kR8ZGyH" target="_blank">Join CodeBuddies on GitDuck</a>
+<a href="https://duckly.com/codebuddies/join?t=60ktFkh1Rqnd_AS1kR8ZGyH" target="_blank">Join CodeBuddies on Duckly</a>
 
 ## Features
 
